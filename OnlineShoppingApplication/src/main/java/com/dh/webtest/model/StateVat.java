@@ -1,0 +1,60 @@
+package com.dh.webtest.model;
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+@Table(name="statevat")
+public class StateVat {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	int stateId;
+
+	@Column(name = "state")
+	String state;
+	
+	@Column(name = "vatpercentage")
+	float vatPercent;
+
+	public int getStateId() {
+		return stateId;
+	}
+
+	public void setStateId(int stateId) {
+		this.stateId = stateId;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState1(String state) {
+		this.state = state;
+	}
+
+	public float getVatPercent() {
+		return vatPercent;
+	}
+
+	public void setVatPercent(float vatPercent) {
+		this.vatPercent = vatPercent;
+	}
+	
+
+}
+
+

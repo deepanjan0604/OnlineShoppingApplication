@@ -1,0 +1,83 @@
+package com.dh.webtest.model;
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.mysql.jdbc.Blob;
+
+@Entity
+@Table(name="carts")
+public class Cart{
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	int cartId;
+
+	@Column(name = "cost")
+	float cost;
+	
+
+	@Column(name = "tax")
+	float tax;
+
+
+	@Column(name = "totalcost")
+	float totalCost;
+
+
+	public int getCartId() {
+		return cartId;
+	}
+
+
+	public void setCartId(int cartId) {
+		this.cartId = cartId;
+	}
+
+
+	public float getCost() {
+		return cost;
+	}
+
+
+	public void setCost(float cost) {
+		this.cost = cost;
+	}
+
+
+	public float getTax() {
+		return tax;
+	}
+
+
+	public void setTax(float tax) {
+		this.tax = tax;
+	}
+
+
+	public float getTotalCost() {
+		return totalCost;
+	}
+
+
+	public void setTotalCost(float totalCost) {
+		this.totalCost = totalCost;
+	}
+	
+	
+}
+
+
