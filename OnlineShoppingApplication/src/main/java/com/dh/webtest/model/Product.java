@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -44,6 +45,20 @@ public class Product {
     @Lob
     Blob image;
 
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JsonIgnore
+	Brand brand;
+	
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JsonIgnore
+	Category category;
+
+	@OneToMany(mappedBy = "products", fetch = FetchType.EAGER, orphanRemoval = true)
+	List<CartItem> cartitem;
+
+	
 	public int getProductId() {
 		return productId;
 	}
@@ -90,7 +105,32 @@ public class Product {
 
 	public void setImage(Blob image) {
 		this.image = image;
-	}	
+	}
+
+	public Brand getBrand() {
+		return brand;
+	}
+
+	public void setBrand(Brand brand) {
+		this.brand = brand;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public List<CartItem> getCartitem() {
+		return cartitem;
+	}
+
+	public void setCartitem(List<CartItem> cartitem) {
+		this.cartitem = cartitem;
+	}
+
 		
 
 }

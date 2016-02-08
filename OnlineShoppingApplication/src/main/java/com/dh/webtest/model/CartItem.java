@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -28,7 +29,15 @@ public class CartItem{
 
 	@Column(name = "quantity")
 	int quantity;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JsonIgnore
+	Cart cart;
 
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JsonIgnore
+	Product product;
+	
 	public int getCartitemId() {
 		return cartitemId;
 	}
@@ -44,6 +53,23 @@ public class CartItem{
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+	
 }
 
 

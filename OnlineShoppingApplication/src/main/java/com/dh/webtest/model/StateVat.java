@@ -30,6 +30,27 @@ public class StateVat {
 	@Column(name = "vatpercentage")
 	float vatPercent;
 
+
+	@OneToMany(mappedBy = "statevat", fetch = FetchType.EAGER, orphanRemoval = true)
+	List<ShippingAddress> shippingAddress;
+	
+
+	public List<ShippingAddress> getShippingAddress() {
+		return shippingAddress;
+	}
+
+	public void setShippingAddress(List<ShippingAddress> shippingAddress) {
+		this.shippingAddress = shippingAddress;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
 	public int getStateId() {
 		return stateId;
 	}
@@ -38,13 +59,6 @@ public class StateVat {
 		this.stateId = stateId;
 	}
 
-	public String getState() {
-		return state;
-	}
-
-	public void setState1(String state) {
-		this.state = state;
-	}
 
 	public float getVatPercent() {
 		return vatPercent;

@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -36,6 +37,46 @@ public class Order{
 	
 	@Column(name = "tax")
 	float tax;
+
+	@OneToOne(mappedBy = "carts", fetch = FetchType.EAGER, orphanRemoval = true)
+	Cart cart;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JsonIgnore
+	Customer customer;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JsonIgnore
+	ShippingAddress shippingAddress;
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+
+	public ShippingAddress getShippingAddress() {
+		return shippingAddress;
+	}
+
+
+	public void setShippingAddress(ShippingAddress shippingAddress) {
+		this.shippingAddress = shippingAddress;
+	}
+
+
+	public Cart getCart() {
+		return cart;
+	}
+
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
 
 
 	public int getOrderId() {

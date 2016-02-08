@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -31,10 +32,25 @@ public class Customer {
 	@Column(name = "lastname")
 	String lastName;
 	
-	
+
+
 	@Column(name = "emailId")
 	String emailId;
+	
+	@OneToMany(mappedBy = "customers", fetch = FetchType.EAGER, orphanRemoval = true)
+	List<User> user;
+	
+	@OneToMany(mappedBy = "customers", fetch = FetchType.EAGER, orphanRemoval = true)
+	List<ShippingAddress> shippingAddress;
+	
+	
+	@OneToMany(mappedBy = "customers", fetch = FetchType.EAGER, orphanRemoval = true)
+	List<Cart> cart;
 
+	@OneToMany(mappedBy = "customers", fetch = FetchType.EAGER, orphanRemoval = true)
+	List<Order> order;
+	
+	
 
 	public int getCustomerId() {
 		return customerId;
@@ -74,10 +90,52 @@ public class Customer {
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
+
+
+	public List<User> getUser() {
+		return user;
+	}
+
+
+	public void setUser(List<User> user) {
+		this.user = user;
+	}
+
+
+	public List<ShippingAddress> getShippingAddress() {
+		return shippingAddress;
+	}
+
+
+	public void setShippingAddress(List<ShippingAddress> shippingAddress) {
+		this.shippingAddress = shippingAddress;
+	}
+
+
+	public List<Cart> getCart() {
+		return cart;
+	}
+
+
+	public void setCart(List<Cart> cart) {
+		this.cart = cart;
+	}
+
+
+	public List<Order> getOrder() {
+		return order;
+	}
+
+
+	public void setOrder(List<Order> order) {
+		this.order = order;
+	}
 	
 
 
-		
+	
+	
+
 
 }
 

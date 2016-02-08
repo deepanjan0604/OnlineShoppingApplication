@@ -28,6 +28,11 @@ public class Category {
 
 	@Column(name = "categoryname")
 	String categoryName;
+	
+
+	@OneToMany(mappedBy = "categories", fetch = FetchType.EAGER, orphanRemoval = true)
+	List<Product> product;
+
 
 	public int getCategoryId() {
 		return categoryId;
@@ -44,6 +49,15 @@ public class Category {
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
+
+	public List<Product> getProduct() {
+		return product;
+	}
+
+	public void setProduct(List<Product> product) {
+		this.product = product;
+	}
+
 
 	
 	

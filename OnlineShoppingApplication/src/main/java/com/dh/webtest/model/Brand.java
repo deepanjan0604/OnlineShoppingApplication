@@ -29,6 +29,9 @@ public class Brand {
 	@Column(name = "brandname")
 	String brandName;
 
+	@OneToMany(mappedBy = "brands", fetch = FetchType.EAGER, orphanRemoval = true)
+	List<Product> product;
+	
 	public int getBrandId() {
 		return brandId;
 	}
@@ -44,6 +47,15 @@ public class Brand {
 	public void setBrandName(String brandName) {
 		this.brandName = brandName;
 	}
+
+	public List<Product> getProduct() {
+		return product;
+	}
+
+	public void setProduct(List<Product> product) {
+		this.product = product;
+	}
+
 	
 	
 }

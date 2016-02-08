@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -42,6 +43,35 @@ public class ShippingAddress {
 	
 	@Column(name = "phone")
 	long phone;
+	
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JsonIgnore
+	Customer customer;
+	
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JsonIgnore
+	StateVat stateVat;
+	
+	@OneToMany(mappedBy = "shippingaddresses", fetch = FetchType.EAGER, orphanRemoval = true)
+	List<Order> order;
+	
+	public List<Order> getOrder() {
+		return order;
+	}
+
+	public void setOrder(List<Order> order) {
+		this.order = order;
+	}
+
+	public StateVat getStateVat() {
+		return stateVat;
+	}
+
+	public void setStateVat(StateVat stateVat) {
+		this.stateVat = stateVat;
+	}
 
 	public int getShippingId() {
 		return shippingId;
@@ -99,11 +129,15 @@ public class ShippingAddress {
 		this.phone = phone;
 	}
 
+	public Customer getCustomer() {
+		return customer;
+	}
 
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
 
-
-
-		
+	
 
 }
 
