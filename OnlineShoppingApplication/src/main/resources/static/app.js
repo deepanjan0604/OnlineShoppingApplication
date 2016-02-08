@@ -8,6 +8,18 @@ app.config([
 app.config(['$routeProvider',
          function($routeProvider) {
            $routeProvider
+
+           .when('/view', {
+               templateUrl: 'viewprofile.html',
+               controller: 'viewprofilectrl'
+             })
+              .when('/view', {
+
+           .when('/login', {
+               templateUrl: 'login.html',
+               controller: 'loginctrl'
+           })   
+              .when('/viewprofile', {
            .when('/view', {
                templateUrl: 'viewprofile.html',
                controller: 'viewprofilectrl'
@@ -16,35 +28,141 @@ app.config(['$routeProvider',
                templateUrl: 'viewprofile.html',
                controller: 'viewprofilectrl'
              })
-             .when('/edit', {
-                 templateUrl: 'edit.html',
+             .when('/editprofile', {
+                 templateUrl: 'editprofile.html',
                  controller: 'editprofiectrl'
+               })
+               .when('/history', {
+                 templateUrl: 'history.html',
+                 controller: 'historyctrl'
+               })
+               .when('/orderhistory', {
+                 templateUrl: 'orderhistory.html',
+                 controller: 'orderhistoryctrl'
+               })
+               .when('/newcustomer', {
+                 templateUrl: 'newcustomer.html',
+                 controller: 'newcustomerctrl'
+               })
+               
+               .when('/about', {
+                 templateUrl: 'about.html',
+                 controller: 'aboutctrl'
+               })
+               
+               
+               .when('/contact', {
+                 templateUrl: 'contact.html',
+                 controller: 'contactctrl'
+               })
+               
+                .when('/editshipping', {
+                 templateUrl: 'editshipping.html',
+                 controller: 'editshippingctrl'
                })
 			    .when('/addshipping', {
                  templateUrl: 'addshipping.html',
                  controller: 'addshippingctrl'
                })
-               
+               .when('/addproduct', {
+                 templateUrl: 'addproduct.html',
+                 controller: 'addproductctrl'
+               })
+               .when('/editproduct', {
+                 templateUrl: 'editproduct.html',
+                 controller: 'editproductctrl'
+               })
          }]);
 		 
 		 
-		 
+
+app.controller('loginctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
+function($scope,$route,$routeParams,$rootScope, $http)
+{
+}]);		 
+
+
+
+
+
 app.controller('viewprofilectrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
 	     function($scope,$route,$routeParams,$rootScope, $http)
 	     {
 			 $scope.title="msgggggg";
 			  }]);
-			  
-			  
-			  
-			  app.controller('editprofilectrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
+
+
+
+
+			 
+app.controller('editprofilectrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
 	     function($scope,$route,$routeParams,$rootScope, $http)
 	     {
 			  }]);
+
+
+
 			  
-			  
-			  
-			    app.controller('addshippingctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
+app.controller('historyctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
+			 function($scope,$route,$routeParams,$rootScope, $http)
+			                            	     {
+			                            			  }]);
+
+
+			                            			  	  
+
+ app.controller('newcustomerctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
+			                    			 function($scope,$route,$routeParams,$rootScope, $http)
+			                    			                            	     {
+			                    			                            			  }]);
+ 
+ 
+ 
+ 
+ app.controller('aboutctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
+ 			 function($scope,$route,$routeParams,$rootScope, $http)
+ 			                            	     {
+ 			                            			  }]);
+ 
+ 			                            			  
+  
+ app.controller('contactctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
+ 			 function($scope,$route,$routeParams,$rootScope, $http)
+ 			                            	     {
+ 
+ 			                            	     }]);
+ 
+ 
+ 
+  app.controller('editshippingctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
+	     function($scope,$route,$routeParams,$rootScope, $http)
+	     {
+			  }]);		
+ 
+  
+  
+ 
+ 
+ app.controller('addshippingctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
 	     function($scope,$route,$routeParams,$rootScope, $http)
 	     {
 			  }]);
+ 
+ 
+ app.controller('editproductctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
+                           	     function($scope,$route,$routeParams,$rootScope, $http)
+                           	     {
+                           			  }]);
+ 
+ 
+ 
+ 
+ app.controller('addproductctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
+                              	     function($scope,$route,$routeParams,$rootScope, $http)
+                              	     {
+                              			  }]);
+ 
+ 
+ 
+ 
+ 
