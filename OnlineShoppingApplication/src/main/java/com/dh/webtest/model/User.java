@@ -15,7 +15,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -34,7 +33,10 @@ public class User {
 	
 	@Column(name = "role")
 	String role;
-
+	
+	@OneToMany(mappedBy = "user",  orphanRemoval = true)
+	List<Authority> authority;
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JsonIgnore
 	Customer customer;
