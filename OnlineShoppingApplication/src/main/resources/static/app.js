@@ -8,22 +8,18 @@ app.config([
 app.config(['$routeProvider',
          function($routeProvider) {
            $routeProvider
-<<<<<<< HEAD
+
            .when('/login', {
                templateUrl: 'login.html',
                controller: 'loginctrl'
            })   
-              .when('/viewprofile', {
-=======
+            
+
            .when('/view', {
                templateUrl: 'viewprofile.html',
                controller: 'viewprofilectrl'
              })
-              .when('/view', {
->>>>>>> branch 'master' of https://github.com/deepanjan0604/OnlineShoppingApplication.git
-               templateUrl: 'viewprofile.html',
-               controller: 'viewprofilectrl'
-             })
+             
              .when('/editprofile', {
                  templateUrl: 'editprofile.html',
                  controller: 'editprofiectrl'
@@ -64,6 +60,10 @@ app.config(['$routeProvider',
                  templateUrl: 'editproduct.html',
                  controller: 'editproductctrl'
                })
+               .when('/orderhistory', {
+                 templateUrl: 'orderhistory.html',
+                 controller: 'orderhistoryctrl'
+               })
          }]);
 		 
 		 
@@ -71,6 +71,29 @@ app.config(['$routeProvider',
 app.controller('loginctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
 function($scope,$route,$routeParams,$rootScope, $http)
 {
+	
+	/*app.run(function($rootScope, $http){
+		
+			if(auth)
+				{
+				var authData = auth.username + ':' + auth.password;
+			var encodedAuthData = btoa(authData);
+			headers = {
+					'Authorization' : 'Basic ' + encodedAuthData
+					}
+				} else {
+					headers : {};
+				}
+				$http({
+					method : 'GET',
+					url : '/users',     
+					headers : headers
+				}).then(function(response) {
+					
+					$rootScope.authenticated = true;
+			});
+			};
+		});*/
 }]);		 
 
 app.controller('viewprofilectrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
@@ -123,3 +146,9 @@ app.controller('historyctrl',[ '$scope','$route','$routeParams', '$rootScope','$
                               	     function($scope,$route,$routeParams,$rootScope, $http)
                               	     {
                               			  }]);
+ 
+ 
+ app.controller('orderhistoryctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
+                   			 function($scope,$route,$routeParams,$rootScope, $http)
+                   			                            	     {
+                   			                            			  }]);
