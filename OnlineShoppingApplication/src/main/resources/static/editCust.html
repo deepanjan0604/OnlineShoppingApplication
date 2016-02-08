@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js">
+</script>
+
+ </head>
+<body  style="background-color:#FFFAFA;" class="panel panel-body" ng-app="myApp"   >
+
+<div class="panel panel-primary">
+
+    <div class="panel-heading">Edit Details</div>
+  </div>
+  <br>
+<div class="col-md-12 form-group">
+<div class="row">
+<div ng-contoller="myController">
+<form class="form-horizontal" id="form1" name="form1" onsubmit="myFunction()" >
+  
+   <div class="form-group">
+    <label for="Name" class="col-md-4 control-label">First Name</label>
+   <div class="col-md-4">
+    <input type="text" name="fname" ng-model="newData.fname" class="form-control" id="fname" >
+  </div>
+  </div>
+  <br>
+
+  <div class="form-group">
+    <label for="Name" class="col-md-4 control-label">Last Name</label>
+   <div class="col-md-4">
+    <input type="text" name="fname" ng-model="lname" class="form-control" id="lname">
+
+  </div>
+  </div>
+  <br>
+  
+
+  <div class="form-group">
+    <label for="Name" class="col-md-4 control-label">User Name</label>
+   <div class="col-md-4">
+    <input type="text" name="uname" ng-model="newData.uname" class="form-control" id="uname" >
+
+  </div>
+  </div>
+  <br>
+
+  
+  <div class="form-group">
+    <label for="inputEmail" class="col-md-4 control-label">E-mail</label>
+  <div class="col-md-4">
+      <input type="email" class="form-control" id="inputEmail" placeholder="something@xyz.com"  name="email" ng-model="newData.email" ng-required="true">
+      
+    </div>
+  </div>
+  <br>
+  
+  <div class="form-group">
+    <label for="mobnum" class="col-md-4  control-label">Mobile number </label>
+  <div class="col-md-4">
+      <input type="number" class="form-control" name="mobnum" ng-model="newData.mobnum" ng-minlength="10" ng-maxlength="10" >
+      
+    </div>
+  </div>
+ <br/>
+ 
+  
+  <br>
+ <input ng-disabled="form1.$invalid" type="submit" style="position:relative; left:230px" class="btn btn-primary" value=" Save"/>
+
+</div>
+</div>
+</body>
+<script >
+var myApp = angular.module('myApp', []);
+myApp.controller('myctrl', ['$scope', function($scope){ 
+  }])
+</script>
+</html>

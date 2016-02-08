@@ -1,0 +1,73 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-route.min.js"></script>
+ <link rel="stylesheet" >
+ <style>body {
+    background-color: white;
+}
+#table{
+		margin-top:60px;
+}
+ </style>
+  
+		</head>
+		<body ng-controller="viewprofilectrl"  >
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		  
+
+			<div class="navbar-header">
+			  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				
+			  </button>
+			  <a class="navbar-brand">Profile</a>
+			</div>
+
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			  <ul class="nav navbar-nav">
+				<li ><a href="#view">View Shipping Adress<span class="sr-only"></a></li>
+				<li><a href="#addshipping">Add Shipping Adress</a></li>
+				
+				
+			  </ul>
+			 
+		  
+	
+		</div>
+</div>
+  <h1>{{title}}</h1>
+<table class="table table-bordered " id="table">
+			<thead>
+				<tr>
+				<td>S.no</td>
+					<td>City</td>
+					<td>State</td>
+					<td>PinCode</td>
+					<td>Phone Number</td>
+					<td>Edit<td>
+					
+				</tr>
+			</thead>
+			<!---<tbody>
+				<tr ng-repeat="shippingaddress in shippingaddresses ">
+					<td>{{shippingaddress.city}}</td>
+					<td>{{shippingaddress.state}}</td>
+					<td>{{shippingaddress.pincode}}</td>
+					<td>{{shippingaddress.state}}</td>
+						<td>{{shippingaddress.pincode}}</td>
+							<td>{{shippingaddress.phoneNumber}}</td>
+					<td><a href=#edit>Edit</a></td>
+				</tr>
+			</tbody> -->
+		</table>
+		
+ 
+
+
+			</body>
+	</html>
