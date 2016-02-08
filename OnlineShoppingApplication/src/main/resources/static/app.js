@@ -8,7 +8,10 @@ app.config([
 app.config(['$routeProvider',
          function($routeProvider) {
            $routeProvider
-           
+           .when('/view', {
+               templateUrl: 'viewprofile.html',
+               controller: 'viewprofilectrl'
+             })
               .when('/view', {
                templateUrl: 'viewprofile.html',
                controller: 'viewprofilectrl'
