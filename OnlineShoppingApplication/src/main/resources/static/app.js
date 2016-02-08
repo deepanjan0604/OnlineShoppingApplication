@@ -72,7 +72,9 @@ app.controller('loginctrl',[ '$scope','$route','$routeParams', '$rootScope','$ht
 function($scope,$route,$routeParams,$rootScope, $http)
 {
 	
-	/*app.run(function($rootScope, $http){
+	/* 
+	 * security 
+	 * app.run(function($rootScope, $http){
 		
 			if(auth)
 				{
