@@ -8,11 +8,19 @@ app.config([
 app.config(['$routeProvider',
          function($routeProvider) {
            $routeProvider
+<<<<<<< HEAD
            .when('/login', {
                templateUrl: 'login.html',
                controller: 'loginctrl'
            })   
               .when('/viewprofile', {
+=======
+           .when('/view', {
+               templateUrl: 'viewprofile.html',
+               controller: 'viewprofilectrl'
+             })
+              .when('/view', {
+>>>>>>> branch 'master' of https://github.com/deepanjan0604/OnlineShoppingApplication.git
                templateUrl: 'viewprofile.html',
                controller: 'viewprofilectrl'
              })
