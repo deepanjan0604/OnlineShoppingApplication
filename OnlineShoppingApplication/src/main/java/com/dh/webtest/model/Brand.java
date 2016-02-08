@@ -29,7 +29,7 @@ public class Brand {
 	@Column(name = "brandname")
 	String brandName;
 
-	@OneToMany(mappedBy = "brands", fetch = FetchType.EAGER, orphanRemoval = true)
+	@OneToMany(mappedBy = "brand",  orphanRemoval = true)
 	List<Product> product;
 	
 	public int getBrandId() {

@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mysql.jdbc.Blob;
 
 @Entity
-@Table(name="carts")
+@Table(name="cart")
 public class Cart{
 	
 	@Id
@@ -39,11 +39,11 @@ public class Cart{
 	float totalCost;
 
 
-	@OneToMany(mappedBy = "carts", fetch = FetchType.EAGER, orphanRemoval = true)
+	@OneToMany(mappedBy = "cart",  orphanRemoval = true)
 	List<CartItem> cartitem;
 
 
-	@OneToOne(mappedBy = "carts", fetch = FetchType.EAGER, orphanRemoval = true)
+	@OneToOne(mappedBy = "cart", fetch = FetchType.EAGER, orphanRemoval = true)
 	Order order;
 	
 	@ManyToOne(fetch = FetchType.EAGER)

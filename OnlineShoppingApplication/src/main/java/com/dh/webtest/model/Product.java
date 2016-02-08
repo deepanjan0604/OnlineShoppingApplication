@@ -55,7 +55,7 @@ public class Product {
 	@JsonIgnore
 	Category category;
 
-	@OneToMany(mappedBy = "products", fetch = FetchType.EAGER, orphanRemoval = true)
+	@OneToMany(mappedBy = "product",  orphanRemoval = true)
 	List<CartItem> cartitem;
 
 	

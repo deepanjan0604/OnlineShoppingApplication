@@ -54,7 +54,7 @@ public class ShippingAddress {
 	@JsonIgnore
 	StateVat stateVat;
 	
-	@OneToMany(mappedBy = "shippingaddresses", fetch = FetchType.EAGER, orphanRemoval = true)
+	@OneToMany(mappedBy = "shippingAddress",  orphanRemoval = true)
 	List<Order> order;
 	
 	public List<Order> getOrder() {

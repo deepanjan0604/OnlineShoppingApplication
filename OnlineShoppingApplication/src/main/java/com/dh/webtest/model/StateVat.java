@@ -31,7 +31,7 @@ public class StateVat {
 	float vatPercent;
 
 
-	@OneToMany(mappedBy = "statevat", fetch = FetchType.EAGER, orphanRemoval = true)
+	@OneToMany(mappedBy = "stateVat", orphanRemoval = true)
 	List<ShippingAddress> shippingAddress;
 	
 

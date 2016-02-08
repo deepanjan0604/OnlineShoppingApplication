@@ -37,9 +37,9 @@ public class Order{
 	
 	@Column(name = "tax")
 	float tax;
-
-	@OneToOne(mappedBy = "carts", fetch = FetchType.EAGER, orphanRemoval = true)
-	Cart cart;
+	
+	  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+	   Cart cart;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JsonIgnore
