@@ -37,17 +37,17 @@ public class Customer {
 	@Column(name = "emailId")
 	String emailId;
 	
-	@OneToMany(mappedBy = "customers", fetch = FetchType.EAGER, orphanRemoval = true)
+	@OneToMany(mappedBy = "customer",  orphanRemoval = true)
 	List<User> user;
 	
-	@OneToMany(mappedBy = "customers", fetch = FetchType.EAGER, orphanRemoval = true)
+	@OneToMany(mappedBy = "customer",  orphanRemoval = true)
 	List<ShippingAddress> shippingAddress;
 	
 	
-	@OneToMany(mappedBy = "customers", fetch = FetchType.EAGER, orphanRemoval = true)
+	@OneToMany(mappedBy = "customer", orphanRemoval = true)
 	List<Cart> cart;
 
-	@OneToMany(mappedBy = "customers", fetch = FetchType.EAGER, orphanRemoval = true)
+	@OneToMany(mappedBy = "customer", orphanRemoval = true)
 	List<Order> order;
 	
 	

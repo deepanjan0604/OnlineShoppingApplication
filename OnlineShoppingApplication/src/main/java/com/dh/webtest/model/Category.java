@@ -30,7 +30,7 @@ public class Category {
 	String categoryName;
 	
 
-	@OneToMany(mappedBy = "categories", fetch = FetchType.EAGER, orphanRemoval = true)
+	@OneToMany(mappedBy = "category",  orphanRemoval = true)
 	List<Product> product;
 
 
