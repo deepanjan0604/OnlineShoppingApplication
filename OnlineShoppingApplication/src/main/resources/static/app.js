@@ -9,17 +9,38 @@ app.config(['$routeProvider',
          function($routeProvider) {
            $routeProvider
 
+<<<<<<< HEAD
            .when('/login', {
                templateUrl: 'login.html',
                controller: 'loginctrl'
            })   
             
 
+=======
+>>>>>>> branch 'master' of https://github.com/deepanjan0604/OnlineShoppingApplication.git
            .when('/view', {
                templateUrl: 'viewprofile.html',
                controller: 'viewprofilectrl'
              })
+<<<<<<< HEAD
              
+=======
+              .when('/view', {
+
+           .when('/login', {
+               templateUrl: 'login.html',
+               controller: 'loginctrl'
+           })   
+              .when('/viewprofile', {
+           .when('/view', {
+               templateUrl: 'viewprofile.html',
+               controller: 'viewprofilectrl'
+             })
+              .when('/view', {
+               templateUrl: 'viewprofile.html',
+               controller: 'viewprofilectrl'
+             })
+>>>>>>> branch 'master' of https://github.com/deepanjan0604/OnlineShoppingApplication.git
              .when('/editprofile', {
                  templateUrl: 'editprofile.html',
                  controller: 'editprofiectrl'
@@ -28,18 +49,22 @@ app.config(['$routeProvider',
                  templateUrl: 'history.html',
                  controller: 'historyctrl'
                })
+               .when('/orderhistory', {
+                 templateUrl: 'orderhistory.html',
+                 controller: 'orderhistoryctrl'
+               })
                .when('/newcustomer', {
                  templateUrl: 'newcustomer.html',
                  controller: 'newcustomerctrl'
                })
                
- .when('/about', {
+               .when('/about', {
                  templateUrl: 'about.html',
                  controller: 'aboutctrl'
                })
                
                
- .when('/contact', {
+               .when('/contact', {
                  templateUrl: 'contact.html',
                  controller: 'contactctrl'
                })
@@ -98,21 +123,34 @@ function($scope,$route,$routeParams,$rootScope, $http)
 		});*/
 }]);		 
 
+
+
+
+
 app.controller('viewprofilectrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
 	     function($scope,$route,$routeParams,$rootScope, $http)
 	     {
 			 $scope.title="msgggggg";
 			  }]);
+
+
+
+
 			 
 app.controller('editprofilectrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
 	     function($scope,$route,$routeParams,$rootScope, $http)
 	     {
 			  }]);
+
+
+
 			  
 app.controller('historyctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
 			 function($scope,$route,$routeParams,$rootScope, $http)
 			                            	     {
 			                            			  }]);
+
+
 			                            			  	  
 
  app.controller('newcustomerctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
@@ -121,36 +159,59 @@ app.controller('historyctrl',[ '$scope','$route','$routeParams', '$rootScope','$
 			                    			                            			  }]);
  
  
+ 
+ 
  app.controller('aboutctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
  			 function($scope,$route,$routeParams,$rootScope, $http)
  			                            	     {
- 			                            			  }])
+ 			                            			  }]);
+ 
  			                            			  
   
  app.controller('contactctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
  			 function($scope,$route,$routeParams,$rootScope, $http)
  			                            	     {
  
- 			                            	     }])
+ 			                            	     }]);
+ 
+ 
+ 
   app.controller('editshippingctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
 	     function($scope,$route,$routeParams,$rootScope, $http)
 	     {
-			  }]);			                            			  
+			  }]);		
+ 
+  
+  
+ 
+ 
  app.controller('addshippingctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
 	     function($scope,$route,$routeParams,$rootScope, $http)
 	     {
 			  }]);
+ 
+ 
  app.controller('editproductctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
                            	     function($scope,$route,$routeParams,$rootScope, $http)
                            	     {
                            			  }]);
+ 
+ 
+ 
+ 
  app.controller('addproductctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
                               	     function($scope,$route,$routeParams,$rootScope, $http)
                               	     {
                               			  }]);
  
  
+<<<<<<< HEAD
  app.controller('orderhistoryctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
                    			 function($scope,$route,$routeParams,$rootScope, $http)
                    			                            	     {
                    			                            			  }]);
+=======
+ 
+ 
+ 
+>>>>>>> branch 'master' of https://github.com/deepanjan0604/OnlineShoppingApplication.git
