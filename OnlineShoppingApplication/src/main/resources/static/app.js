@@ -15,7 +15,6 @@ app.config(['$routeProvider',
                templateUrl: 'login.html',
                controller: 'loginctrl'
            })   
-            
 
            .when('/view', {
                templateUrl: 'viewprofile.html',
@@ -83,9 +82,46 @@ app.config(['$routeProvider',
                  templateUrl: 'orderhistory.html',
                  controller: 'orderhistoryctrl'
                })
+               .otherwise({
+                   redirectTo: '/home',
+                   controller:'maincntrl'
+                 });
          }]);
 		 
 app.run(function($rootScope, $http){
+	
+	/*<html>
+	 <head>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script>
+	function switchVisible() {
+	            if (document.getElementById('Div1')) {
+
+	                if (document.getElementById('Div1').style.display == 'none') {
+	                    document.getElementById('Div1').style.display = 'block';
+	                    document.getElementById('Div2').style.display = 'none';
+	                }
+	                else {
+	                    document.getElementById('Div1').style.display = 'none';
+	                    document.getElementById('Div2').style.display = 'block';
+	                }
+	            }
+	}
+	</script> 
+	<style>
+	#Div2 {
+	  display: none;
+	}
+	</style>
+	     </head>
+	        <body>
+
+	<div id="Div1">Div 1</div>
+	<div id="Div2">Div 2</div>
+
+	<input id="Button1" type="button" value="Click" onclick="switchVisible();"/>
+	     </body>
+	    </html>*/
 	$rootScope.loadCustomers = function(auth) {
 		if(auth)
 			{
@@ -104,6 +140,7 @@ app.run(function($rootScope, $http){
 			}).then(function(response) {
 				$rootScope.users = response.data;
 				$rootScope.authenticated = true;
+				$rootScope.authenticated1=false;
 		});
 		};
 	});	 
@@ -119,7 +156,10 @@ function($scope,$rootScope, $http)
 }]);		 
 
 
-
+app.controller('mainctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
+                          	     function($scope,$route,$routeParams,$rootScope, $http)
+                          	     {
+                          			  }]);
 
 
 app.controller('viewprofilectrl',[ '$scope','$route','$routeParams', '$rootScope','$http',

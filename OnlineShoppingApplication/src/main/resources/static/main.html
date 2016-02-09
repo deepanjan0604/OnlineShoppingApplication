@@ -1,7 +1,8 @@
 <html>
 	<head>
-		 <link rel="stylesheet" type="text/css" href="login.css">
-		      <script type="text/javascript" src="login.js"></script>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 		           <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
 	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-route.min.js"></script>
@@ -134,19 +135,19 @@ padding:0;
      <ul>
        <li id="brand">ShopOnline.com</li>
          <li><a href='#'>Home</a></li>
-          <li><a href='#'>Product</a></li>
+
 
        <div class="rightalign">
+       <div ng-hide=true>
       <li><a href='#'>My Account <span class="glyphicon glyphicon-menu-down" ></span> </a>
          <ul class="submenu">
          <li><a href='#viewprofile'>View my Profile</a></li>
          <li><a href='#editprofile'>Edit my Profile</a></li>
          <li><a href='#history'>My Orders</a></li>
          </ul></li>
-      <li><a href='#'><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-     <li><a href='#login' class="show_login">Sign In</a></li>
-
-     <li><a href='#newcustomer'>New User? Sign Up</a></li>
+      <li><a href='#'><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li></div>
+    <div ng-hide="authenticated"> <li><a href='#login' class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Sign In</a></li>
+     <li><a href='#newcustomer'>New User? Sign Up</a></li></div>
 </div>
 		</ul>
      
@@ -162,10 +163,10 @@ padding:0;
    
    <div class="submenu">
       <ul class=' animate-show'  ng-show="showBoxOne" >
-         <li ng-repeat="name in names">
-           <a href='#'> {{name}}</a></li>
-          <li class="animate-show"><a href='#'>Product2</a></li>
-       <li><a href='#'>Product2</a></li>
+         <li ng-repeat="category in categories">
+           <a href='#'> {{category}}</a></li>
+         <!--  <li class="animate-show"><a href='#'>Product2</a></li>
+       <li><a href='#'>Product2</a></li> -->
 		</ul>
          </div>
      
