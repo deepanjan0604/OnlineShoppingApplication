@@ -189,8 +189,37 @@ app.controller('historyctrl',[ '$scope','$route','$routeParams', '$rootScope','$
 
  app.controller('newcustomerctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
 			                    			 function($scope,$route,$routeParams,$rootScope, $http)
-			                    			                            	     {
-			                    			                            			  }]);
+			                 {
+	 
+	/*
+	 app.controller('myctrl', ['$scope', function($scope){ 
+			                 }
+	 */$scope.input={
+				customerId:{
+				}
+	};
+
+	 $scope.savecustomer = function(){
+			
+			
+			$http({
+				method: 'POST',
+				url : '/savecustomer',
+				data : $scope.input
+			}).then(function(response){
+				if(response.data.status){
+					alert('Customer Added Successfully!');
+					$rootScope.customers = {};
+					$rootScope.users = {};
+					//$rootScope.customer.push($rootScope.customers);
+					//$rootScope.customers.push($rootScope.users);
+					
+					
+				} else {
+					alert(Customer Addition Failed!');
+				}
+			});
+	  }]);
  
  
  

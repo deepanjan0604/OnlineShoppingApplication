@@ -15,7 +15,7 @@
 <div class="col-md-12 form-group">
 <div class="row">
 <div ng-contoller="myController">
-<form class="form-horizontal" id="form1" name="form1" onsubmit="myFunction()" >
+<form class="form-horizontal" id="form1" name="form1" >
   
    <div class="form-group">
     <label for="Name" class="col-md-4 control-label">First Name</label>
@@ -54,21 +54,16 @@
   </div>
   <br>
   
-  <div class="form-group">
-    <label for="mobnum" class="col-md-4  control-label">Mobile number </label>
-  <div class="col-md-4">
-      <input type="number" class="form-control" name="mobnum" ng-model="newData.mobnum" ng-minlength="10" ng-maxlength="10" >
-      
-    </div>
-  </div>
+  
  <br/>
  
   
   <br>
- <input ng-disabled="form1.$invalid" type="submit" style="position:relative; left:230px" class="btn btn-primary" value=" Save"/>
+ <input  type="submit" style="position:relative; left:230px" class="btn btn-primary" value=" Save"/>
 
 </div>
 </div>
+
 </body>
 
 </html>
