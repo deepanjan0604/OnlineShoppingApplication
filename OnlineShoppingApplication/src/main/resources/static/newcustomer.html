@@ -2,12 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css">
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js">
-</script>
+
 <script>
   function myFunction() {
     alert("Saved successfully :)");
@@ -41,7 +36,7 @@
     <label for="Name" class="col-md-4 control-label">Last Name</label>
    <div class="col-md-4">
     <input type="text" name="fname" ng-model="newData.lname" class="form-control" id="lname" ng-required="true">
-<span style="color:red"ng-show="form1.lname.$dirty && form1.lname.$error.required">Last name is Required
+<span style="color:red" ng-show="form1.lname.$dirty && form1.lname.$error.required">Last name is Required
   </span>
   <span style="color:red" ng-show="form1.lname.$dirty && form1.lname.$error.lname">Not a valid name!</span>
   </div>
@@ -89,9 +84,4 @@
 </div>
 </div>
 </body>
-<script >
-var myApp = angular.module('myApp', []);
-myApp.controller('myctrl', ['$scope', function($scope){ 
-  }])
-</script>
 </html>

@@ -1,22 +1,22 @@
 <html>
    <head>
-     <link rel="stylesheet" type="text/css" href="login_style.css">
+     <link rel="stylesheet" type="text/css" href="login.css">
      <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
-     <script type="text/javascript" src="login_effect.js"></script>
+     <script type="text/javascript" src="login.js"></script>
    </head>
    
-   <body>
+   <body ng-controller="loginctrl">
 
     
-	 <input type="button" id="show_login" value="Login">
+	 <!-- <input type="button" id="show_login" value="Login"> -->
         
         <div id = "loginform">
         
             <form method = "post" action = "">
-                <input type = "image" id = "close_login" src = "images/close.png">
-                <input type = "text" id = "login" placeholder = "Email Id" name = "uid">
+    <!-- <input type = "image" id = "close_login" src = "images/close.png"> -->
+                    <input type = "text" id = "login" placeholder = "Email Id" name = "uid">
                 <input type = "password" id = "password" name = "upass" placeholder = "***">
-                <input type = "submit" id = "dologin" value = "Login">
+                <input type = "submit" id = "dologin" value = "Login" ng-click="login()">
             </form>
 
         </div>
