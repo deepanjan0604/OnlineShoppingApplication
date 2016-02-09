@@ -195,8 +195,8 @@ app.controller('historyctrl',[ '$scope','$route','$routeParams', '$rootScope','$
 	/*
 	 app.controller('myctrl', ['$scope', function($scope){ 
 			                 }
-	 */$scope.input={
-				customerId:{
+	 */$scope.customer={
+				userId:{
 				}
 	};
 
@@ -206,7 +206,7 @@ app.controller('historyctrl',[ '$scope','$route','$routeParams', '$rootScope','$
 			$http({
 				method: 'POST',
 				url : '/savecustomer',
-				data : $scope.input
+				data : $scope.customer
 			}).then(function(response){
 				if(response.data.status){
 					alert('Customer Added Successfully!');

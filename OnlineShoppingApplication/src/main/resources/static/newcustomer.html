@@ -28,21 +28,21 @@
    <div class="form-group">
     <label for="FirstName" class="col-md-4 control-label">First Name</label>
    <div class="col-md-4">
-    <input type="text" name="fname" ng-model="newData.fname" class="form-control" id="fname" ng-required="true">
-<span style="color:red"ng-show="form1.fname.$dirty && form1.fname.$error.required">First name is Required
+    <input type="text"  name="firstname"  ng-model="customer.firstname" class="form-control" id="firstname" ng-required="true">
+<span style="color:red"ng-show="form1.firstname.$dirty && form1.firstname.$error.required">First name is Required
   </span>
-  <span style="color:red" ng-show="form1.fname.$dirty && form1.fname.$error.fname">Not a valid name!</span>
+  <span style="color:red" ng-show="form1.firstname.$dirty && form1.fname.$error.firstname">Not a valid name!</span>
   </div>
   </div>
   <br>
 
   <div class="form-group">
-    <label for="Name" class="col-md-4 control-label">Last Name</label>
+    <label for="lastname" class="col-md-4 control-label">Last Name</label>
    <div class="col-md-4">
-    <input type="text" name="lname" ng-model="newData.lname" class="form-control" id="lname" ng-required="true">
-<span style="color:red" ng-show="form1.lname.$dirty && form1.lname.$error.required">Last name is Required
+    <input type="text" name="lastname" ng-model="customer.lastname" class="form-control" id="lastname" ng-required="true">
+<span style="color:red" ng-show="form1.lastname.$dirty && form1.lastname.$error.required">Last name is Required
   </span>
-  <span style="color:red" ng-show="form1.lname.$dirty && form1.lname.$error.lname">Not a valid name!</span>
+  <span style="color:red" ng-show="form1.lastname.$dirty && form1.lastname.$error.lastname">Not a valid name!</span>
   </div>
   </div>
   <br>
@@ -50,20 +50,35 @@
   <div class="form-group">
     <label for="inputEmail" class="col-md-4 control-label">E-mail</label>
   <div class="col-md-4">
-      <input type="email" class="form-control" id="inputEmail" placeholder="something@xyz.com"  name="email" ng-model="newData.email" ng-required="true">
+      <input type="email" class="form-control" id="email" name="email" ng-model="customer.email" ng-required="true">
       <span style="color:red" ng-show="form1.email.$dirty && form1.email.$error.required">Required!</span>
       <span style="color:red" ng-show="form1.email.$dirty && form1.email.$error.email">Not valid email!</span>
     </div>
   </div>
   <br />
   
-  <div class="form-group">
-    <label for="UserName" class="col-md-4 control-label">User Name</label>
+  
+ <input ng-disabled="form1.$invalid" type="submit" style="position:relative; left:230px" class="btn btn-primary" value=" Save"  ng-click="savecustomer()"/>
+</div>
+</div>
+</div>
+</div>
+<div>
+User Id: <input type="number" id="userid" class="form-control"
+				ng-model="customer.user.userId"/><br />  
+				
+				
+				<div class="form-group">
+    <label for="username" class="col-md-4 control-label">User Name</label>
    <div class="col-md-4">
-    <input type="text" name="uname" ng-model="newData.uname" class="form-control" id="uname" ng-required="true">
-<span style="color:red"ng-show="form1.uname.$dirty && form1.uname.$error.required">User name is Required
+    <input type="text" name="username" ng-model="customer.user.username" class="form-control" id="username" ng-required="true">
+<span style="color:red" ng-show="form1.username.$dirty && form1.username.$error.required">Last name is Required
   </span>
-  <span style="color:red" ng-show="form1.uname.$dirty && form1.uname.$error.uname">Not a valid name!</span>
+  <span style="color:red" ng-show="form1.username.$dirty && form1.username.$error.username">Not a valid name!</span>
+  </div>
+  </div>
+  <br>
+  
   </div>
   </div>
   <br>
@@ -74,7 +89,7 @@
  <div class="form-group">
     <label for="password" class="col-md-4 control-label">Password</label>
    <div class="col-md-4">
-    <input type="password" name="password" ng-model="newData.password" class="form-control" id="password" ng-required="true">
+    <input type="password" name="password" ng-model="customer.user.password" class="form-control" id="password" ng-required="true">
 <span style="color:red" ng-show="form1.password.$dirty && form1.password.$error.required">Password is Required
   </span>
   <span style="color:red" ng-show="form1.password.$dirty && form1.password.$error.password">Not a valid name!</span>
@@ -82,11 +97,10 @@
   </div>
 
   <br>
- <input ng-disabled="form1.$invalid" type="submit" style="position:relative; left:230px" class="btn btn-primary" value=" Save"  ng-click="savecustomer()"/>
-</div>
-</div>
-</div>
-</div>
+  <br>
+	<input ng-disabled="form1.$invalid" type="submit" style="position:relative; left:230px" class="btn btn-primary" value=" Save"  ng-click="savecustomer()"/>			
+</div>	
+			
 </body>
 <!-- 
 <script >
