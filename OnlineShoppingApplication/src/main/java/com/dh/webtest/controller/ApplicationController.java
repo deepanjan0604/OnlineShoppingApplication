@@ -1,6 +1,6 @@
 package com.dh.webtest.controller;
 
-//app controller thudft
+
 
 
 
@@ -70,50 +70,27 @@ public class ApplicationController {
 	@Autowired
 	StateVatRepository stateVatRepository ;
 	
-	@RequestMapping("/users")
+	/*@RequestMapping("/users")
 	public List<User> getUsers() {
 		return (List<User>) userRepository.findAll();
-	}	
+	}	*/
 	
-	@RequestMapping("/users")
-	public List<User> getUsers() {
-		return (List<User>) userRepository.findAll();
-	}	
-	
-	@RequestMapping("/users")
-	public List<User> getUsers() {
-		return (List<User>) userRepository.findAll();
-	}	
-	
-	@RequestMapping("/users")
-	public List<User> getUsers() {
-		return (List<User>) userRepository.findAll();
-	}	
-	
-	@RequestMapping("/users")
-	public List<User> getUsers() {
-		return (List<User>) userRepository.findAll();
-	}	
-	
-	@RequestMapping("/users")
-	public List<User> getUsers() {
-		return (List<User>) userRepository.findAll();
-	}	
-	
-	
-	@RequestMapping("/users")
-	public List<User> getUsers() {
-		return (List<User>) userRepository.findAll();
-	}	
-	
-	@RequestMapping("/users")
-	public List<User> getUsers() {
-		return (List<User>) userRepository.findAll();
-	}	
-	
+	@RequestMapping("/savecustomer")
+	public HashMap<String, Object> savecustomer(@RequestBody Customer customer) {
+		HashMap<String, Object> returnParams = new HashMap<String, Object>();
+		
+		try {
+			customerRepository.save(customer);
+			returnParams.put("status", true);
+		} catch (Exception e) {
+			returnParams.put("status", false);
+			returnParams.put("msg", "customer Addition Failed!!!!!!");
+		}
+
+		return returnParams;
+	}
 	
 	
 }
-	
 	
 	

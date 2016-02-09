@@ -3,26 +3,30 @@
 <html>
 <head>
 
-<script>
-  function myFunction() {
-    alert("Saved successfully :)");
-}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js">
 </script>
- </head>
-<body  style="background-color:#FFFAFA;" class="panel panel-body" ng-app="myApp">
 
-<div class="panel panel-primary">
+ </head>
+<body  style="background-color:#FFFAFA;" class="panel panel-body" ng-app="app">
+
+<div ng-controller="newcustomerctrl">
+
+     <div class="panel panel-primary">
 
     <div class="panel-heading">New Customer</div>
   </div>
   <br>
 <div class="col-md-12 form-group">
 <div class="row">
-<div ng-contoller="myController">
-<form class="form-horizontal" id="form1" name="form1" onsubmit="myFunction()" action="validation1.html" novalidate>
+<div ng-contoller="newcustomerctrl">
+<form class="form-horizontal" id="form1" name="form1" action="validation1.html" novalidate>
   
    <div class="form-group">
-    <label for="Name" class="col-md-4 control-label">First Name</label>
+    <label for="FirstName" class="col-md-4 control-label">First Name</label>
    <div class="col-md-4">
     <input type="text" name="fname" ng-model="newData.fname" class="form-control" id="fname" ng-required="true">
 <span style="color:red"ng-show="form1.fname.$dirty && form1.fname.$error.required">First name is Required
@@ -35,7 +39,7 @@
   <div class="form-group">
     <label for="Name" class="col-md-4 control-label">Last Name</label>
    <div class="col-md-4">
-    <input type="text" name="fname" ng-model="newData.lname" class="form-control" id="lname" ng-required="true">
+    <input type="text" name="lname" ng-model="newData.lname" class="form-control" id="lname" ng-required="true">
 <span style="color:red" ng-show="form1.lname.$dirty && form1.lname.$error.required">Last name is Required
   </span>
   <span style="color:red" ng-show="form1.lname.$dirty && form1.lname.$error.lname">Not a valid name!</span>
@@ -43,9 +47,18 @@
   </div>
   <br>
   
-
   <div class="form-group">
-    <label for="Name" class="col-md-4 control-label">User Name</label>
+    <label for="inputEmail" class="col-md-4 control-label">E-mail</label>
+  <div class="col-md-4">
+      <input type="email" class="form-control" id="inputEmail" placeholder="something@xyz.com"  name="email" ng-model="newData.email" ng-required="true">
+      <span style="color:red" ng-show="form1.email.$dirty && form1.email.$error.required">Required!</span>
+      <span style="color:red" ng-show="form1.email.$dirty && form1.email.$error.email">Not valid email!</span>
+    </div>
+  </div>
+  <br />
+  
+  <div class="form-group">
+    <label for="UserName" class="col-md-4 control-label">User Name</label>
    <div class="col-md-4">
     <input type="text" name="uname" ng-model="newData.uname" class="form-control" id="uname" ng-required="true">
 <span style="color:red"ng-show="form1.uname.$dirty && form1.uname.$error.required">User name is Required
@@ -56,32 +69,29 @@
   <br>
 
   
-  <div class="form-group">
-    <label for="inputEmail" class="col-md-4 control-label">E-mail</label>
-  <div class="col-md-4">
-      <input type="email" class="form-control" id="inputEmail" placeholder="something@xyz.com"  name="email" ng-model="newData.email" ng-required="true">
-      <span style="color:red" ng-show="form1.email.$dirty && form1.email.$error.required">Required!</span>
-      <span style="color:red" ng-show="form1.email.$dirty && form1.email.$error.email">Not valid email!</span>
-    </div>
-  </div>
-  <br>
-  
-  <div class="form-group">
-    <label for="mobnum" class="col-md-4  control-label">Mobile number </label>
-  <div class="col-md-4">
-      <input type="number" class="form-control" name="mobnum" ng-model="newData.mobnum" ng-minlength="10" ng-maxlength="10" ng-required="true">
-      <span style="color:red" ng-show="form1.mobnum.$dirty && form1.mobnum.$error.required">Required</span>
-        <span style="color:red" ng-show="form1.mobnum.$dirty && form1.mobnum.$error.mobnum">Please enter 10 digits</span>
-         <span style="color:red" ng-show="form1.mobnum.$dirty && form1.mobnum.$error.mobnum">Please enter only 10 digits</span>
-    </div>
-  </div>
- <br/>
- 
-  
-  <br>
- <input ng-disabled="form1.$invalid" type="submit" style="position:relative; left:230px" class="btn btn-primary" value=" Save"/>
 
+ 
+ <div class="form-group">
+    <label for="password" class="col-md-4 control-label">Password</label>
+   <div class="col-md-4">
+    <input type="password" name="password" ng-model="newData.password" class="form-control" id="password" ng-required="true">
+<span style="color:red" ng-show="form1.password.$dirty && form1.password.$error.required">Password is Required
+  </span>
+  <span style="color:red" ng-show="form1.password.$dirty && form1.password.$error.password">Not a valid name!</span>
+  </div>
+  </div>
+
+  <br>
+ <input ng-disabled="form1.$invalid" type="submit" style="position:relative; left:230px" class="btn btn-primary" value=" Save"  ng-click="savecustomer()"/>
+</div>
+</div>
 </div>
 </div>
 </body>
+<!-- 
+<script >
+var app = angular.module('app', []);
+app.controller('app', ['$scope', function($scope){ 
+  }])
+</script> -->
 </html>
