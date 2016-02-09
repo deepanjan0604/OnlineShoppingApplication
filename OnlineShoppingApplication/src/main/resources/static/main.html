@@ -1,11 +1,14 @@
 <html>
 	<head>
-	
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.5/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.5/angular-animate.min.js"></script>
-	<!--<link href="animate.css" rel="stylesheet">-->
+		 <link rel="stylesheet" type="text/css" href="login.css">
+		      <script type="text/javascript" src="login.js"></script>
+		           <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-route.min.js"></script>
+
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 <link href='https://fonts.googleapis.com/css?family=Raleway:500' rel='stylesheet' type='text/css'>
+<script src="app.js"></script>
 	</head>
 	<style>
     
@@ -141,15 +144,9 @@ padding:0;
          <li><a href='#history'>My Orders</a></li>
          </ul></li>
       <li><a href='#'><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-     <li><a href='#login'>Sign In</a></li>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+     <li><a href='#login' class="show_login">Sign In</a></li>
+
      <li><a href='#newcustomer'>New User? Sign Up</a></li>
-=======
->>>>>>> branch 'master' of https://github.com/deepanjan0604/OnlineShoppingApplication.git
-     <li><a href='#newuser'>New User? Sign Up</a></li>
->>>>>>> branch 'master' of https://github.com/deepanjan0604/OnlineShoppingApplication.git
 </div>
 		</ul>
      
@@ -184,10 +181,8 @@ padding:0;
    <li><a href='#contact'>Contact</a></li>
 </ul>
 </div>
+<div ng-view></div>
 
 	</body>
-	<script>
-	angular.module('app', ['ngAnimate'])
-
-	</script>
+	
 </html>

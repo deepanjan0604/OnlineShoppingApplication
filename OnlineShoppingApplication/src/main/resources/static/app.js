@@ -5,34 +5,28 @@ app.config([
 		function($httpProvider) {
 			$httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 		} ]);
+
+
+
 app.config(['$routeProvider',
          function($routeProvider) {
            $routeProvider
-
-<<<<<<< HEAD
            .when('/login', {
                templateUrl: 'login.html',
                controller: 'loginctrl'
            })   
             
 
-=======
->>>>>>> branch 'master' of https://github.com/deepanjan0604/OnlineShoppingApplication.git
            .when('/view', {
                templateUrl: 'viewprofile.html',
                controller: 'viewprofilectrl'
              })
-<<<<<<< HEAD
-             
-=======
-              .when('/view', {
-
+   
            .when('/login', {
                templateUrl: 'login.html',
                controller: 'loginctrl'
            })   
               .when('/viewprofile', {
-           .when('/view', {
                templateUrl: 'viewprofile.html',
                controller: 'viewprofilectrl'
              })
@@ -40,7 +34,7 @@ app.config(['$routeProvider',
                templateUrl: 'viewprofile.html',
                controller: 'viewprofilectrl'
              })
->>>>>>> branch 'master' of https://github.com/deepanjan0604/OnlineShoppingApplication.git
+
              .when('/editprofile', {
                  templateUrl: 'editprofile.html',
                  controller: 'editprofiectrl'
@@ -91,36 +85,37 @@ app.config(['$routeProvider',
                })
          }]);
 		 
-		 
-
-app.controller('loginctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
-function($scope,$route,$routeParams,$rootScope, $http)
-{
-	
-	/* 
-	 * security 
-	 * app.run(function($rootScope, $http){
-		
-			if(auth)
-				{
-				var authData = auth.username + ':' + auth.password;
-			var encodedAuthData = btoa(authData);
-			headers = {
-					'Authorization' : 'Basic ' + encodedAuthData
-					}
-				} else {
-					headers : {};
+app.run(function($rootScope, $http){
+	$rootScope.loadCustomers = function(auth) {
+		if(auth)
+			{
+			var authData = auth.username + ':' + auth.password;
+		var encodedAuthData = btoa(authData);
+		headers = {
+				'Authorization' : 'Basic ' + encodedAuthData
 				}
-				$http({
-					method : 'GET',
-					url : '/users',     
-					headers : headers
-				}).then(function(response) {
-					
-					$rootScope.authenticated = true;
-			});
-			};
-		});*/
+			} else {
+				headers : {};
+			}
+			$http({
+				method : 'GET',
+				url : '/users',     
+				headers : headers
+			}).then(function(response) {
+				$rootScope.users = response.data;
+				$rootScope.authenticated = true;
+		});
+		};
+	});	 
+
+app.controller('loginctrl',[ '$scope', '$rootScope','$http',
+function($scope,$rootScope, $http)
+{
+
+	$scope.auth = {};
+	$scope.login = function(){
+		$rootScope.loadCustomers($scope.auth);
+	}
 }]);		 
 
 
@@ -204,14 +199,9 @@ app.controller('historyctrl',[ '$scope','$route','$routeParams', '$rootScope','$
                               	     {
                               			  }]);
  
- 
-<<<<<<< HEAD
+
  app.controller('orderhistoryctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
                    			 function($scope,$route,$routeParams,$rootScope, $http)
                    			                            	     {
                    			                            			  }]);
-=======
- 
- 
- 
->>>>>>> branch 'master' of https://github.com/deepanjan0604/OnlineShoppingApplication.git
+
