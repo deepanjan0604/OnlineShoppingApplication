@@ -1,7 +1,5 @@
 package com.dh.webtest.controller;
 
-//app controller thudft
-
 
 
 import java.util.ArrayList;
@@ -70,7 +68,10 @@ public class ApplicationController {
 	@Autowired
 	StateVatRepository stateVatRepository ;
 	
-
+	@RequestMapping("/products")
+	public List<Product> getProducts() {
+		return (List<Product>) productRepository.findAll();
+	}	
 	
 	
 }

@@ -16,23 +16,13 @@ app.config(['$routeProvider',
                controller: 'loginctrl'
            })   
 
-           .when('/view', {
-               templateUrl: 'viewprofile.html',
-               controller: 'viewprofilectrl'
-             })
+          
    
-           .when('/login', {
-               templateUrl: 'login.html',
-               controller: 'loginctrl'
-           })   
               .when('/viewprofile', {
                templateUrl: 'viewprofile.html',
                controller: 'viewprofilectrl'
              })
-              .when('/view', {
-               templateUrl: 'viewprofile.html',
-               controller: 'viewprofilectrl'
-             })
+              
 
              .when('/editprofile', {
                  templateUrl: 'editprofile.html',
@@ -82,10 +72,10 @@ app.config(['$routeProvider',
                  templateUrl: 'orderhistory.html',
                  controller: 'orderhistoryctrl'
                })
-               .otherwise({
-                   redirectTo: '/home',
-                   controller:'maincntrl'
-                 });
+               .when('/product', {
+                 templateUrl: 'viewproducts.html',
+                 controller: 'productctrl'
+               })
          }]);
 		 
 app.run(function($rootScope, $http){
@@ -156,9 +146,18 @@ function($scope,$rootScope, $http)
 }]);		 
 
 
-app.controller('mainctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
+app.controller('productctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
                           	     function($scope,$route,$routeParams,$rootScope, $http)
                           	     {
+	$scope.products={};
+	$http({
+		method : 'GET',
+		url : '/products',
+		
+	}).then(function(response) {
+		$rootScope.products = angular.copy(response.data);
+		 
+	});
                           			  }]);
 
 

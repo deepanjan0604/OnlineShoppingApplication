@@ -1,5 +1,9 @@
 package com.dh.webtest.repository;
 
-public interface OrderDetailRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.dh.webtest.model.OrderDetail;
+
+public interface OrderDetailRepository extends JpaRepository<OrderDetail, Integer>{
 
 }
