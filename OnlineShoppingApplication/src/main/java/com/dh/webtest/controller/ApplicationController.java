@@ -70,7 +70,47 @@ public class ApplicationController {
 	@Autowired
 	StateVatRepository stateVatRepository ;
 	
-
+	@RequestMapping("/users")
+	public List<User> getUsers() {
+		return (List<User>) userRepository.findAll();
+	}	
+	
+	@RequestMapping("/users")
+	public List<User> getUsers() {
+		return (List<User>) userRepository.findAll();
+	}	
+	
+	@RequestMapping("/users")
+	public List<User> getUsers() {
+		return (List<User>) userRepository.findAll();
+	}	
+	
+	@RequestMapping("/users")
+	public List<User> getUsers() {
+		return (List<User>) userRepository.findAll();
+	}	
+	
+	@RequestMapping("/users")
+	public List<User> getUsers() {
+		return (List<User>) userRepository.findAll();
+	}	
+	
+	@RequestMapping("/users")
+	public List<User> getUsers() {
+		return (List<User>) userRepository.findAll();
+	}	
+	
+	
+	@RequestMapping("/users")
+	public List<User> getUsers() {
+		return (List<User>) userRepository.findAll();
+	}	
+	
+	@RequestMapping("/users")
+	public List<User> getUsers() {
+		return (List<User>) userRepository.findAll();
+	}	
+	
 	
 	
 }
