@@ -37,9 +37,9 @@ public class User {
 	@OneToMany(mappedBy = "user",  orphanRemoval = true)
 	List<Authority> authority;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JsonIgnore
-	Customer customer;
+	@OneToMany(mappedBy = "user",  orphanRemoval = true)
+	List<Customer> customer; 
+	
 	
 	public int getId() {
 		return id;
@@ -73,13 +73,22 @@ public class User {
 		this.role = role;
 	}
 
-	public Customer getCustomer() {
+	public List<Authority> getAuthority() {
+		return authority;
+	}
+
+	public void setAuthority(List<Authority> authority) {
+		this.authority = authority;
+	}
+
+	public List<Customer> getCustomer() {
 		return customer;
 	}
 
-	public void setCustomer(Customer customer) {
+	public void setCustomer(List<Customer> customer) {
 		this.customer = customer;
 	}
+<<<<<<< HEAD
 	
 
 	@Override
@@ -90,6 +99,9 @@ public class User {
 
 	}
 	
+=======
+
+>>>>>>> branch 'master' of https://github.com/deepanjan0604/OnlineShoppingApplication.git
 
 }
 

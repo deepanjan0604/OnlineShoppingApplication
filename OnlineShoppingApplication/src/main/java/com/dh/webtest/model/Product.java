@@ -37,14 +37,9 @@ public class Product {
 	int quantity;
 	
 	
-	@Column(name="thumbnail")
-    @Lob
-    Blob thumbnail;	
+	@OneToMany(mappedBy = "product",  orphanRemoval = true)
+	List<ProductImage> productimage;
 	
-	@Column(name="image")
-    @Lob
-    Blob image;
-
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JsonIgnore
@@ -58,7 +53,6 @@ public class Product {
 	@OneToMany(mappedBy = "product",  orphanRemoval = true)
 	List<CartItem> cartitem;
 
-	
 	public int getProductId() {
 		return productId;
 	}
@@ -91,20 +85,12 @@ public class Product {
 		this.quantity = quantity;
 	}
 
-	public Blob getThumbnail() {
-		return thumbnail;
+	public List<ProductImage> getProductimage() {
+		return productimage;
 	}
 
-	public void setThumbnail(Blob thumbnail) {
-		this.thumbnail = thumbnail;
-	}
-
-	public Blob getImage() {
-		return image;
-	}
-
-	public void setImage(Blob image) {
-		this.image = image;
+	public void setProductimage(List<ProductImage> productimage) {
+		this.productimage = productimage;
 	}
 
 	public Brand getBrand() {
@@ -131,7 +117,8 @@ public class Product {
 		this.cartitem = cartitem;
 	}
 
-		
+	
+	
 
 }
 

@@ -2,12 +2,11 @@ package com.dh.webtest.controller;
 
 
 
-
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,7 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import com.dh.webtest.controller.ProductDAO;
 import com.dh.webtest.model.Authority;
 import com.dh.webtest.model.Brand;
 import com.dh.webtest.model.Cart;
@@ -73,6 +72,7 @@ public class ApplicationController {
 	
 	@Autowired
 	StateVatRepository stateVatRepository ;
+<<<<<<< HEAD
 	
 	@RequestMapping("/brands")
 	public List<Brand> getBrands() {
@@ -101,6 +101,15 @@ public class ApplicationController {
 	
 	
 	@RequestMapping("/users")
+=======
+
+	@RequestMapping("/products")
+	public List<Product> getProducts() {
+		return (List<Product>) productRepository.findAll();
+	}	
+
+	/*@RequestMapping("/users")
+>>>>>>> branch 'master' of https://github.com/deepanjan0604/OnlineShoppingApplication.git
 	public List<User> getUsers() {
 		return (List<User>) userRepository.findAll();
 	}	
@@ -137,7 +146,26 @@ public class ApplicationController {
 	}
 		return returnParams;
 	
+<<<<<<< HEAD
 	}
+=======
+	@Autowired
+    ProductDAO productDAO;
+     
+    @RequestMapping("/product")
+    public String index(Map<String, Object> map) {
+        try {
+            map.put("product", new Product());
+            map.put("productList", productDAO.list());
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+ 
+        return "products";
+    }
+	
+	
+>>>>>>> branch 'master' of https://github.com/deepanjan0604/OnlineShoppingApplication.git
 }
 	
 	

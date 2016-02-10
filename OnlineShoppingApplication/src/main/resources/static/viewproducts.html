@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div ng-controller="productctrl">
+<table class="table table-bordered ">
+			<thead>
+				<tr>
+				<td></td>
+					<td>Product Name</td>
+					<td>Product Price</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="product in products">
+					<td>{{product.thumbnail}}</td>
+					<td>{{product.name}}</td>
+					<td>{{product.price}}</td>
+					<td><a href=#viewproductdetails/{{product.productId}}>View Details</a></td>
+				</tr>
+			</tbody>
+		</table>
+</div>
+</body>
+</html>
