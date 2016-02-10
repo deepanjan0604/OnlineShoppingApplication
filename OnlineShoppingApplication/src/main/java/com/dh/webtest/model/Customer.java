@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -37,8 +38,7 @@ public class Customer {
 	@Column(name = "emailId")
 	String emailId;
 	
-	@OneToMany(mappedBy = "customer",  orphanRemoval = true)
-	List<User> user;
+
 	
 	@OneToMany(mappedBy = "customer",  orphanRemoval = true)
 	List<ShippingAddress> shippingAddress;
@@ -50,6 +50,9 @@ public class Customer {
 	@OneToMany(mappedBy = "customer", orphanRemoval = true)
 	List<Order> order;
 	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JsonIgnore
+	User user;
 	
 
 	public int getCustomerId() {
@@ -92,12 +95,14 @@ public class Customer {
 	}
 
 
-	public List<User> getUser() {
+	
+
+	public User getUser() {
 		return user;
 	}
 
 
-	public void setUser(List<User> user) {
+	public void setUser(User user) {
 		this.user = user;
 	}
 

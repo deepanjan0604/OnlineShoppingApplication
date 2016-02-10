@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import com.dh.webtest.controller.ProductDAO;
 import com.dh.webtest.model.Authority;
 import com.dh.webtest.model.Brand;
 import com.dh.webtest.model.Cart;
@@ -92,7 +93,21 @@ public class ApplicationController {
 
 		return returnParams;
 	}
-
+	
+	@Autowired
+    ProductDAO productDAO;
+     
+    @RequestMapping("/product")
+    public String index(Map<String, Object> map) {
+        try {
+            map.put("product", new Product());
+            map.put("productList", productDAO.list());
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+ 
+        return "products";
+    }
 	
 	
 }

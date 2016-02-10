@@ -125,7 +125,7 @@ app.run(function($rootScope, $http){
 			}
 			$http({
 				method : 'GET',
-				url : '/users',     
+				url : '/customers',     
 				headers : headers
 			}).then(function(response) {
 				$rootScope.users = response.data;
