@@ -88,8 +88,8 @@ app.config(['$routeProvider',
                  });
          }]);
 		 
-app.run(function($rootScope, $http){
-	
+/*app.run(function($rootScope, $http){
+	*/
 	/*<html>
 	 <head>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -122,7 +122,8 @@ app.run(function($rootScope, $http){
 	<input id="Button1" type="button" value="Click" onclick="switchVisible();"/>
 	     </body>
 	    </html>*/
-	$rootScope.loadCustomers = function(auth) {
+	
+/*	$rootScope.loadCustomers = function(auth) {
 		if(auth)
 			{
 			var authData = auth.username + ':' + auth.password;
@@ -143,9 +144,9 @@ app.run(function($rootScope, $http){
 				$rootScope.authenticated1=false;
 		});
 		};
-	});	 
+	});	 */
 
-app.controller('loginctrl',[ '$scope', '$rootScope','$http',
+/*app.controller('loginctrl',[ '$scope', '$rootScope','$http',
 function($scope,$rootScope, $http)
 {
 
@@ -153,7 +154,7 @@ function($scope,$rootScope, $http)
 	$scope.login = function(){
 		$rootScope.loadCustomers($scope.auth);
 	}
-}]);		 
+}]);*/		 
 
 
 app.controller('mainctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
@@ -188,17 +189,11 @@ app.controller('historyctrl',[ '$scope','$route','$routeParams', '$rootScope','$
 
 			                            			  	  
 
- app.controller('newcustomerctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
-			                    			 function($scope,$route,$routeParams,$rootScope, $http)
-			                 {
-	 
-	/*
-	 app.controller('myctrl', ['$scope', function($scope){ 
-			                 }
-	 */$scope.customer={
-				userId:{
-				}
-	};
+ app.controller('newcustomerctrl',  
+                                    [ '$scope', '$route','$routeParams','$rootScope','$http',
+			                    			 function($scope,$route,$routeParams,$rootScope, $http) {
+	$scope.title="New Customer";
+	$scope.customers={};
 
 	 $scope.savecustomer = function(){
 			
@@ -206,26 +201,26 @@ app.controller('historyctrl',[ '$scope','$route','$routeParams', '$rootScope','$
 			$http({
 				method: 'POST',
 				url : '/savecustomer',
-				data : $scope.customer
+				data : $scope.customers
 			}).then(function(response){
 				if(response.data.status){
 					alert('Customer Added Successfully!');
-					$rootScope.customers = {};
-					$rootScope.users = {};
-					//$rootScope.customer.push($rootScope.customers);
-					//$rootScope.customers.push($rootScope.users);
 					
 					
-				} else {
-					alert(Customer Addition Failed!');
-				}
+												} 
+				
+				else {
+					alert('Customer Addition Failed!');
+				       }
 			});
-	  }]);
+		};
+
+	} ]);
  
  
  
  
- app.controller('aboutctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
+/* app.controller('aboutctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
  			 function($scope,$route,$routeParams,$rootScope, $http)
  			                            	     {
  			                            			  }]);
@@ -274,3 +269,4 @@ app.controller('historyctrl',[ '$scope','$route','$routeParams', '$rootScope','$
                    			                            	     {
                    			                            			  }]);
 
+*/

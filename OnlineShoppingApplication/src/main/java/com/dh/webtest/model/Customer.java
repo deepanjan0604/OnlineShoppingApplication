@@ -1,5 +1,6 @@
 package com.dh.webtest.model;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,7 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -133,6 +133,13 @@ public class Customer {
 	
 
 
+	@Override
+	public String toString() {
+		String str = this.customerId+ " " + this.firstName +" "+this.lastName+ " "+this.emailId+"\n";
+
+		return str;
+
+	}
 	
 	
 

@@ -5,44 +5,44 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css">
+<!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css">
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js">
-</script>
+</script> -->
 
  </head>
-<body  style="background-color:#lightgrey;" class="panel panel-body" ng-app="app">
+<body  style="background-color:#lightgrey;" class="panel panel-body" >
 
 <div ng-controller="newcustomerctrl">
 
      <div class="panel panel-primary">
 
-    <div class="panel-heading">New Customer</div>
+    <div class="panel-heading">{{title}}</div>
   </div>
   <br>
 <div class="col-md-12 form-group">
 <div class="row">
-<div ng-contoller="newcustomerctrl">
+<div>
 <form class="form-horizontal" id="form1" name="form1" action="validation1.html" novalidate>
   
    <div class="form-group">
     <label for="FirstName" class="col-md-4 control-label">First Name</label>
    <div class="col-md-4">
-    <input type="text"  name="firstname"  ng-model="customer.firstname" class="form-control" id="firstname" ng-required="true">
-<span style="color:red"ng-show="form1.firstname.$dirty && form1.firstname.$error.required">First name is Required
+    <input type="text"  name="firstname"  ng-model="customers.firstName" class="form-control" id="firstname" ng-required="true">
+<!-- <span style="color:red"ng-show="form1.firstname.$dirty && form1.firstname.$error.required">First name is Required
   </span>
-  <span style="color:red" ng-show="form1.firstname.$dirty && form1.fname.$error.firstname">Not a valid name!</span>
-  </div>
+  <span style="color:red" ng-show="form1.firstname.$dirty && form1.firtsname.$error.firstname">Not a valid name!</span>-->
+  </div> 
   </div>
   <br>
 
   <div class="form-group">
     <label for="lastname" class="col-md-4 control-label">Last Name</label>
    <div class="col-md-4">
-    <input type="text" name="lastname" ng-model="customer.lastname" class="form-control" id="lastname" ng-required="true">
-<span style="color:red" ng-show="form1.lastname.$dirty && form1.lastname.$error.required">Last name is Required
+    <input type="text" name="lastname" ng-model="customers.lastName" class="form-control" id="lastname" ng-required="true">
+<!-- <span style="color:red" ng-show="form1.lastname.$dirty && form1.lastname.$error.required">Last name is Required
   </span>
-  <span style="color:red" ng-show="form1.lastname.$dirty && form1.lastname.$error.lastname">Not a valid name!</span>
+  <span style="color:red" ng-show="form1.lastname.$dirty && form1.lastname.$error.lastname">Not a valid name!</span> -->
   </div>
   </div>
   <br>
@@ -50,62 +50,50 @@
   <div class="form-group">
     <label for="inputEmail" class="col-md-4 control-label">E-mail</label>
   <div class="col-md-4">
-      <input type="email" class="form-control" id="email" name="email" ng-model="customer.email" ng-required="true">
-      <span style="color:red" ng-show="form1.email.$dirty && form1.email.$error.required">Required!</span>
-      <span style="color:red" ng-show="form1.email.$dirty && form1.email.$error.email">Not valid email!</span>
+      <input type="email" class="form-control" id="email" name="email" ng-model="customers.emailId" ng-required="true">
+     <!--  <span style="color:red" ng-show="form1.email.$dirty && form1.email.$error.required">Required!</span>
+      <span style="color:red" ng-show="form1.email.$dirty && form1.email.$error.email">Not valid email!</span> -->
     </div>
   </div>
   <br />
   
   
- <input ng-disabled="form1.$invalid" type="submit" style="position:relative; left:230px" class="btn btn-primary" value=" Save"  ng-click="savecustomer()"/>
+ <input ng-disabled="form1.$invalid" style="position:relative; left:230px" class="btn btn-primary" value="save"  ng-click="savecustomer()"/>
 </div>
 </div>
 </div>
 </div>
+
 <div>
-User Id: <input type="number" id="userid" class="form-control"
-				ng-model="customer.user.userId"/><br />  
-				
-				
-				<div class="form-group">
-    <label for="username" class="col-md-4 control-label">User Name</label>
-   <div class="col-md-4">
-    <input type="text" name="username" ng-model="customer.user.username" class="form-control" id="username" ng-required="true">
-<span style="color:red" ng-show="form1.username.$dirty && form1.username.$error.required">Last name is Required
-  </span>
-  <span style="color:red" ng-show="form1.username.$dirty && form1.username.$error.username">Not a valid name!</span>
-  </div>
-  </div>
-  <br>
+<form ng-hide="hideform">
+  <h1 ng-show="edit">Create New User:</h1>
   
-  </div>
-  </div>
-  <br>
-
-  
-
- 
- <div class="form-group">
-    <label for="password" class="col-md-4 control-label">Password</label>
+<div class="form-group">
+    <label for="Name" class="col-md-4 control-label">User Name</label>
    <div class="col-md-4">
-    <input type="password" name="password" ng-model="customer.user.password" class="form-control" id="password" ng-required="true">
-<span style="color:red" ng-show="form1.password.$dirty && form1.password.$error.required">Password is Required
-  </span>
-  <span style="color:red" ng-show="form1.password.$dirty && form1.password.$error.password">Not a valid name!</span>
-  </div>
-  </div>
+    <input type="text" name="username" ng-model="customer.user.username" class="form-control" id="username">
 
-  <br>
-  <br>
-	<input ng-disabled="form1.$invalid" type="submit" style="position:relative; left:230px" class="btn btn-primary" value=" Save"  ng-click="savecustomer()"/>			
-</div>	
-			
+  </div>
+  </div>	
+		
+		<br >
+		<br > <br >
+		
+		
+		<br >
+		<br >
+	
+		<div class="form-group">
+    <label for="password" class="col-md-4 control-label">password</label>
+   <div class="col-md-4">
+    <input type="password" name="password" ng-model="customer.user.password" class="form-control" id="password">
+
+  </div>
+  </div>	
+</div>
+
+
+		
 </body>
-<!-- 
-<script >
-var app = angular.module('app', []);
-app.controller('app', ['$scope', function($scope){ 
-  }])
-</script> -->
+
 </html>

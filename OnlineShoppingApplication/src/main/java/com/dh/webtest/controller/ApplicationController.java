@@ -37,6 +37,7 @@ import com.dh.webtest.repository.CustomerRepository;
 import com.dh.webtest.repository.OrderRepository;
 import com.dh.webtest.repository.OrderDetailRepository;
 import com.dh.webtest.repository.ProductRepository;
+import com.dh.webtest.repository.ShippingAddressRepository;
 import com.dh.webtest.repository.StateVatRepository;
 import com.dh.webtest.repository.UserRepository;
 
@@ -65,15 +66,60 @@ public class ApplicationController {
 	OrderDetailRepository orderDetailRepository ;
 	
 	@Autowired
+	ShippingAddressRepository shippingAddresRepository ;
+	
+	@Autowired
 	ProductRepository productRepository ;
 	
 	@Autowired
 	StateVatRepository stateVatRepository ;
 	
-	/*@RequestMapping("/users")
+	@RequestMapping("/brands")
+	public List<Brand> getBrands() {
+		return (List<Brand>) brandRepository.findAll();
+	}	
+	
+	@RequestMapping("/customers")
+	public List<Customer> getCustomers() {
+		return (List<Customer>) customerRepository.findAll();
+	}	
+	
+	
+
+	@RequestMapping("/cart")
+	public List<Cart> getCart() {
+		return (List<Cart>) cartRepository.findAll();
+	}	
+	
+
+	
+	@RequestMapping("/cartitems")
+	public List<CartItem> getCartItem() {
+		return (List<CartItem>) cartItemRepository.findAll();
+	}
+	
+	
+	
+	@RequestMapping("/users")
 	public List<User> getUsers() {
 		return (List<User>) userRepository.findAll();
-	}	*/
+	}	
+	
+	
+	
+	
+
+	@RequestMapping("/orders")
+	public List<Order> getOrder() {
+		return (List<Order>) orderRepository.findAll();
+	}	
+	
+
+	@RequestMapping("/products")
+	public List<Product> getProduct() {
+		return (List<Product>) productRepository.findAll();
+	}	
+	
 	
 	@RequestMapping("/savecustomer")
 	public HashMap<String, Object> savecustomer(@RequestBody Customer customer) {
@@ -85,12 +131,13 @@ public class ApplicationController {
 		} catch (Exception e) {
 			returnParams.put("status", false);
 			returnParams.put("msg", "customer Addition Failed!!!!!!");
-		}
+		
 
-		return returnParams;
+		
 	}
+		return returnParams;
 	
-	
+	}
 }
 	
 	

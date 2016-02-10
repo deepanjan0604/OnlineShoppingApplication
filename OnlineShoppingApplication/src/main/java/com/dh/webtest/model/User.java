@@ -80,7 +80,16 @@ public class User {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-		
+	
+
+	@Override
+	public String toString() {
+		String str = this.userName+ " " + this.role +" "+this.password+ "\n";
+
+		return str;
+
+	}
+	
 
 }
 
