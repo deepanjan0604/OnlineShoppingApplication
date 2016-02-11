@@ -13,6 +13,7 @@
     <div class="panel-heading"></div>
   </div>
   <br>
+  <h1>{{title}}</h1>
 <div class="col-sm-12 form-group">
 <div class="row">
 <div>
@@ -51,7 +52,7 @@
   <br />
   
  
- <input ng-disabled="form1.$invalid"  style="position:relative; left:230px" class="btn btn-primary" value="save"  ng-click="savecustomer()"/> 
+ 
 </form>
 </div>
 </div>
@@ -80,7 +81,7 @@
  <div class="form-group">
     <label for="role" class="col-sm-4 control-label">Role</label>
    <div class="col-md-4">
-    <input type="text"  name="role"  ng-model="details.role" class="form-control" id="role" ng-required="true">
+    <input type="text"  name="role"  ng-model="customers.role" class="form-control" id="role" ng-required="true">
   <span style="color:red"ng-show="form1.role.$dirty && form1.role.$error.required">Role is Required
   </span>
   <span style="color:red" ng-show="form1.role.$dirty && form1.role.$error.role">Not a valid name!</span> 
@@ -91,14 +92,14 @@
   
     <label for="password" class="col-sm-4 control-label">Password</label>
    <div class="col-md-4">
-    <input type="password" name="password" ng-model="details.password" class="form-control" id="password" ng-required="true">
+    <input type="password" name="password" ng-model="customers.password" class="form-control" id="password" ng-required="true">
  <span style="color:red" ng-show="form1.password.$dirty && form1.password.$error.required"> password is Required
   </span>
   <span style="color:red" ng-show="form1.password.$dirty && form1.lastname.$error.password">Not a valid name!</span>  
   <br>
   <br>
   
-   <input ng-disabled="form1.$invalid" style="position:relative; left:230px" class="btn btn-primary" value="save"  ng-click="savedetails()"/>
+   <input ng-disabled="form1.$invalid"  style="position:relative; left:230px" class="btn btn-primary" value="save"  ng-click="savecustomer()"/> 
   </div>
   </div>
   </div>

@@ -27,7 +27,7 @@ import com.dh.webtest.model.OrderDetail;
 import com.dh.webtest.model.Product;
 import com.dh.webtest.model.ShippingAddress;
 import com.dh.webtest.model.StateVat;
-import com.dh.webtest.model.User;
+//import com.dh.webtest.model.User;
 import com.dh.webtest.repository.AuthorityRepository;
 import com.dh.webtest.repository.BrandRepository;
 import com.dh.webtest.repository.CartRepository;
@@ -39,14 +39,14 @@ import com.dh.webtest.repository.OrderDetailRepository;
 import com.dh.webtest.repository.ProductRepository;
 import com.dh.webtest.repository.ShippingAddressRepository;
 import com.dh.webtest.repository.StateVatRepository;
-import com.dh.webtest.repository.UserRepository;
+//import com.dh.webtest.repository.UserRepository;
 
 
 @RestController
 public class ApplicationController {
 
-	@Autowired
-	UserRepository userRepository;
+	/*@Autowired
+	UserRepository userRepository;*/
 	@Autowired
 	AuthorityRepository authorityRepository;
 	@Autowired
@@ -124,11 +124,11 @@ public class ApplicationController {
 	}
 	*/
 	
-	
+	/*
 	@RequestMapping("/users")
 	public List<User> getUsers() {
 		return (List<User>) userRepository.findAll();
-	}	
+	}*/	
 	
 	@RequestMapping("/savecustomer")
 	public HashMap<String, Object> savecustomer(@RequestBody Customer customer) {
@@ -151,7 +151,7 @@ public class ApplicationController {
 
 	}
 	
-	@RequestMapping("/savedetails")
+	/*@RequestMapping("/savedetails")
 	public HashMap<String, Object> savedetails(@RequestBody User user) {
 		HashMap<String, Object> returnParams = new HashMap<String, Object>();
 		
@@ -166,7 +166,7 @@ public class ApplicationController {
 		
 	}
 		return returnParams;
-	}
+	}*/
 	
 }
 	

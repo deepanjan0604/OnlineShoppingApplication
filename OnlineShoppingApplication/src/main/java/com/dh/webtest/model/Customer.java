@@ -38,8 +38,26 @@ public class Customer {
 	@Column(name = "emailId")
 	String emailId;
 	
-
+@Column(name = "username")
+	String userName;
 	
+	@Column(name = "password")
+	String password;
+	
+	
+	@Column(name = "role")
+	String role;
+	
+	
+	/*
+	@OneToMany(mappedBy = "user",  orphanRemoval = true)
+	List<Authority> authority;*/
+	
+
+
+
+
+
 	@OneToMany(mappedBy = "customer",  orphanRemoval = true)
 	List<ShippingAddress> shippingAddress;
 	
@@ -49,10 +67,13 @@ public class Customer {
 
 	@OneToMany(mappedBy = "customer", orphanRemoval = true)
 	List<Order> order;
-	
+	/*
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JsonIgnore
 	User user;
+	*/
+	
+
 	
 
 	public int getCustomerId() {
@@ -94,18 +115,36 @@ public class Customer {
 		this.emailId = emailId;
 	}
 
-
 	
 
-	public User getUser() {
-		return user;
+
+
+
+
+
+
+
+	public String getUserName() {
+		return userName;
 	}
 
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
+
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+
+	
 
 	public List<ShippingAddress> getShippingAddress() {
 		return shippingAddress;
@@ -116,6 +155,12 @@ public class Customer {
 		this.shippingAddress = shippingAddress;
 	}
 
+	/*public void setAuthority(List<Authority> authority) {
+		this.authority = authority;
+	}
+	public List<Authority> getAuthority() {
+		return authority;
+	}*/
 
 	public List<Cart> getCart() {
 		return cart;
@@ -140,7 +185,7 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		String str = this.customerId+ " " + this.firstName +" "+this.lastName+ " "+this.emailId+"\n";
+		String str = this.customerId+ " " + this.firstName +" "+this.lastName+ " "+this.emailId+    "" + this.userName + "" + this.password+ "\n";
 
 		return str;
 

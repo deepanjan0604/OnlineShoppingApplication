@@ -18,22 +18,22 @@ public class Authority {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	int id;
-	
+	/*
 	@ManyToOne
-	User user;
+	User user;*/
 	
 	@JsonIgnore
 	@Column(name = "authority")
 	String authority;
 	
-	public User getUser() {
+	/*public User getUser() {
 		return user;
 	}
 
 	public void setUser(User user) {
 		this.user = user;
 	}
-
+*/
 	
 	@Column(name = "username")
 	String userName;

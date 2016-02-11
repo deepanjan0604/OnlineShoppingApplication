@@ -196,9 +196,7 @@ app.controller('historyctrl',[ '$scope','$route','$routeParams', '$rootScope','$
 	$scope.title="New Customer";
 	$scope.customers={
 			
-			user:{
-				
-			}
+			
 	};
 
 	 $scope.savecustomer = function(){
@@ -223,7 +221,7 @@ app.controller('historyctrl',[ '$scope','$route','$routeParams', '$rootScope','$
 		
 		
 		
-		$scope.details={};
+		/*$scope.details={};
 
 		 $scope.savedetails = function()
 		 {
@@ -245,7 +243,7 @@ app.controller('historyctrl',[ '$scope','$route','$routeParams', '$rootScope','$
 					       }
 				});
 				
-		 };
+		 };*/
 
 	} ]);
  
