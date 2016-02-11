@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.dh.webtest.controller.ProductDAO;
+//import com.dh.webtest.controller.ProductDAO;
 import com.dh.webtest.model.Authority;
 import com.dh.webtest.model.Brand;
 import com.dh.webtest.model.Cart;
@@ -146,9 +146,31 @@ public class ApplicationController {
 	}
 		return returnParams;
 	
+		
+		
 
 	}
-	@Autowired
+	
+	@RequestMapping("/savedetails")
+	public HashMap<String, Object> savedetails(@RequestBody User user) {
+		HashMap<String, Object> returnParams = new HashMap<String, Object>();
+		
+		try {
+			userRepository.save(user);
+			returnParams.put("status", true);
+		} catch (Exception e) {
+			returnParams.put("status", false);
+			returnParams.put("msg", "Details Addition Failed!!!!!!");
+		
+
+		
+	}
+		return returnParams;
+	}
+	
+}
+	
+	/*@Autowired
     ProductDAO productDAO;
      
 	
@@ -162,10 +184,10 @@ public class ApplicationController {
         }
  
         return "products";
-    }
+    }*/
 	
 	
-}
+
 
 
 	

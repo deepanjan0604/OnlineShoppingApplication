@@ -1,99 +1,113 @@
 
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta charset="UTF-8">
-<!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css">
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js">
-</script> -->
-
- </head>
+ </head> 
 <body  style="background-color:#lightgrey;" class="panel panel-body" >
 
 <div ng-controller="newcustomerctrl">
 
      <div class="panel panel-primary">
 
-    <div class="panel-heading">{{title}}</div>
+    <div class="panel-heading"></div>
   </div>
   <br>
-<div class="col-md-12 form-group">
+<div class="col-sm-12 form-group">
 <div class="row">
 <div>
 <form class="form-horizontal" id="form1" name="form1" action="validation1.html" novalidate>
   
    <div class="form-group">
-    <label for="FirstName" class="col-md-4 control-label">First Name</label>
+    <label for="FirstName" class="col-sm-4 control-label">First Name</label>
    <div class="col-md-4">
     <input type="text"  name="firstname"  ng-model="customers.firstName" class="form-control" id="firstname" ng-required="true">
-<!-- <span style="color:red"ng-show="form1.firstname.$dirty && form1.firstname.$error.required">First name is Required
+<span style="color:red"ng-show="form1.firstname.$dirty && form1.firstname.$error.required">First name is Required
   </span>
-  <span style="color:red" ng-show="form1.firstname.$dirty && form1.firtsname.$error.firstname">Not a valid name!</span>-->
+  <span style="color:red" ng-show="form1.firstname.$dirty && form1.firtsname.$error.firstname">Not a valid name!</span> 
   </div> 
   </div>
   <br>
 
   <div class="form-group">
-    <label for="lastname" class="col-md-4 control-label">Last Name</label>
+    <label for="lastname" class="col-sm-4 control-label">Last Name</label>
    <div class="col-md-4">
     <input type="text" name="lastname" ng-model="customers.lastName" class="form-control" id="lastname" ng-required="true">
-<!-- <span style="color:red" ng-show="form1.lastname.$dirty && form1.lastname.$error.required">Last name is Required
+ <span style="color:red" ng-show="form1.lastname.$dirty && form1.lastname.$error.required">Last name is Required
   </span>
-  <span style="color:red" ng-show="form1.lastname.$dirty && form1.lastname.$error.lastname">Not a valid name!</span> -->
+  <span style="color:red" ng-show="form1.lastname.$dirty && form1.lastname.$error.lastname">Not a valid name!</span>  
   </div>
   </div>
   <br>
   
   <div class="form-group">
-    <label for="inputEmail" class="col-md-4 control-label">E-mail</label>
-  <div class="col-md-4">
+    <label for="inputEmail" class="col-sm-4 control-label">E-mail</label>
+  <div class="col-md-4"> 
       <input type="email" class="form-control" id="email" name="email" ng-model="customers.emailId" ng-required="true">
-     <!--  <span style="color:red" ng-show="form1.email.$dirty && form1.email.$error.required">Required!</span>
-      <span style="color:red" ng-show="form1.email.$dirty && form1.email.$error.email">Not valid email!</span> -->
+       <span style="color:red" ng-show="form1.email.$dirty && form1.email.$error.required"> EmailId is Required!</span>
+      <span style="color:red" ng-show="form1.email.$dirty && form1.email.$error.email">Not valid email!</span>  
     </div>
   </div>
   <br />
   
-  
- <input ng-disabled="form1.$invalid" style="position:relative; left:230px" class="btn btn-primary" value="save"  ng-click="savecustomer()"/>
+ 
+ <input ng-disabled="form1.$invalid"  style="position:relative; left:230px" class="btn btn-primary" value="save"  ng-click="savecustomer()"/> 
+</form>
 </div>
 </div>
 </div>
 </div>
 
+
+
+
+<div class="col-sm-12 form-group">
+<div class="row">
 <div>
-<form ng-hide="hideform">
-  <h1 ng-show="edit">Create New User:</h1>
+<form class="form-horizontal" id="form1" name="form1" action="validation1.html" novalidate>
   
-<div class="form-group">
-    <label for="Name" class="col-md-4 control-label">User Name</label>
+   <div class="form-group">
+    <label for="UserName" class="col-sm-4 control-label">User Name</label>
    <div class="col-md-4">
-    <input type="text" name="username" ng-model="customer.user.username" class="form-control" id="username">
-
+    <input type="text"  name="username"  ng-model="details.userName" class="form-control" id="username" ng-required="true">
+  <span style="color:red"ng-show="form1.username.$dirty && form1.username.$error.required">User name is Required
+  </span>
+  <span style="color:red" ng-show="form1.username.$dirty && form1.username.$error.username">Not a valid name!</span> 
+  </div> 
   </div>
-  </div>	
-		
-		<br >
-		<br > <br >
-		
-		
-		<br >
-		<br >
-	
-		<div class="form-group">
-    <label for="password" class="col-md-4 control-label">password</label>
+  <br>
+
+ <div class="form-group">
+    <label for="role" class="col-sm-4 control-label">Role</label>
    <div class="col-md-4">
-    <input type="password" name="password" ng-model="customer.user.password" class="form-control" id="password">
-
+    <input type="text"  name="role"  ng-model="details.role" class="form-control" id="role" ng-required="true">
+  <span style="color:red"ng-show="form1.role.$dirty && form1.role.$error.required">Role is Required
+  </span>
+  <span style="color:red" ng-show="form1.role.$dirty && form1.role.$error.role">Not a valid name!</span> 
+  </div> 
   </div>
-  </div>	
-</div>
+  <div class="form-group">
 
-
-		
+  
+    <label for="password" class="col-sm-4 control-label">Password</label>
+   <div class="col-md-4">
+    <input type="password" name="password" ng-model="details.password" class="form-control" id="password" ng-required="true">
+ <span style="color:red" ng-show="form1.password.$dirty && form1.password.$error.required"> password is Required
+  </span>
+  <span style="color:red" ng-show="form1.password.$dirty && form1.lastname.$error.password">Not a valid name!</span>  
+  <br>
+  <br>
+  
+   <input ng-disabled="form1.$invalid" style="position:relative; left:230px" class="btn btn-primary" value="save"  ng-click="savedetails()"/>
+  </div>
+  </div>
+  </div>
+  <br>
+  
+   </div>
+  </div>
+   </div>
+  
 </body>
 
 </html>

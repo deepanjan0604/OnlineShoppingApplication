@@ -41,6 +41,8 @@ app.config(['$routeProvider',
                  controller: 'newcustomerctrl'
                })
                
+  
+              
                .when('/about', {
                  templateUrl: 'about.html',
                  controller: 'aboutctrl'
@@ -192,7 +194,12 @@ app.controller('historyctrl',[ '$scope','$route','$routeParams', '$rootScope','$
                                     [ '$scope', '$route','$routeParams','$rootScope','$http',
 			                    			 function($scope,$route,$routeParams,$rootScope, $http) {
 	$scope.title="New Customer";
-	$scope.customers={};
+	$scope.customers={
+			
+			user:{
+				
+			}
+	};
 
 	 $scope.savecustomer = function(){
 			
@@ -213,13 +220,41 @@ app.controller('historyctrl',[ '$scope','$route','$routeParams', '$rootScope','$
 				       }
 			});
 		};
+		
+		
+		
+		$scope.details={};
+
+		 $scope.savedetails = function()
+		 {
+				
+				
+				$http({
+					method: 'POST',
+					url : '/savedetails',
+					data : $scope.details
+				}).then(function(response){
+					if(response.data.status){
+						alert('Details Added Successfully!');
+						
+						
+													} 
+					
+					else {
+						alert('Details Addition Failed!');
+					       }
+				});
+				
+		 };
 
 	} ]);
  
  
  
+
  
-/* app.controller('aboutctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
+ 
+app.controller('aboutctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
  			 function($scope,$route,$routeParams,$rootScope, $http)
  			                            	     {
  			                            			  }]);
@@ -268,4 +303,3 @@ app.controller('historyctrl',[ '$scope','$route','$routeParams', '$rootScope','$
                    			                            	     {
                    			                            			  }]);
 
-*/
