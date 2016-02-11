@@ -88,7 +88,7 @@ public class User {
 	public void setCustomer(List<Customer> customer) {
 		this.customer = customer;
 	}
-<<<<<<< HEAD
+
 	
 
 	@Override
@@ -99,9 +99,8 @@ public class User {
 
 	}
 	
-=======
 
->>>>>>> branch 'master' of https://github.com/deepanjan0604/OnlineShoppingApplication.git
+
 
 }
 
