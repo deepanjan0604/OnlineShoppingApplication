@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -78,12 +79,7 @@ public class ApplicationController {
 	public List<Brand> getBrands() {
 		return (List<Brand>) brandRepository.findAll();
 	}	
-	
-	@RequestMapping("/customers")
-	public List<Customer> getCustomers() {
-		return (List<Customer>) customerRepository.findAll();
-	}	
-	
+
 	
 
 	@RequestMapping("/cart")
@@ -99,12 +95,77 @@ public class ApplicationController {
 	}
 	
 	
-
+	@RequestMapping("/customers")
+	public List<Customer> getCustomers() {
+		return (List<Customer>) customerRepository.findAll();
+	}	
+	
+	
+	@RequestMapping("/orders")
+	public List<Order> getOrder() {
+		return (List<Order>) orderRepository.findAll();
+	}	
+	
+	
+	@RequestMapping("/orderdetails")
+	public List<OrderDetail> getOrderDetail() {
+		return (List<OrderDetail>) orderDetailRepository.findAll();
+	}
 
 	@RequestMapping("/products")
 	public List<Product> getProducts() {
 		return (List<Product>) productRepository.findAll();
 	}	
+
+	/*@RequestMapping("/shippingaddresses")
+	public List<ShippingAddress> getShippingAddress() {
+		
+		return List<ShippingAddress> shippingaddressRepository.findAll();
+	}
+	*/
+	
+	
+	@RequestMapping("/users")
+	public List<User> getUsers() {
+		return (List<User>) userRepository.findAll();
+	}	
+	
+	@RequestMapping("/savecustomer")
+	public HashMap<String, Object> savecustomer(@RequestBody Customer customer) {
+		HashMap<String, Object> returnParams = new HashMap<String, Object>();
+		
+		try {
+			customerRepository.save(customer);
+			returnParams.put("status", true);
+		} catch (Exception e) {
+			returnParams.put("status", false);
+			returnParams.put("msg", "customer Addition Failed!!!!!!");
+		
+
+		
+	}
+		return returnParams;
+	
+
+	}
+	@Autowired
+    ProductDAO productDAO;
+     
+	
+	@RequestMapping("/product")
+    public String index(Map<String, Object> map) {
+        try {
+            map.put("product", new Product());
+            map.put("productList", productDAO.list());
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+ 
+        return "products";
+    }
+	
+	
 }
+
 
 	
