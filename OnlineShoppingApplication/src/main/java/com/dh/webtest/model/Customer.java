@@ -115,14 +115,6 @@ public class Customer {
 		this.emailId = emailId;
 	}
 
-	
-
-
-
-
-
-
-
 
 	public String getUserName() {
 		return userName;
@@ -185,7 +177,7 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		String str = this.customerId+ " " + this.firstName +" "+this.lastName+ " "+this.emailId+    "" + this.userName + "" + this.password+ "\n";
+		String str = this.customerId+ " " + this.firstName +" "+this.lastName+ " "+this.emailId+    " " + this.userName + " " + this.password+ "\n";
 
 		return str;
 
