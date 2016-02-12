@@ -174,12 +174,46 @@ app.controller('viewprofilectrl',[ '$scope','$route','$routeParams', '$rootScope
 
 
 			 
-app.controller('editprofilectrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
-	     function($scope,$route,$routeParams,$rootScope, $http)
-	     {
-			  }]);
-
-
+app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
+                           	     function($scope,$route,$routeParams,$rootScope, $http)
+                           	     {
+                           			 
+                           	    /*$scope.title=' Edit Customer!!!';
+                           	    
+                           	    $http({
+                           			method : 'GET',
+                           			url : '/customers/'+$routeParams.id,
+                           			
+                           		}).then(function(response) {
+                           			$rootScope.edit = angular.copy(response.data);
+                           			 
+                           		});
+                           	    
+                           	    
+                           		 $rootScope.edit={
+                           				 customers:{
+                           					 
+                           				 }
+                           		 }
+                           		$scope.savedetails = function(){	
+                           							
+                           		 $http({
+                           				method: 'POST',
+                           				url : '/savedetails',
+                           				data : $rootScope.edit,
+                           			
+                           			}).then(function(response){
+                           				if(response.data.status){
+                           					alert('customer edit Successfully!');
+                           					$rootScope.edit= {};
+                           					
+                           				} else {
+                           					alert('customer edit Failed!');
+                           				}
+                           			});
+                           			};*/
+                           			
+                           	     }]);
 
 			  
 app.controller('historyctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
