@@ -51,26 +51,10 @@
   </div>
   <br />
   
- 
- 
-</form>
-</div>
-</div>
-</div>
-</div>
-
-
-
-
-<div class="col-sm-12 form-group">
-<div class="row">
-<div>
-<form class="form-horizontal" id="form1" name="form1" action="validation1.html" novalidate>
-  
    <div class="form-group">
     <label for="UserName" class="col-sm-4 control-label">User Name</label>
    <div class="col-md-4">
-    <input type="text"  name="username"  ng-model="details.userName" class="form-control" id="username" ng-required="true">
+    <input type="text"  name="username"  ng-model="customers.userName" class="form-control" id="username" ng-required="true">
   <span style="color:red"ng-show="form1.username.$dirty && form1.username.$error.required">User name is Required
   </span>
   <span style="color:red" ng-show="form1.username.$dirty && form1.username.$error.username">Not a valid name!</span> 
@@ -78,7 +62,7 @@
   </div>
   <br>
 
- <div class="form-group">
+ <!-- <div class="form-group">
     <label for="role" class="col-sm-4 control-label">Role</label>
    <div class="col-md-4">
     <input type="text"  name="role"  ng-model="customers.role" class="form-control" id="role" ng-required="true">
@@ -86,10 +70,10 @@
   </span>
   <span style="color:red" ng-show="form1.role.$dirty && form1.role.$error.role">Not a valid name!</span> 
   </div> 
-  </div>
-  <div class="form-group">
-
+  </div> -->
   
+  
+  <div class="form-group">
     <label for="password" class="col-sm-4 control-label">Password</label>
    <div class="col-md-4">
     <input type="password" name="password" ng-model="customers.password" class="form-control" id="password" ng-required="true">
@@ -100,13 +84,12 @@
   <br>
   
    <input ng-disabled="form1.$invalid"  style="position:relative; left:230px" class="btn btn-primary" value="save"  ng-click="savecustomer()"/> 
+ 
   </div>
-  </div>
-  </div>
-  <br>
-  
+  </div>  </form>
    </div>
   </div>
+   </div>
    </div>
   
 </body>

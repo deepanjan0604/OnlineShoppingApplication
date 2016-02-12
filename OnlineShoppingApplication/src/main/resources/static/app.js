@@ -194,10 +194,7 @@ app.controller('historyctrl',[ '$scope','$route','$routeParams', '$rootScope','$
                                     [ '$scope', '$route','$routeParams','$rootScope','$http',
 			                    			 function($scope,$route,$routeParams,$rootScope, $http) {
 	$scope.title="New Customer";
-	$scope.customers={
-			
-			
-	};
+	$scope.customers={};
 
 	 $scope.savecustomer = function(){
 			

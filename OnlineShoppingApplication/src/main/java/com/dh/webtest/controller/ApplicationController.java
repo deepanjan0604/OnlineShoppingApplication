@@ -144,12 +144,10 @@ public class ApplicationController {
 
 		
 	}
-		return returnParams;
-	
-		
-		
+		return returnParams;	
 
 	}
+}
 	
 	/*@RequestMapping("/savedetails")
 	public HashMap<String, Object> savedetails(@RequestBody User user) {
@@ -166,9 +164,9 @@ public class ApplicationController {
 		
 	}
 		return returnParams;
-	}*/
+	}
 	
-}
+}*/
 	
 	/*@Autowired
     ProductDAO productDAO;
@@ -186,11 +184,11 @@ public class ApplicationController {
         return "products";
     }*/
 	
-	@RequestMapping(value="/image/:id", produces="image/png")
+	/*@RequestMapping(value="/image/:id", produces="image/png")
 	public String getImage(){
 		return null;
 		
-	}
+	}*/
 	
 
 
