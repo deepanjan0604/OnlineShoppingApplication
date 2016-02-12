@@ -147,6 +147,28 @@ public class ApplicationController {
 		return returnParams;	
 
 	}
+	
+	/*
+	
+	@RequestMapping("/editcustomer")
+	public HashMap<String, Object> editcustomer(@RequestBody Customer customer) {
+		HashMap<String, Object> returnParams = new HashMap<String, Object>();
+		
+		try {
+			
+			customerRepository.save(customer);
+			customerRepository.customerlist.add(customer);
+			//System.out.println("Customer edited successfully !!");
+
+			
+			returnParams.put("status", true);
+		} catch (Exception e) {
+			returnParams.put("status", false);
+			returnParams.put("msg", "Customer Edit Failed!!!!!!");
+		}
+
+		return returnParams;
+	}*/
 }
 	
 	/*@RequestMapping("/savedetails")
