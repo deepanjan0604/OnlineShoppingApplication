@@ -164,6 +164,11 @@ public class ApplicationController {
         return "products";
     }
 	
+	@RequestMapping(value="/image/:id", produces="image/png")
+	public String getImage(){
+		return null;
+		
+	}
 	
 }
 
