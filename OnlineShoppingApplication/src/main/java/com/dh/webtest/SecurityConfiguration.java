@@ -42,7 +42,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		auth.inMemoryAuthentication().withUser("admin").password("admin")
 		.roles("ADMIN", "USER");
 	}
-}
+
 /*public String BcryptDecoder(String password){
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
@@ -56,5 +56,5 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             //redirectAttributes.addFlashAttribute("errormsg", "Email or Password is incorrect");
             model.setViewName("redirect:/app/profile/deactivate");
         }return password;
-	}
-}*/
+	}*/
+}
