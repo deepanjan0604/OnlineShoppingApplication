@@ -1,5 +1,5 @@
 package com.dh.webtest.model;
-
+import com.dh.webtest.*;
 import java.util.Iterator;
 import java.util.List;
 
@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -53,7 +55,7 @@ public class Customer {
 	@OneToMany(mappedBy = "user",  orphanRemoval = true)
 	List<Authority> authority;*/
 	
-
+	SecurityConfiguration securityConfiguration;
 
 
 
@@ -127,12 +129,20 @@ public class Customer {
 
 
 	public String getPassword() {
+
+		
+		//String passwordCode=securityConfiguration.BcryptDecoder(password);
 		return password;
 	}
 
 
 	public void setPassword(String password) {
-		this.password = password;
+		
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String hashedPassword = passwordEncoder.encode(password);
+		
+		
+		this.password = hashedPassword;
 	}
 	
 
@@ -148,7 +158,7 @@ public class Customer {
 	}
 
 	/*public void setAuthority(List<Authority> authority) {
-		this.authority = authority;
+		this.authority = authority
 	}
 	public List<Authority> getAuthority() {
 		return authority;
