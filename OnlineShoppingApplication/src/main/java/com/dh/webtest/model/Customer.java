@@ -55,7 +55,7 @@ public class Customer {
 	@OneToMany(mappedBy = "user",  orphanRemoval = true)
 	List<Authority> authority;*/
 	
-	SecurityConfiguration securityConfiguration;
+	//SecurityConfiguration securityConfiguration;
 
 
 

@@ -17,8 +17,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
 	DataSource datasource;
 	
-	@Autowired
-	Customer customer;
+	/*@Autowired
+	Customer customer;*/
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -43,18 +43,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.roles("ADMIN", "USER");*/
 	}
 	
-public String BcryptDecoder(String password){
+/*public String BcryptDecoder(String password){
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-        /*if(email.equalsIgnoreCase(customer.getEmail()) && encoder.matches(password, customer.getPassword())){*/
+        if(email.equalsIgnoreCase(customer.getEmail()) && encoder.matches(password, customer.getPassword())){
         	if( encoder.matches(password, customer.getPassword())){
         	String status = "true";	
         	//userService.deactivateUserByID(customer.getCustomerId());
         //   RequestAttributes.addAttribute("successmsg", "Your account has been deactivated successfully.");
-           /* model.setViewName("redirect:/logout");*/
+            model.setViewName("redirect:/logout");
         }else{
             //redirectAttributes.addFlashAttribute("errormsg", "Email or Password is incorrect");
-          /*  model.setViewName("redirect:/app/profile/deactivate");*/
+            model.setViewName("redirect:/app/profile/deactivate");
         }return password;
-	}
+	}*/
 }
