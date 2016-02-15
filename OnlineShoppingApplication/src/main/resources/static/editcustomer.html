@@ -1,17 +1,54 @@
 
- <!-- <!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
+<style>
+   .button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #504B4B;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 17px;
+  padding: 8px;
+  width: 280px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
 
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+</style>
  </head> 
-<body  style="background-color:#lightgrey;" class="panel panel-body" >
- -->
+<body >
+
 <div ng-controller="editcustomerctrl">
 
-    <!--  <div class="panel panel-primary">
-
-    <div class="panel-heading"></div>
-  </div> -->
+    
 
   <div align="center">
   <h1>{{title}}</h1>
@@ -68,7 +105,7 @@
   <br>
   <br>
   
-   <input style="position:relative; left:230px" class="btn btn-primary" value="save"  ng-click="savedetails()"/> 
+   <button class="btn btn-primary"  ng-click="savedetails()"/>Save </button>
  
   </div>
   </div>  </form>
@@ -76,6 +113,85 @@
   </div>
    </div>
    </div>
+   
+   <h2> Ship To </h2>
+<table class="table">
+<tr>
+  <th ></th>
+  <th class="col-md-4">Address</th>
+					<th class="col-md-2" >Mobile</th>
+					<th class="col-md-2">City</th>
+					<th class="col-md-2">State</th>
+					<th class="col-md-2">Pin Code</th>
+          <th class="col-md-2">Edit</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="sa in shippingAddresses">
+          <td><input type="checkbox" ng-model="shippingAddress.id" />
+					<td>{{sa.address1}},{{sa.address2}}</td>
+					<td>{{sa.phone}}</td>
+          <td>{{sa.city}}</td>
+					<td>{{sa.state}}</td>
+					<td>{{sa.pin}}</td>
+          <td><a href="#editshipping/0" >Edit </a> </td>
+        <!--<td>{{shippingAddress.id}</td>-->
+				
+				
+			</tbody>
+		</table>
+    
+    <button  ng-click="showForm=true" data-toggle="modal" data-target="#myModal" class="button" style="vertical-align:middle"><span>Add new Shipping Address </span></button>
+    <br><br>
+    <form ng-show="showForm"   name="form1"  novalidate>
+  
+		<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add a new Shipping Address</h4>
+        </div>
+        <div class="modal-body">
+           Address Line1: <input type="text" class="form-control" name="addressline1"
+				ng-model="shippingAddress.address1" ng-required="true"/>
+				<span style="color:red" ng-show="form1.addressline1.$dirty && form1.addressline1.$error.required"> EmailId is Required!</span><br /> 
+				
+		Address Line2: <input
+				type="text" name="addressline2" class="form-control" ng-model="shippingAddress.address2" ng-required="true"/><br />
+				Phone: <input type="text" class="form-control" name="phone"
+				ng-model="shippingAddress.phone" 
+				ng-pattern="/^[0-9]{1,7}$/"  ng-required="true" /><br>
+				
+				<span style="color:red"ng-show="form1.phone.$dirty && form1.phone.$error.required ">Role is Required
+  </span>
+  <span style="color:red" ng-show=" form1.phone.$error.pattern">Not a valid name!</span> 
+				
+				
+				
+		City: <input type="text" class="form-control"
+				ng-model="shippingAddress.city" ng-required="true" /><br /> 
+				
+			State: <input
+				type="text" class="form-control" ng-model="shippingAddress.state" ng-required="true" /><br />
+			PinCode: <input type="text"  class="form-control"
+				ng-model="shippingAddress.pin"/><br /> 
+		
+        </div>
+        <div class="modal-footer">
+          <button class="button" data-dismiss="modal" ng-click="addShipping()">Add Shipping Address</button>	
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</form>	
+</div>
   
 <!-- </body>
 

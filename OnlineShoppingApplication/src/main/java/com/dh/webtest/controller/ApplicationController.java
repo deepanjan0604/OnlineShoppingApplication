@@ -66,13 +66,16 @@ public class ApplicationController {
 	OrderDetailRepository orderDetailRepository ;
 	
 	@Autowired
-	ShippingAddressRepository shippingAddresRepository ;
+	ShippingAddressRepository shippingAddressRepository ;
 	
 	@Autowired
 	ProductRepository productRepository ;
 	
 	@Autowired
 	StateVatRepository stateVatRepository ;
+	
+	@Autowired
+	CategoryRepository categoryRepository ;
 
 	
 	@RequestMapping("/brands")
@@ -116,13 +119,18 @@ public class ApplicationController {
 	public List<Product> getProducts() {
 		return (List<Product>) productRepository.findAll();
 	}	
+	
+	@RequestMapping("/categories")
+	public List<Category> getCategories() {
+		return (List<Category>) categoryRepository.findAll();
+	}	
 
-	/*@RequestMapping("/shippingaddresses")
+	@RequestMapping("/shippingaddresses")
 	public List<ShippingAddress> getShippingAddress() {
 		
-		return List<ShippingAddress> shippingaddressRepository.findAll();
+		return (List<ShippingAddress>) shippingAddressRepository.findAll();
 	}
-	*/
+	
 	
 	/*
 	@RequestMapping("/users")
@@ -140,6 +148,24 @@ public class ApplicationController {
 		} catch (Exception e) {
 			returnParams.put("status", false);
 			returnParams.put("msg", "customer Addition Failed!!!!!!");
+		
+
+		
+	}
+		return returnParams;	
+
+	}
+	
+	@RequestMapping("/addshippingaddress")
+	public HashMap<String, Object> addShippingaddress(@RequestBody ShippingAddress shippingaddress) {
+		HashMap<String, Object> returnParams = new HashMap<String, Object>();
+		
+		try {
+			shippingAddressRepository.save(shippingaddress);
+			returnParams.put("status", true);
+		} catch (Exception e) {
+			returnParams.put("status", false);
+			returnParams.put("msg", "Shippingaddress Addition Failed!!!!!!");
 		
 
 		

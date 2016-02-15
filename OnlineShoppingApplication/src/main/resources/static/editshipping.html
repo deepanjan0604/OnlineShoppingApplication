@@ -1,0 +1,26 @@
+ 
+ <body ng-controller="editshippingctrl" >
+ 
+ <form>
+ Address Line1: <input type="text" class="form-control"
+				ng-model="shippingAddress.address1" ng-required="true"/><br /> 
+				
+		Address Line2: <input
+				type="text"  class="form-control" ng-model="shippingAddress.address2" ng-required="true"/><br />
+				Phone: <input type="text" class="form-control"
+				ng-model="shippingAddress.phone" ng-required="true" /><br>
+		City: <input type="text" class="form-control"
+				ng-model="shippingAddress.city" ng-required="true" /><br /> 
+				
+			State: <input
+				type="text" class="form-control" ng-model="shippingAddress.state" ng-required="true" /><br />
+			PinCode: <input type="text"  class="form-control"
+				ng-model="shippingAddress.pin"/><br /> 
+		
+        
+        
+          <button class="button" data-dismiss="modal" ng-click="editShipping()">Save</button>	
+          <a type="button" href="#editcustomer" class="btn btn-default" >Cancel</a>
+       
+ </form>
+	  </body>

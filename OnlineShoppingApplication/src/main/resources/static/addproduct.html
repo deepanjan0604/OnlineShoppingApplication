@@ -1,79 +1,46 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-
-
- </head>
 <body  style="background-color:#lightgrey;" class="panel panel-body" >
- <div ng-controller="addshippingctrl">
+ <div ng-controller="addproductctrl">
 <div class="panel panel-info">
 
     <div class="panel-heading">New Product</div>
   </div>
   <br>
-<div class="col-md-12 form-group">
-<div class="row">
-<div ng-contoller="myController">
-<form class="form-horizontal" id="form1" name="form1" onsubmit="myFunction()"  >
-  
-   <div class="form-group">
-    <label for="Product Name" class="col-md-4 control-label">Product Name:</label>
-   <div class="col-md-4">
-    <input type="text" name="ProductName:"  class="form-control" id="ProductName:" required>
-
-  </div>
-  </div>
-  <br>
-
-  <div class="form-group">
-    <label for="Quantity" class="col-md-4 control-label">Quantity:</label>
-   <div class="col-md-4">
-    <input type="number" name="quantity" class="form-control" id="quantity" required >
-
-  </div>
-  </div>
-  <br>
-  
-
-  <div class="form-group">
-    
- <label for="category" class="col-md-4 control-label"> Category: </label><br>
-  <div class="col-md-4">
-    <select name="category" ng-model="catetgory">
-      <option value="option-1">Option 1</option>
+<form class="col-md-8" >
+    Product Name: <input type="text" class="form-control"
+				ng-model="shippingAddress.address1"/><br /> 
+				
+		Quantity: <input
+				type="number"  class="form-control" ng-model="shippingAddress.address2"/><br />
+				
+		Price: <input type="number" class="form-control"
+				ng-model="shippingAddress.city"/><br /> 
+				
+			Category: <select class="form-control" ng-model="shippingAddress.state">
+        <option value="option-1">Option 1</option>
       <option value="option-2">Option 2</option>
-    </select><br>
-	<br />
-  </div>
-  </div>
-  <br>
-  
-  
-  <div class="form-group">
-    
- <label for="brand" class="col-md-4 control-label"> Brand: </label><br>
-  <div class="col-md-4">
-    <select name="brand" ng-model="brand">
-      <option value="option-1">Option 1</option>
+        </select>
+        
+        <br>
+			
+		Brand: <select class="form-control" ng-model="shippingAddress.state">
+        <option value="option-1">Option 1</option>
       <option value="option-2">Option 2</option>
-    </select><br>
-	<br />
-  </div>
-  </div>
+        </select>
+        
+   
+        <br>
+     
+          <button class="button" ng-click="addEntry()">Add Product
+          </button>	
+          <button type="button" class="btn btn-default" >Cancel</button>
+      
+  
+</form>
+  
   <br>
 
-  
-  
-  
-
-  
-  <br>
- <input  type="submit" style="position:relative; left:230px" class="btn btn-primary" value=" Save"/>
 
 </div>
 </div>
 </div>
 </body>
-
-</html>

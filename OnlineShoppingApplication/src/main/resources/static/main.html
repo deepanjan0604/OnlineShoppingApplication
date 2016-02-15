@@ -1,15 +1,19 @@
+
+
 <html>
 	<head>
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-		           <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
-	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-route.min.js"></script>
-
+	
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.5/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+       
+     <script src="app.js"></script>
+	<!-- <link href="animate.css" rel="stylesheet"> -->
+<link href='https://fonts.googleapis.com/css?family=Spinnaker' rel='stylesheet' type='text/css'>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 <link href='https://fonts.googleapis.com/css?family=Raleway:500' rel='stylesheet' type='text/css'>
-<script src="app.js"></script>
 	</head>
 	<style>
     
@@ -36,13 +40,15 @@ padding:0;
     color: white;
     padding: 8px 0 8px 25px;
     text-decoration: none;
-   
+    transform: translateX(0px);
+    transition: 0.2s;
 }
 
 
  #vermenu li a:hover {
-    background-color: #f2f2f2;
-    color: #555;
+    /*background-color: #f2f2f2;
+    color: #555;*/
+    transform: translateX(6px);
 }
  #vermenu .submenu a {
   background-color: #e6e6e6;
@@ -64,7 +70,7 @@ padding:0;
 #hormenu  ul{
  list-style-type: none;
     margin: 0;
-    padding: 0 0;
+    padding: 0px 0px 0px 0px ;
     overflow: hidden;
     background-color: 	 #404040;
     font-family: Raleway, sans-serif;
@@ -78,20 +84,28 @@ padding:0;
     display: block;
     color: white;
     text-align: center;
-    padding: 20px 20px;
+    padding: 16px 20px 16px;
+    border-top: 0px;
     text-decoration: none;
     font-size: 16px;
+     transition:0.1s;
 }
 
 #hormenu li a:hover {
-    background-color: #f2f2f2;
-    opacity: 10%;
-    color: #555;
+    /*background-color: #f2f2f2;*/
+    /*opacity: 0.7;*/
+     border-top: 4px  solid #f2f2f2;
+    
+   
 }
-#brand {
+#hormenu li #brand {
+   border-top: 4px;
   padding: 15px 45px 15px 30px;
   font-size: 20px;
-   color: #f2f2f2;
+  
+}
+#hormenu li:hover #brand {
+ color: #e6e6e6;
 }
 #header {
   padding: 12px 15px 12px 15px;
@@ -117,6 +131,12 @@ padding:0;
   display:block;
    width: 180px;
    text-align: left;
+     transform: translateX(0px);
+    transition: 0.2s;
+}
+#hormenu .submenu li a:hover {
+   border-top: 4px;
+    transform: translateX(5px);
 }
 
 #hormenu .rightalign > li:hover > ul{
@@ -126,26 +146,30 @@ padding:0;
   max-height: 200px;
    transition: all 0.5s ease-out;
 }
+
 </style>
 </head>
 
 	
-	<body ng-app="app" ng-init="names=['Igor Minar', 'Brad Green', 'Dave Geddes', 'Naomi Black', 'Greg Weber', 'Dean Sofer', 'Wes Alvaro', 'John Scott', 'Daniel Nadasi'];">
-   <nav  class="navbar-fixed-top" id="hormenu">
+   
+	<body ng-app="app">
+   
+   <nav  class="navbar-fixed-top"  id="hormenu">
      <ul>
-       <li id="brand">ShopOnline.com</li>
-
+       <li><a id="brand" href="#home">ShopOnline.com</a></li>
+         <li><a href='#gridview'>View Products</a></li>
+          <li><a href='#addproducts'>Add products</a></li>
+       <li><a href='#'>Product2</a></li>
        <div class="rightalign">
-       <div>
-      <li><a href='#'>My Account <span class="glyphicon glyphicon-menu-down" ></span> </a>
-         <ul class="submenu"> 
-         <li><a href='#viewprofile'>View my Profile</a></li>
-         <li><a href='#editprofile'>Edit my Profile</a></li>
-         <li><a href='#history'>My Orders</a></li>
+      <li><a href='#viewcustomer'>My Account <span class="glyphicon glyphicon-menu-down" ></span> </a>
+         <ul class="submenu">
+         <li><a href='#viewcustomer'>View my Profile</a></li>
+         <li><a href='#editcustomer'>Edit my Profile</a></li>
+         <li><a href='#'>My Orders</a></li>
          </ul></li>
-      <li><a href='#'><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li></div>
-    <div ng-hide="authenticated"> <li><a href='#login' class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Sign In</a></li>
-     <li><a href='#newcustomer'>New User? Sign Up</a></li></div>
+      <li><a href='#cart'><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+     <li><a href='#login' data-toggle="modal" data-target="#myModal">Sign In</a></li>
+     <li><a  href='#newcustomer'>New User? Sign Up</a></li>
 </div>
 		</ul>
      
@@ -156,15 +180,15 @@ padding:0;
 	<ul class="mainmenu">
       <li id="header">Shop by Catogory</li>
       
-   <li><a href='#product'>Home</a></li>
-   <li><a href="#" ng-click="showBoxOne = !showBoxOne"><span class="glyphicon glyphicon-chevron-right" ></span> Products</a>
+   <li ng-repeat="category in categories"><a href='#'><span class="glyphicon glyphicon-chevron-right" ></span>  {{category.categoryName}}</a></li>
+  <!--  <li><a href="#e1" ng-click="showBoxOne = !showBoxOne"><span class="glyphicon glyphicon-chevron-right" ></span> Products</a>
    
    <div class="submenu">
       <ul class=' animate-show'  ng-show="showBoxOne" >
-         <li ng-repeat="category in categories">
-           <a href='#'> {{category}}</a></li>
-         <!--  <li class="animate-show"><a href='#'>Product2</a></li>
-       <li><a href='#'>Product2</a></li> -->
+         <li >
+           <a href='#'></a></li>
+          <li class="animate-show"><a href='#'>Product2</a></li>
+       <li><a href='#'>Product2</a></li>
 		</ul>
          </div>
      
@@ -176,17 +200,26 @@ padding:0;
          <li class='has-sub'><a href='#'>Product 2</a></li>
       </ul>
    </li>
-   <li><a href='#about'>About</a></li>
-   <li><a href='#contact'>Contact</a></li>
-</ul>
+   <li><a href='#'>About</a></li>
+   <li><a href='#'>Contact</a></li>
+</ul> -->
 </div>
 
-
-<div>
-
-</div>
-<div ng-view></div>
-
+ 
+<!--<div class="col-md-8">
+<div class="container">-->
+  
+<div class="row" style="padding-top:100px">
+<div class="col-md-8 col-md-offset-3">
+ 
+<div ng-view>
+  </div>
+  
+  </div>
+  </div>
 	</body>
-	
+	<script>
+
+
+	</script>
 </html>
