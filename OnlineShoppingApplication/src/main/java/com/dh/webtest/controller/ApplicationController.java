@@ -10,6 +10,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -77,7 +78,16 @@ public class ApplicationController {
 	@Autowired
 	CategoryRepository categoryRepository ;
 
-	
+	/*@RequestMapping("/login")
+	public List<Brand> getLogin() {
+		
+		System.out.println(SecurityContextHolder.getContext().getAuthentication().getName());
+		
+		
+		
+		return (List<Brand>) brandRepository.findAll();
+	}	
+	*/
 	@RequestMapping("/brands")
 	public List<Brand> getBrands() {
 		return (List<Brand>) brandRepository.findAll();

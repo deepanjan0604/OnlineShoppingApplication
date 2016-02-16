@@ -40,7 +40,7 @@ public class Customer {
 	@Column(name = "emailId")
 	String emailId;
 	
-@Column(name = "username")
+	@Column(name = "username")
 	String userName;
 	
 	@Column(name = "password")
@@ -57,6 +57,17 @@ public class Customer {
 	
 	//SecurityConfiguration securityConfiguration;
 
+
+
+
+	public String getRole() {
+		return role;
+	}
+
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 
 
 
@@ -128,13 +139,13 @@ public class Customer {
 	}
 
 
-	public String getPassword() {
+	/*public String getPassword(String password) {
 
 		
-		//String passwordCode=securityConfiguration.BcryptDecoder(password);
+		//String passwordCode= BcryptDecoder(password);
 		return password;
 	}
-
+*/
 
 	public void setPassword(String password) {
 		
@@ -145,7 +156,17 @@ public class Customer {
 		this.password = hashedPassword;
 	}
 	
+	/*public String BcryptDecoder(String password){
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
+        	if( encoder.matches(password, getPassword(password))){
+        	String status = "true";	
+        	//userService.deactivateUserByID(customer.getCustomerId());
+        //   RequestAttributes.addAttribute("successmsg", "Your account has been deactivated successfully.");
+        }else{
+            //redirectAttributes.addFlashAttribute("errormsg", "Email or Password is incorrect");
+        }return password;
+	}*/
 	
 
 	public List<ShippingAddress> getShippingAddress() {
@@ -191,6 +212,11 @@ public class Customer {
 
 		return str;
 
+	}
+
+
+	public String getPassword() {
+		return password;
 	}
 	
 	

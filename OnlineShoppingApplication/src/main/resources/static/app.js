@@ -144,13 +144,42 @@ app.run(function($rootScope, $http){
 		};
 	});	 */
 
-app.controller('loginctrl',[ '$scope', '$rootScope','$http', function($scope,$rootScope, $http)
+app.controller('loginctrl',[ '$scope', '$rootScope','$http', '$location', function($scope,$rootScope, $http, $location)
 {
 
 //	$scope.auth = {};
 //	$scope.login = function(){
 //		$rootScope.loadCustomers($scope.auth);
 //	}
+	
+	$scope.login = function() {
+		/*if(auth)
+			{*/
+			var authData = $scope.auth.username + ':' + $scope.auth.password;
+		var encodedAuthData = btoa(authData);
+		/*var headers = {
+				'Authorization' : 'Basic ' + encodedAuthData
+				}
+			} else {
+				headers : {};
+			}*/
+			$http({
+				method : 'GET',
+				url : '/products',     
+				headers : {'Authorization' : 'Basic ' + encodedAuthData}
+			}).then(function(response) {
+				
+				$rootScope.products = response.data;
+				
+				$rootScope.authenticated = true;
+				
+				$location.path('/');
+				alert($rootScope.authenticated);
+				$rootScope.authenticated1=false;
+		}, function(response){
+			
+		});
+	}
 }]);		 
 
 
@@ -280,9 +309,9 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
 			                    			 function($scope,$route,$routeParams,$rootScope, $http) {
 	$scope.title="New Customer";
 	$scope.customers={};
-
+	
 	 $scope.savecustomer = function(){
-			
+		 $scope.customers.role="USER";		
 			
 			$http({
 				method: 'POST',
