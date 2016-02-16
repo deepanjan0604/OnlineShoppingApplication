@@ -22,14 +22,16 @@ import com.mysql.jdbc.Blob;
 @Table(name="brands")
 public class Brand {
 	
-	@Id
+	
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	int brandId;
-
+	
+	@Id
 	@Column(name = "brandname")
 	String brandName;
 
 	@OneToMany(mappedBy = "brand",  orphanRemoval = true)
+	@JsonIgnore
 	List<Product> product;
 	
 	public int getBrandId() {
@@ -47,6 +49,7 @@ public class Brand {
 	public void setBrandName(String brandName) {
 		this.brandName = brandName;
 	}
+
 
 	public List<Product> getProduct() {
 		return product;

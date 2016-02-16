@@ -17,6 +17,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mysql.jdbc.Blob;
 
 @Entity
@@ -47,7 +48,7 @@ public class Product {
 	
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JsonIgnore
+	
 	Category category;
 
 	@OneToMany(mappedBy = "product",  orphanRemoval = true)
@@ -92,19 +93,19 @@ public class Product {
 	public void setProductimage(List<ProductImage> productimage) {
 		this.productimage = productimage;
 	}
-
+	//@JsonIgnore
 	public Brand getBrand() {
 		return brand;
 	}
-
+	@JsonProperty("brand")
 	public void setBrand(Brand brand) {
 		this.brand = brand;
 	}
-
+	// @JsonIgnore
 	public Category getCategory() {
 		return category;
 	}
-
+	 // @JsonProperty("category")
 	public void setCategory(Category category) {
 		this.category = category;
 	}

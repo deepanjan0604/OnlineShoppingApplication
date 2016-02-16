@@ -61,8 +61,10 @@
    <div class="form-group">
     <label for="FirstName" class="col-sm-4 control-label">First Name</label>
    <div class="col-md-4">
-    <input type="text"  name="firstname"  ng-model="edit.firstName" class="form-control" id="firstname" >
-
+    <input type="text"  name="firstname"  ng-model="edit.firstName" class="form-control"   ng-required="true">
+<span style="color:red"ng-show="form1.firstname.$dirty && form1.firstname.$error.required">First name is Required
+  </span>
+  
   </div> 
   </div>
   <br>
@@ -70,8 +72,8 @@
   <div class="form-group">
     <label for="lastname" class="col-sm-4 control-label">Last Name</label>
    <div class="col-md-4">
-    <input type="text" name="lastname" ng-model="edit.lastName" class="form-control" id="lastname" >
- 
+    <input type="text" name="lastname" ng-model="edit.lastName" class="form-control" ng-required="true" >
+ <span style="color:red" ng-show="form1.lastname.$dirty && form1.lastname.$error.required">Last name is Required
   </div>
   </div>
   <br>
@@ -79,17 +81,19 @@
   <div class="form-group">
     <label for="inputEmail" class="col-sm-4 control-label">E-mail</label>
   <div class="col-md-4"> 
-      <input type="email" class="form-control" id="email" name="email" ng-model="edit.emailId" >
-       
+      <input type="email" class="form-control" id="email" name="email" ng-model="edit.emailId" ng-required="true">
+        <span style="color:red" ng-show="form1.email.$dirty && form1.email.$error.required"> EmailId is Required!</span>
+      <span style="color:red" ng-show="form1.email.$dirty && form1.email.$error.email">Not valid email!</span>  S
     </div>
   </div>
   <br />
   
    <div class="form-group">
-    <label for="UserName" class="col-sm-4 control-label">User Name</label>
+    <label for="UserName" class="col-sm-4 control-label" ng-required="true">User Name</label>
    <div class="col-md-4">
     <input type="text"  name="username"  ng-model="edit.userName" class="form-control" id="username" >
-  
+   <span style="color:red"ng-show="form1.username.$dirty && form1.username.$error.required">User name is Required
+  </span>
   </div> 
   </div>
   <br>
@@ -97,18 +101,11 @@
 
   
   
-  <div class="form-group">
-    <label for="password" class="col-sm-4 control-label">Password</label>
-   <div class="col-md-4">
-    <input type="password" name="password" ng-model="edit.password" class="form-control" id="password" >
   
-  <br>
-  <br>
   
    <button class="btn btn-primary"  ng-click="savedetails()"/>Save </button>
  
-  </div>
-  </div>  </form>
+    </form>
    </div>
   </div>
    </div>
@@ -128,7 +125,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="sa in shippingAddresses">
+				<tr ng-repeat="sa in shippingAddress">
           <td><input type="checkbox" ng-model="shippingAddress.id" />
 					<td>{{sa.address1}},{{sa.address2}}</td>
 					<td>{{sa.phone}}</td>
@@ -158,27 +155,45 @@
         <div class="modal-body">
            Address Line1: <input type="text" class="form-control" name="addressline1"
 				ng-model="shippingAddress.address1" ng-required="true"/>
-				<span style="color:red" ng-show="form1.addressline1.$dirty && form1.addressline1.$error.required"> EmailId is Required!</span><br /> 
+				<span style="color:red" ng-show="form1.addressline1.$dirty && 
+				form1.addressline1.$error.required"> Address Line1  is Required!</span><br /> 
 				
 		Address Line2: <input
 				type="text" name="addressline2" class="form-control" ng-model="shippingAddress.address2" ng-required="true"/><br />
+				<span style="color:red" ng-show="form1.addressline2.$dirty && 
+				form1.addressline2.$error.required"> Address Line 2  is Required!</span><br /> 
+				
 				Phone: <input type="text" class="form-control" name="phone"
 				ng-model="shippingAddress.phone" 
 				ng-pattern="/^[0-9]{1,7}$/"  ng-required="true" /><br>
 				
-				<span style="color:red"ng-show="form1.phone.$dirty && form1.phone.$error.required ">Role is Required
+				<span style="color:red "
+				ng-show="form1.phone.$dirty && form1.phone.$error.required ">Phone number is Required
   </span>
-  <span style="color:red" ng-show=" form1.phone.$error.pattern">Not a valid name!</span> 
+  <span style="color:red" 
+     ng-show=" form1.phone.$error.pattern">Not a valid phone number! ONLY NUMBERS ALLOWED</span> 
 				
 				
 				
-		City: <input type="text" class="form-control"
-				ng-model="shippingAddress.city" ng-required="true" /><br /> 
+		City: <input type="text" name="city"class="form-control"
+				ng-model="shippingAddress.city" ng-required="true" />
+				<span style="color:red" ng-show="form1.city.$dirty && 
+				form1.city.$error.required"> city is Required!
+				</span><br /> <br /> 
 				
-			State: <input
+			State: <input name="state"
 				type="text" class="form-control" ng-model="shippingAddress.state" ng-required="true" /><br />
-			PinCode: <input type="text"  class="form-control"
+			<span style="color:red" ng-show="form1.state.$dirty && 
+				form1.state.$error.required"> State is Required!
+				</span><br /> <br />
+				PinCode: <input type="text" name="pincode" ng-pattern="/^[0-9]{1,7}$/" class="form-control"
 				ng-model="shippingAddress.pin"/><br /> 
+				
+				<span style="color:red "
+				ng-show="form1.pincode.$dirty && form1.pincode.$error.required ">Phone number is Required
+  </span>
+  <span style="color:red" 
+     ng-show=" form1.pincode.$error.pattern">Not a valid phone number! ONLY NUMBERS ALLOWED</span> 
 		
         </div>
         <div class="modal-footer">

@@ -174,6 +174,27 @@ public class ApplicationController {
 
 	}
 	
+	
+	
+	@RequestMapping("/saveproduct")
+	public HashMap<String, Object> saveproduct(@RequestBody Product product) {
+		HashMap<String, Object> returnParams = new HashMap<String, Object>();
+		
+		try {
+			System.out.println(product.getCategory());
+			productRepository.save(product);
+			returnParams.put("status", true);
+		} catch (Exception e) {
+			returnParams.put("status", false);
+			returnParams.put("msg", "product Addition Failed!!!!!!");
+		
+
+		
+	}
+		return returnParams;	
+
+	}
+	
 	/*
 	
 	@RequestMapping("/editcustomer")

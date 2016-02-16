@@ -231,12 +231,21 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
 	
 	
 	
-	
+	$scope.shippingAddresses=[];
 	$scope.shippingAddress={};
+	
+	/* $http({
+			method : 'GET',
+			url : '/addshippingaddress,
+			
+		}).then(function(response) {
+			$rootScope.shippingaddress = angular.copy(response.data);
+			 
+		});*/
+     
 
 	 $scope.addShipping = function(){
-			
-			
+		
 			$http({
 				method: 'POST',
 				url : '/addshippingaddress',
@@ -246,6 +255,10 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
 					alert('shippingaddress Added Successfully!');
 					
 					
+					$scope.shippingAddresses.push($scope.shippingAddress);
+						
+					
+				     $scope.shippingAddress=''; 	
 												} 
 				
 				else {
@@ -254,7 +267,7 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
 			});
 		};
 		
-                           			
+	   			
                            	     }]);
 
 			  
@@ -323,6 +336,62 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
  app.controller('addproductctrl', [ '$scope','$route','$routeParams', '$rootScope','$http',
                           	     function($scope,$route,$routeParams,$rootScope, $http){
     
+	
+	 
+	 $http({
+			method : 'GET',
+			url : '/categories',     
+		
+		}).then(function(response) {
+			$rootScope.categories = response.data;
+			
+	})
+	
+	$http({
+			method : 'GET',
+			url : '/brands',     
+		
+		}).then(function(response) {
+			$rootScope.brands = response.data;
+			
+	})
+
+	
+	 $scope.product={
+			 category:{
+				 
+			 }
+	 
+	         /* brands:{
+	         }
+			 */
+	 
+	 }
+	/* $scope.categories=[{"categoryName":"shirt"
+		 
+	 }]*/
+	 $scope.saveproduct = function(){
+			
+			
+			$http({
+				method: 'POST',
+				url : '/saveproduct',
+				data : $scope.product
+			}).then(function(response){
+				if(response.data.status){
+					alert('product Added Successfully!');
+					
+					
+												} 
+				
+				else {
+					alert('product Addition Failed!');
+				       }
+			});
+		};
+		
+		
+		
                                                              
  }])
  app.controller('gridctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
