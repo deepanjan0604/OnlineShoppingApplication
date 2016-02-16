@@ -3,14 +3,13 @@ package com.dh.webtest;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.context.request.*;
-
-import com.dh.webtest.model.Customer;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -24,7 +23,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.httpBasic().and().authorizeRequests().antMatchers("/public/**").permitAll().antMatchers("/admin/**")
-				.access("hasRole('ADMIN')").antMatchers("/public/**").access("hasRole('USER')").and().logout()
+				.access("hasRole('ADMIN')").and().logout()
 				.and().csrf().disable();
 	}
 
@@ -33,15 +32,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		
 
 	auth.jdbcAuthentication()
-				.dataSource(datasource)
-				.usersByUsernameQuery("select username, password, role from users where username=?")
-				.authoritiesByUsernameQuery("select username, authority from authority where username=?");
-//				.rolePrefix("");
+				.dataSource(datasource).passwordEncoder(passwordEncoder())
+				.usersByUsernameQuery("select username, password, true as enabled from customers where username=?")
+				.authoritiesByUsernameQuery("select username, role from customers where username=?")
+				.rolePrefix("");
 
-		
+		/*
 		auth.inMemoryAuthentication().withUser("admin").password("admin")
-		.roles("ADMIN", "USER");
-	}
+		.roles("ADMIN", "USER");*/
+	
 
 /*public String BcryptDecoder(String password){
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -57,4 +56,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             model.setViewName("redirect:/app/profile/deactivate");
         }return password;
 	}*/
+}
+	@Bean
+	public PasswordEncoder passwordEncoder(){
+		PasswordEncoder encoder = new BCryptPasswordEncoder();
+		return encoder;
+	}
 }
