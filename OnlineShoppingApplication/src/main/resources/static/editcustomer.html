@@ -83,7 +83,7 @@
   <div class="col-md-4"> 
       <input type="email" class="form-control" id="email" name="email" ng-model="edit.emailId" ng-required="true">
         <span style="color:red" ng-show="form1.email.$dirty && form1.email.$error.required"> EmailId is Required!</span>
-      <span style="color:red" ng-show="form1.email.$dirty && form1.email.$error.email">Not valid email!</span>  S
+      <span style="color:red" ng-show="form1.email.$dirty && form1.email.$error.email">Not valid email!</span>  
     </div>
   </div>
   <br />
@@ -99,12 +99,9 @@
   <br>
 
 
-  
-  
-  
-  
-   <button class="btn btn-primary"  ng-click="savedetails()"/>Save </button>
- 
+   <!-- <button type="submit" class="btn btn-primary"  ng-click="savedetails()">Save </button> -->
+ <input  class="btn btn-primary"
+  value="save"  ng-click="savedetails()"/> 
     </form>
    </div>
   </div>

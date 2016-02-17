@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-//import com.dh.webtest.controller.ProductDAO;
+
+
 import com.dh.webtest.model.Authority;
 import com.dh.webtest.model.Brand;
 import com.dh.webtest.model.Cart;
@@ -28,7 +29,7 @@ import com.dh.webtest.model.OrderDetail;
 import com.dh.webtest.model.Product;
 import com.dh.webtest.model.ShippingAddress;
 import com.dh.webtest.model.StateVat;
-//import com.dh.webtest.model.User;
+
 import com.dh.webtest.repository.AuthorityRepository;
 import com.dh.webtest.repository.BrandRepository;
 import com.dh.webtest.repository.CartRepository;
@@ -40,14 +41,13 @@ import com.dh.webtest.repository.OrderDetailRepository;
 import com.dh.webtest.repository.ProductRepository;
 import com.dh.webtest.repository.ShippingAddressRepository;
 import com.dh.webtest.repository.StateVatRepository;
-//import com.dh.webtest.repository.UserRepository;
+
 
 
 @RestController
 public class ApplicationController {
 
-	/*@Autowired
-	UserRepository userRepository;*/
+	
 	@Autowired
 	AuthorityRepository authorityRepository;
 	@Autowired
@@ -110,9 +110,15 @@ public class ApplicationController {
 	
 	@RequestMapping("/customers")
 	public List<Customer> getCustomers() {
+		
 		return (List<Customer>) customerRepository.findAll();
 	}	
 	
+	@RequestMapping("/customers/one")
+		public Customer  getCustomer (){
+		String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+		return  customerRepository.findByuserName(userName);
+	}
 	
 	@RequestMapping("/orders")
 	public List<Order> getOrder() {
@@ -141,12 +147,6 @@ public class ApplicationController {
 		return (List<ShippingAddress>) shippingAddressRepository.findAll();
 	}
 	
-	
-	/*
-	@RequestMapping("/users")
-	public List<User> getUsers() {
-		return (List<User>) userRepository.findAll();
-	}*/	
 	
 	@RequestMapping("/savecustomer")
 	public HashMap<String, Object> savecustomer(@RequestBody Customer customer) {
@@ -205,37 +205,17 @@ public class ApplicationController {
 
 	}
 	
-	/*
 	
-	@RequestMapping("/editcustomer")
-	public HashMap<String, Object> editcustomer(@RequestBody Customer customer) {
+	
+	@RequestMapping("/savedetails")
+	public HashMap<String, Object> savedetails(@RequestBody Customer customer) {
 		HashMap<String, Object> returnParams = new HashMap<String, Object>();
 		
 		try {
-			
 			customerRepository.save(customer);
-			customerRepository.customerlist.add(customer);
-			//System.out.println("Customer edited successfully !!");
-
-			
 			returnParams.put("status", true);
 		} catch (Exception e) {
-			returnParams.put("status", false);
-			returnParams.put("msg", "Customer Edit Failed!!!!!!");
-		}
-
-		return returnParams;
-	}*/
-}
-	
-	/*@RequestMapping("/savedetails")
-	public HashMap<String, Object> savedetails(@RequestBody User user) {
-		HashMap<String, Object> returnParams = new HashMap<String, Object>();
-		
-		try {
-			userRepository.save(user);
-			returnParams.put("status", true);
-		} catch (Exception e) {
+		e.printStackTrace();
 			returnParams.put("status", false);
 			returnParams.put("msg", "Details Addition Failed!!!!!!");
 		
@@ -244,8 +224,8 @@ public class ApplicationController {
 	}
 		return returnParams;
 	}
+}
 	
-}*/
 	
 	/*@Autowired
     ProductDAO productDAO;

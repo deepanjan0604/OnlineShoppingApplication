@@ -14,10 +14,7 @@ app.config(['$routeProvider',
            .when('/login', {
                templateUrl: 'login.html',
                controller: 'loginctrl'
-           })   
-               .when('/home', {
-        templateUrl: 'home.html',
-        controller: 'homectrl'
+       
       })
 
            .when('/gridview', {
@@ -209,7 +206,17 @@ app.controller('homectrl', ['$scope', function($scope) {
 app.controller('viewcustomerctrl', [ '$scope','$route','$routeParams', '$rootScope','$http',
                                	     function($scope,$route,$routeParams,$rootScope, $http){
     
-    
+	$http({
+			
+		   method : 'GET',
+	                           			
+	                           			
+	       url : '/customers/one',
+	                           			
+	        }).then(function(response) {
+	                           			$scope.customers = angular.copy(response.data);
+	                           			 
+	                           		});
 }])
 
 
@@ -218,47 +225,57 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
                            	     function($scope,$route,$routeParams,$rootScope, $http)
                            	     {
                            			 
-                           	    /*$scope.title=' Edit Customer!!!';
+    $scope.title=' Edit Customer!!!';
                            	    
-                           	    $http({
-                           			method : 'GET',
-                           			url : '/customers/'+$routeParams.id,
+    /*$scope.edit=
+	                {
+	                  "firstName": "hhh",
+	                  "lastName": "gdfgsdf",
+	                  "userName":"gfgh",
+	                  "emailId": "hjk@jkhjk"
+	                
+	                 }      */                   	    
+   
+   $http({
                            			
-                           		}).then(function(response) {
-                           			$rootScope.edit = angular.copy(response.data);
+	   method : 'GET',
+                           			
+                           			
+       url : '/customers/one',
+                           			
+        }).then(function(response) {
+                           			$scope.edit = angular.copy(response.data);
                            			 
                            		});
                            	    
                            	    
-                           		 $rootScope.edit={
-                           				 customers:{
-                           					 
-                           				 }
-                           		 }
-                           		$scope.savedetails = function(){	
-                           							
-                           		 $http({
-                           				method: 'POST',
-                           				url : '/savedetails',
-                           				data : $rootScope.edit,
-                           			
-                           			}).then(function(response){
-                           				if(response.data.status){
-                           					alert('customer edit Successfully!');
-                           					$rootScope.edit= {};
-                           					
-                           				} else {
-                           					alert('customer edit Failed!');
-                           				}
-                           			});
-                           			};
-                           			 $scope.addEntry=function(){
-            $scope.shippingAddresses.push($scope.shippingAddress);
-             $scope.shippingAddress='';
-    }
-                           			*/
-	
-	
+ /*$scope.edit={
+		 customers:{
+			 
+			 }                      				
+ }
+  */                         		
+    $scope.savedetails = function(){	
+			
+  		 $http({
+  				method: 'POST',
+  				url : '/savedetails',
+  				data : $scope.edit,
+  			
+  			}).then(function(response){
+  				if(response.data.status){
+  					alert('customer edit Successfully!');
+  					$scope.edit= {};
+  					
+  				} else {
+  					alert('customer edit Failed!');
+  				}
+  			});
+  			};     
+// $scope.addEntry=function(){
+//            $scope.shippingAddresses.push($scope.shippingAddress);
+//             $scope.shippingAddress='';
+//    }
 	
 	$scope.shippingAddresses=[];
 	$scope.shippingAddress={};
@@ -387,9 +404,9 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
 
 	
 	 $scope.product={
-			 category:{
+			 /*category:{
 				 
-			 }
+			 }*/
 	 
 	         /* brands:{
 	         }
