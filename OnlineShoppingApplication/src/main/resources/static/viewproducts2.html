@@ -2,24 +2,29 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>ShopOnline.com</title>
 </head>
 <body>
 <div ng-controller="productctrl">
+<h2>{{title}}</h2>
 <table class="table table-bordered ">
 			<thead>
 				<tr>
 				<td></td>
 					<td>Product Name</td>
 					<td>Product Price</td>
+					<td>View Details</td>
+
 				</tr>
 			</thead>
 			<tbody>
+			
 				<tr ng-repeat="product in products">
-					<td>{{product.thumbnail}}</td>
-					<td>{{product.name}}</td>
-					<td>{{product.price}}</td>
-					<td><a href=#viewproductdetails/{{product.productId}}>View Details</a></td>
+				<td>thumbnail</td>
+					<td>{{product.productName}}</td>
+					<td>{{product.brands.brandName}}</td>
+					<td>{{product.productPrice}}</td>
+					<td><a href=#viewproductdetails/{{product.productId}}>View</a></td>
 				</tr>
 			</tbody>
 		</table>

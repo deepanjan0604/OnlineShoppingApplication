@@ -5,35 +5,43 @@
     <div class="panel-heading">New Product</div>
   </div>
   <br>
-<form class="col-md-8" >
-    Product Name: <input type="text" class="form-control"
-				ng-model="shippingAddress.address1"/><br /> 
+<form  class="col-md-8"  name="form1" action="validation1.html"  >
+    Product Name: <input type="text" name="product" class="form-control"
+				ng-model="product.productName"  ng-required="true"/>
+	<span style="color:red" ng-show="form1.product.$dirty && form1.product.$error.required">productname is Required
+  </span>
+  <br /> 
 				
 		Quantity: <input
-				type="number"  class="form-control" ng-model="shippingAddress.address2"/><br />
+				type="number" name="quantity" class="form-control" ng-model="product.quantity" ng-required="true"/><br />
+		<span style="color:red" ng-show="form1.quantity.$dirty && 
+		form1.quantity.$error.required">Quantity is Required
+  </span>
+		Price: <input type="number" name="price" class="form-control"
+				ng-model="product.productPrice"  ng-required="true"/><br />
+				<span style="color:red" ng-show="form1.price.$dirty && 
+		form1.price.$error.required">price is Required
+  </span> 
 				
-		Price: <input type="number" class="form-control"
-				ng-model="shippingAddress.city"/><br /> 
-				
-			Category: <select class="form-control" ng-model="shippingAddress.state">
-        <option value="option-1">Option 1</option>
-      <option value="option-2">Option 2</option>
+			 Category: <select class="form-control" ng-model="product.category.categoryName">
+       
+<option  ng-repeat="cat in categories" value="{{cat.categoryName}}">{{cat.categoryName}}
+</option>
         </select>
         
         <br>
 			
-		Brand: <select class="form-control" ng-model="shippingAddress.state">
-        <option value="option-1">Option 1</option>
-      <option value="option-2">Option 2</option>
-        </select>
-        
-   
-        <br>
+		 Brand: <select class="form-control" ng-model="product.brand.brandName">
+ <option  ng-repeat="brand in brands" value="{{brand.brandName}}">{{brand.brandName}}
+     </option>
+        </select> 
+         <br>
+            <input ng-disabled="form1.$invalid"  style="position:relative; left:50px" 
+         class="btn btn-primary" value="save" ng-click="saveproduct()"/> 
      
-          <button class="button" ng-click="addEntry()">Add Product
-          </button>	
-          <button type="button" class="btn btn-default" >Cancel</button>
-      
+          
+         <!--  <button type="button" class="btn btn-default" >Cancel</button>
+       -->
   
 </form>
   

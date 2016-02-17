@@ -14,10 +14,7 @@ app.config(['$routeProvider',
            .when('/login', {
                templateUrl: 'login.html',
                controller: 'loginctrl'
-           })   
-               .when('/home', {
-        templateUrl: 'home.html',
-        controller: 'homectrl'
+       
       })
 
            .when('/gridview', {
@@ -25,7 +22,7 @@ app.config(['$routeProvider',
          controller: 'gridctrl'
        })
       .when('/cart', {
-        templateUrl: 'Cart.html',
+        templateUrl: 'cart.html',
          controller: 'cartctrl'
        })
   
@@ -52,13 +49,14 @@ app.config(['$routeProvider',
                  templateUrl: 'editproduct.html',
                  controller: 'editproductctrl'
                })
-              
-             
-               
-               
+    
               .when('/viewcustomer', {
                templateUrl: 'viewcustomer.html',
                controller: 'viewcustomerctrl'
+             })
+             .when('/viewproduct', {
+               templateUrl: 'viewproducts2.html',
+               controller: 'productctrl'
              })
              .when('/addproducts', {
                    templateUrl: 'addproduct.html',
@@ -198,23 +196,49 @@ else
 			alert($rootScope.authenticated);
 		});
 	}
-}]);		 
+}]);	
 
 
-/*app.controller('productctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
-                          	     function($scope,$route,$routeParams,$rootScope, $http)
+
+
+/*app.run(function($rootScope, $http){
+	$rootScope.loadUsers = function(auth) {
+		if(auth)
+			{
+			var authData = auth.username + ':' + auth.password;
+		var encodedAuthData = btoa(authData);
+		headers = {
+				'Authorization' : 'Basic ' + encodedAuthData
+				}
+			} else {
+				headers : {};
+			}
+			$http({
+				method : 'GET',
+				url : '/users',     
+				headers : headers
+			}).then(function(response) {
+				$rootScope.users = response.data;
+				$rootScope.authenticated = true;
+		});
+		};
+	});*/
+
+
+
+app.controller('productctrl',[ '$scope', '$rootScope','$http',function($scope,$rootScope, $http)
                           	     {
-	$scope.products={};
+	$scope.title="List Of Products";
+	//$scope.products={};
 	$http({
 		method : 'GET',
-		url : '/products',
-		
+		url : '/viewproducts',	
 	}).then(function(response) {
-		$rootScope.products = angular.copy(response.data);
-		 
+		debugger;
+		$rootScope.products = angular.copy(response.data);		 
 	});
                           			  }]);
-*/
+
 
 
 
@@ -227,7 +251,17 @@ app.controller('homectrl', ['$scope', function($scope) {
 app.controller('viewcustomerctrl', [ '$scope','$route','$routeParams', '$rootScope','$http',
                                	     function($scope,$route,$routeParams,$rootScope, $http){
     
-    
+	$http({
+			
+		   method : 'GET',
+	                           			
+	                           			
+	       url : '/customers/one',
+	                           			
+	        }).then(function(response) {
+	                           			$scope.customer = angular.copy(response.data);
+	                           			 
+	                           		});
 }])
 
 
@@ -236,54 +270,73 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
                            	     function($scope,$route,$routeParams,$rootScope, $http)
                            	     {
                            			 
-                           	    /*$scope.title=' Edit Customer!!!';
+    $scope.title=' Edit Customer!!!';
                            	    
-                           	    $http({
-                           			method : 'GET',
-                           			url : '/customers/'+$routeParams.id,
+    /*$scope.edit=
+	                {
+	                  "firstName": "hhh",
+	                  "lastName": "gdfgsdf",
+	                  "userName":"gfgh",
+	                  "emailId": "hjk@jkhjk"
+	                
+	                 }      */                   	    
+   
+   $http({
                            			
-                           		}).then(function(response) {
-                           			$rootScope.edit = angular.copy(response.data);
+	   method : 'GET',
+                           			
+                           			
+       url : '/customers/one',
+                           			
+        }).then(function(response) {
+                           			$scope.edit = angular.copy(response.data);
                            			 
                            		});
                            	    
                            	    
-                           		 $rootScope.edit={
-                           				 customers:{
-                           					 
-                           				 }
-                           		 }
-                           		$scope.savedetails = function(){	
-                           							
-                           		 $http({
-                           				method: 'POST',
-                           				url : '/savedetails',
-                           				data : $rootScope.edit,
-                           			
-                           			}).then(function(response){
-                           				if(response.data.status){
-                           					alert('customer edit Successfully!');
-                           					$rootScope.edit= {};
-                           					
-                           				} else {
-                           					alert('customer edit Failed!');
-                           				}
-                           			});
-                           			};
-                           			 $scope.addEntry=function(){
-            $scope.shippingAddresses.push($scope.shippingAddress);
-             $scope.shippingAddress='';
-    }
-                           			*/
+ /*$scope.edit={
+		 customers:{
+			 
+			 }                      				
+ }
+  */                         		
+    $scope.savedetails = function(){	
+			
+  		 $http({
+  				method: 'POST',
+  				url : '/savedetails',
+  				data : $scope.edit,
+  			
+  			}).then(function(response){
+  				if(response.data.status){
+  					alert('customer edit Successfully!');
+  					$scope.edit= {};
+  					
+  				} else {
+  					alert('customer edit Failed!');
+  				}
+  			});
+  			};     
+// $scope.addEntry=function(){
+//            $scope.shippingAddresses.push($scope.shippingAddress);
+//             $scope.shippingAddress='';
+//    }
 	
-	
-	
-	
+	/*$scope.shippingAddresses=[];
 	$scope.shippingAddress={};
+	
+	 $http({
+			method : 'GET',
+			url : '/addshippingaddress',
+			
+		}).then(function(response) {
+			$scope.shippingAddress = angular.copy(response.data);
+			 
+		});
+     */
 
 	 $scope.addShipping = function(){
-			
-			
+		
 			$http({
 				method: 'POST',
 				url : '/addshippingaddress',
@@ -293,6 +346,10 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
 					alert('shippingaddress Added Successfully!');
 					
 					
+					$scope.shippingAddresses.push($scope.shippingAddress);
+						
+					
+				     $scope.shippingAddress=''; 	
 												} 
 				
 				else {
@@ -301,7 +358,7 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
 			});
 		};
 		
-                           			
+	   			
                            	     }]);
 
 			  
@@ -370,6 +427,62 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
  app.controller('addproductctrl', [ '$scope','$route','$routeParams', '$rootScope','$http',
                           	     function($scope,$route,$routeParams,$rootScope, $http){
     
+	
+	 
+	 $http({
+			method : 'GET',
+			url : '/categories',     
+		
+		}).then(function(response) {
+			$rootScope.categories = response.data;
+			
+	})
+	
+	$http({
+			method : 'GET',
+			url : '/brands',     
+		
+		}).then(function(response) {
+			$rootScope.brands = response.data;
+			
+	})
+
+	
+	 $scope.product={
+			 /*category:{
+				 
+			 }*/
+	 
+	         /* brands:{
+	         }
+			 */
+	 
+	 }
+	/* $scope.categories=[{"categoryName":"shirt"
+		 
+	 }]*/
+	 $scope.saveproduct = function(){
+			
+			
+			$http({
+				method: 'POST',
+				url : '/saveproduct',
+				data : $scope.product
+			}).then(function(response){
+				if(response.data.status){
+					alert('product Added Successfully!');
+					
+					
+												} 
+				
+				else {
+					alert('product Addition Failed!');
+				       }
+			});
+		};
+		
+		
+		
                                                              
  }])
  app.controller('gridctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
@@ -420,6 +533,13 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
  app.controller('listctrl', [ '$scope','$route','$routeParams', '$rootScope','$http',
                           	     function($scope,$route,$routeParams,$rootScope, $http){
     
+	 
+	 $http({
+			method : 'GET',
+			url : '/products'
+		}).then(function(response) {
+			$rootScope.products = response.data;
+	});
                                                              
  }])
 .controller('cartctrl', ['$scope', function($scope) { 
