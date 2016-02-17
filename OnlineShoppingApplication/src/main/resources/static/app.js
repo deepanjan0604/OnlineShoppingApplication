@@ -141,7 +141,7 @@ $rootScope.logOut= function(){
 
 	
 
-
+debugger;
 app.controller('loginctrl',[ '$scope', '$rootScope','$http', '$location', function($scope,$rootScope, $http, $location)
 {
 
