@@ -3,6 +3,7 @@ package com.dh.webtest.controller;
 
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -10,6 +11,9 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -78,16 +82,41 @@ public class ApplicationController {
 	@Autowired
 	CategoryRepository categoryRepository ;
 
-	/*@RequestMapping("/login")
-	public List<Brand> getLogin() {
-		
+	@RequestMapping("/log")
+	public HashMap<String, String> getLogin() {
+		HashMap<String, String> returnParams = new HashMap<String, String>();
 		System.out.println(SecurityContextHolder.getContext().getAuthentication().getName());
+//		System.out.println(SecurityContextHolder.getContext().getAuthentication().getCredentials());
+//		System.out.println(SecurityContextHolder.getContext().getAuthentication().getDetails());
+		System.out.println(SecurityContextHolder.getContext().getAuthentication().isAuthenticated());
+//		System.out.println(SecurityContextHolder.getContext().getAuthentication().getAuthorities());
+		System.out.println(SecurityContextHolder.getContext().getAuthentication());
+	
+		if(!(SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken) && SecurityContextHolder.getContext().getAuthentication().isAuthenticated()==true)
+		{
+			returnParams.put("status", "true");	
+		
+		Collection<? extends GrantedAuthority> authorities = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+		Boolean authority = authorities.contains(new SimpleGrantedAuthority("USER"));
+		Boolean auth = true;
+		System.out.println(authority);
+		if(authority==auth)
+		returnParams.put("role", "user");
+		else
+			returnParams.put("role", "admin");
+		}
+		else
+		{
+			returnParams.put("status", "false");	
+		}
 		
 		
 		
-		return (List<Brand>) brandRepository.findAll();
-	}	
-	*/
+		return returnParams;
+	}
+	
+	
+	
 	@RequestMapping("/brands")
 	public List<Brand> getBrands() {
 		return (List<Brand>) brandRepository.findAll();
@@ -132,6 +161,8 @@ public class ApplicationController {
 	
 	@RequestMapping("/categories")
 	public List<Category> getCategories() {
+		System.out.println(SecurityContextHolder.getContext().getAuthentication().getName());
+
 		return (List<Category>) categoryRepository.findAll();
 	}	
 

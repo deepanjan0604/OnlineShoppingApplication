@@ -23,7 +23,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.httpBasic().and().authorizeRequests().antMatchers("/public/**").permitAll().antMatchers("/admin/**")
-				.access("hasRole('ADMIN')").and().logout()
+				.access("hasRole('ADMIN')").and().logout().logoutSuccessUrl("/login")
 				.and().csrf().disable();
 	}
 

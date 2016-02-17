@@ -72,7 +72,7 @@ app.config(['$routeProvider',
                    
          }]);
 
-app.run(function($rootScope, $http){
+app.run(function($rootScope, $http, $location){
 	
 	$http({
 		method : 'GET',
@@ -81,68 +81,68 @@ app.run(function($rootScope, $http){
 	}).then(function(response) {
 		$rootScope.categories = response.data;
 		
-})
-})
+	});
 
 
-		 
-/*app.run(function($rootScope, $http){
-	*/
-	/*<html>
-	 <head>
-	<script src="http://code.jquery.com/jquery-latest.js"></script>
-	<script>
-	function switchVisible() {
-	            if (document.getElementById('Div1')) {
-
-	                if (document.getElementById('Div1').style.display == 'none') {
-	                    document.getElementById('Div1').style.display = 'block';
-	                    document.getElementById('Div2').style.display = 'none';
-	                }
-	                else {
-	                    document.getElementById('Div1').style.display = 'none';
-	                    document.getElementById('Div2').style.display = 'block';
-	                }
-	            }
-	}
-	</script> 
-	<style>
-	#Div2 {
-	  display: none;
-	}
-	</style>
-	     </head>
-	        <body>
-
-	<div id="Div1">Div 1</div>
-	<div id="Div2">Div 2</div>
-
-	<input id="Button1" type="button" value="Click" onclick="switchVisible();"/>
-	     </body>
-	    </html>*/
-	
-/*	$rootScope.loadCustomers = function(auth) {
-		if(auth)
-			{
-			var authData = auth.username + ':' + auth.password;
-		var encodedAuthData = btoa(authData);
-		headers = {
-				'Authorization' : 'Basic ' + encodedAuthData
-				}
-			} else {
-				headers : {};
-			}
-			$http({
+$http({
 				method : 'GET',
-				url : '/customers',     
-				headers : headers
+				url : '/log',     
+				
 			}).then(function(response) {
-				$rootScope.users = response.data;
-				$rootScope.authenticated = true;
-				$rootScope.authenticated1=false;
-		});
-		};
-	});	 */
+				
+				$rootScope.response = response.data;
+				if($rootScope.response.status=='true')
+					{
+				alert('authentication Successfull');
+$rootScope.authenticated = true;
+if($rootScope.response.role=='user')
+	{
+	$rootScope.user=true;
+	$rootScope.admin=false;
+
+alert($rootScope.user);
+	}
+else
+	{
+	$rootScope.admin=true;
+	$rootScope.user=false;
+
+	alert($rootScope.admin);
+	}
+			
+				$location.path('/');
+				
+					}		
+		
+	
+		else{
+			$rootScope.authenticated = false;
+			alert('authentication failed');
+			alert($rootScope.authenticated);
+		}
+	
+})
+
+$rootScope.logOut= function(){
+	alert('entered into logout')
+	$http({
+		method : 'POST',
+		url : 'logout',     
+	
+	}).then(function(response) {
+		
+		
+		
+	});
+	$location.path('/login');
+	$rootScope.authenticated = false;
+	$rootScope.admin=false;
+	$rootScope.user=false;
+}
+})
+
+	
+
 
 app.controller('loginctrl',[ '$scope', '$rootScope','$http', '$location', function($scope,$rootScope, $http, $location)
 {
@@ -152,32 +152,50 @@ app.controller('loginctrl',[ '$scope', '$rootScope','$http', '$location', functi
 //		$rootScope.loadCustomers($scope.auth);
 //	}
 	
-	$scope.login = function() {
+	
 		/*if(auth)
 			{*/
-			var authData = $scope.auth.username + ':' + $scope.auth.password;
-		var encodedAuthData = btoa(authData);
+			
 		/*var headers = {
 				'Authorization' : 'Basic ' + encodedAuthData
 				}
 			} else {
 				headers : {};
 			}*/
+	$scope.login = function() {
+		var authData = $scope.auth.username + ':' + $scope.auth.password;
+		var encodedAuthData = btoa(authData);
 			$http({
 				method : 'GET',
-				url : '/products',     
+				url : '/log',     
 				headers : {'Authorization' : 'Basic ' + encodedAuthData}
 			}).then(function(response) {
 				
-				$rootScope.products = response.data;
-				
-				$rootScope.authenticated = true;
-				
-				$location.path('/');
-				alert($rootScope.authenticated);
-				$rootScope.authenticated1=false;
-		}, function(response){
+				$rootScope.response = response.data;
+				alert('authentication Successfull');
+$rootScope.authenticated = true;
+if($rootScope.response.role=='user')
+	{
+	$rootScope.user=true;
+	$rootScope.admin=false;
+
+alert($rootScope.user);
+	}
+else
+	{
+	$rootScope.admin=true;
+	$rootScope.user=false;
+
+	alert($rootScope.admin);
+	}
 			
+				$location.path('/');
+				
+				
+		}, function(response){
+			$rootScope.authenticated = false;
+			alert('authentication failed');
+			alert($rootScope.authenticated);
 		});
 	}
 }]);		 
@@ -298,7 +316,7 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
 	$scope.customers={};
 	
 	 $scope.savecustomer = function(){
-		 $scope.customers.role="USER";		
+		 $scope.customers.role="ADMIN";	
 			
 			$http({
 				method: 'POST',
@@ -357,7 +375,7 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
  app.controller('gridctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
                            	     function($scope,$route,$routeParams,$rootScope, $http)
                            	     {
-	 
+	
 	 
 	 $scope.images=[
 	                {
