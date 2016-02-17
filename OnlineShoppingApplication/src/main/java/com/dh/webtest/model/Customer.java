@@ -51,13 +51,6 @@ public class Customer {
 	String role;
 	
 	
-	/*
-	@OneToMany(mappedBy = "user",  orphanRemoval = true)
-	List<Authority> authority;*/
-	
-	//SecurityConfiguration securityConfiguration;
-
-
 
 
 	public String getRole() {
@@ -80,11 +73,7 @@ public class Customer {
 
 	@OneToMany(mappedBy = "customer", orphanRemoval = true)
 	List<Order> order;
-	/*
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JsonIgnore
-	User user;
-	*/
+	
 	
 
 	
@@ -174,7 +163,7 @@ public class Customer {
 	}
 
 
-	public void setShippingAddress(List<ShippingAddress> shippingAddress) {
+	public void setShippingAddress() {
 		this.shippingAddress = shippingAddress;
 	}
 

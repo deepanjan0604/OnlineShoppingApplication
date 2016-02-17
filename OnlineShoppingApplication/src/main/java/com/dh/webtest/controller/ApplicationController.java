@@ -169,8 +169,11 @@ public class ApplicationController {
 	@RequestMapping("/addshippingaddress")
 	public HashMap<String, Object> addShippingaddress(@RequestBody ShippingAddress shippingaddress) {
 		HashMap<String, Object> returnParams = new HashMap<String, Object>();
-		
+		/*String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+	Customer customer=  customerRepository.findByuserName(userName);*/
 		try {
+			
+			
 			shippingAddressRepository.save(shippingaddress);
 			returnParams.put("status", true);
 		} catch (Exception e) {

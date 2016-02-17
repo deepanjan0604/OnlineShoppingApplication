@@ -214,7 +214,7 @@ app.controller('viewcustomerctrl', [ '$scope','$route','$routeParams', '$rootSco
 	       url : '/customers/one',
 	                           			
 	        }).then(function(response) {
-	                           			$scope.customers = angular.copy(response.data);
+	                           			$scope.customer = angular.copy(response.data);
 	                           			 
 	                           		});
 }])
@@ -277,18 +277,18 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
 //             $scope.shippingAddress='';
 //    }
 	
-	$scope.shippingAddresses=[];
+	/*$scope.shippingAddresses=[];
 	$scope.shippingAddress={};
 	
-	/* $http({
+	 $http({
 			method : 'GET',
-			url : '/addshippingaddress,
+			url : '/addshippingaddress',
 			
 		}).then(function(response) {
-			$rootScope.shippingaddress = angular.copy(response.data);
+			$scope.shippingAddress = angular.copy(response.data);
 			 
-		});*/
-     
+		});
+     */
 
 	 $scope.addShipping = function(){
 		
