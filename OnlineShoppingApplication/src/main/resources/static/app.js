@@ -25,7 +25,7 @@ app.config(['$routeProvider',
          controller: 'gridctrl'
        })
       .when('/cart', {
-        templateUrl: 'Cart.html',
+        templateUrl: 'cart.html',
          controller: 'cartctrl'
        })
   
