@@ -49,13 +49,14 @@ app.config(['$routeProvider',
                  templateUrl: 'editproduct.html',
                  controller: 'editproductctrl'
                })
-              
-             
-               
-               
+    
               .when('/viewcustomer', {
                templateUrl: 'viewcustomer.html',
                controller: 'viewcustomerctrl'
+             })
+             .when('/viewproduct', {
+               templateUrl: 'viewproducts2.html',
+               controller: 'productctrl'
              })
              .when('/addproducts', {
                    templateUrl: 'addproduct.html',
@@ -177,23 +178,49 @@ app.controller('loginctrl',[ '$scope', '$rootScope','$http', '$location', functi
 			
 		});
 	}
-}]);		 
+}]);	
 
 
-/*app.controller('productctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
-                          	     function($scope,$route,$routeParams,$rootScope, $http)
+
+
+/*app.run(function($rootScope, $http){
+	$rootScope.loadUsers = function(auth) {
+		if(auth)
+			{
+			var authData = auth.username + ':' + auth.password;
+		var encodedAuthData = btoa(authData);
+		headers = {
+				'Authorization' : 'Basic ' + encodedAuthData
+				}
+			} else {
+				headers : {};
+			}
+			$http({
+				method : 'GET',
+				url : '/users',     
+				headers : headers
+			}).then(function(response) {
+				$rootScope.users = response.data;
+				$rootScope.authenticated = true;
+		});
+		};
+	});*/
+
+
+
+app.controller('productctrl',[ '$scope', '$rootScope','$http',function($scope,$rootScope, $http)
                           	     {
-	$scope.products={};
+	$scope.title="List Of Products";
+	//$scope.products={};
 	$http({
 		method : 'GET',
-		url : '/products',
-		
+		url : '/viewproducts',	
 	}).then(function(response) {
-		$rootScope.products = angular.copy(response.data);
-		 
+		debugger;
+		$rootScope.products = angular.copy(response.data);		 
 	});
                           			  }]);
-*/
+
 
 
 
@@ -488,6 +515,13 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
  app.controller('listctrl', [ '$scope','$route','$routeParams', '$rootScope','$http',
                           	     function($scope,$route,$routeParams,$rootScope, $http){
     
+	 
+	 $http({
+			method : 'GET',
+			url : '/products'
+		}).then(function(response) {
+			$rootScope.products = response.data;
+	});
                                                              
  }])
 .controller('cartctrl', ['$scope', function($scope) { 

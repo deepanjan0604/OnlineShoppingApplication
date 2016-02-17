@@ -136,6 +136,11 @@ public class ApplicationController {
 		return (List<Product>) productRepository.findAll();
 	}	
 	
+	@RequestMapping("/viewproducts")
+	public List<Product> getviewProducts() {
+		return (List<Product>) productRepository.findAll();
+	}	
+	
 	@RequestMapping("/categories")
 	public List<Category> getCategories() {
 		return (List<Category>) categoryRepository.findAll();
