@@ -8,9 +8,6 @@ public interface StateVatRepository extends JpaRepository<StateVat, Integer>{
 
 	StateVat findBystate(String state);
 
-	
-
-
 }
 
 

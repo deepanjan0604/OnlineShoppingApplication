@@ -19,6 +19,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -72,6 +73,9 @@ public class ApplicationController {
 	
 	@Autowired
 	ShippingAddressRepository shippingAddressRepository ;
+
+	@Autowired
+	ShippingAddressRepository shippingAddressRepository2;
 	
 	@Autowired
 	ProductRepository productRepository ;
@@ -186,7 +190,14 @@ public class ApplicationController {
 		
 		return (List<ShippingAddress>) shippingAddressRepository.findAll();
 	}
-	
+	@RequestMapping("/shippingaddresses/one")
+	public List<ShippingAddress> getShippingAddressOne() {
+		String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+		Customer customer=  customerRepository.findByuserName(userName);
+		int id=customer.getCustomerId();
+		System.out.println("---------------->Customer object is :"+customer);
+		return (List<ShippingAddress>) shippingAddressRepository.findByCustomer(customer);
+	}
 	
 	@RequestMapping("/displaystate")
 	public List<StateVat> getStateVat() {
@@ -214,7 +225,7 @@ public class ApplicationController {
 	@RequestMapping("/addshippingaddress")
 	public HashMap<String, Object> addShippingaddress(@RequestBody ShippingAddress shippingaddress) {
 		HashMap<String, Object> returnParams = new HashMap<String, Object>();
-		
+		try{
 		String userName = SecurityContextHolder.getContext().getAuthentication().getName();
 		Customer customer=  customerRepository.findByuserName(userName);
 		System.out.println("Customer Object:"+customer);
@@ -224,22 +235,15 @@ public class ApplicationController {
 		shippingaddress.setCustomer(customer);
 		String state=shippingaddress.getState();
 		System.out.println("------------------->State is:"+state);
-		
-		
 		StateVat stateVat=(StateVat) stateVatRepository.findBystate(state);
-		/*if(state.equals(stateVat.getState()))
-		{*/
 		int stateId=stateVat.getStateId();
-		//StateVat stateVat1=new StateVat(stateVat.getStateId());
 		System.out.println("------------------------> State Id :"+stateId);
 		shippingaddress.setStateVat(stateVat);
 		
+	
+		System.out.println(customer);
 		
-/*		String userName = SecurityContextHolder.getContext().getAuthentication().getName();
-	Customer customer=  customerRepository.findByuserName(userName);*/
-System.out.println(customer);
-		try {
-			shippingAddressRepository.save(shippingaddress);
+			shippingAddressRepository2.save(shippingaddress);
 			returnParams.put("status", true);
 		} catch (Exception e) {
 			returnParams.put("status", false);
@@ -252,6 +256,39 @@ System.out.println(customer);
 
 	}
 	
+	@RequestMapping("/editshippingaddress")
+	public HashMap<String, Object> editShippingaddress(@RequestBody ShippingAddress shippingaddress) {
+		HashMap<String, Object> returnParams = new HashMap<String, Object>();
+		try{
+	/*	String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+		Customer customer=  customerRepository.findByuserName(userName);
+		System.out.println("Customer Object:"+customer);
+			int id=customer.getCustomerId();
+			System.out.println("-----------------------> Customer Id:"+id);
+		
+		shippingaddress.setCustomer(customer);
+		String state=shippingaddress.getState();
+		System.out.println("------------------->State is:"+state);
+		StateVat stateVat=(StateVat) stateVatRepository.findBystate(state);
+		int stateId=stateVat.getStateId();
+		System.out.println("------------------------> State Id :"+stateId);
+		shippingaddress.setStateVat(stateVat);
+		
+	
+		System.out.println(customer);*/
+		
+			shippingAddressRepository2.save(shippingaddress);
+			returnParams.put("status", true);
+		} catch (Exception e) {
+			returnParams.put("status", false);
+			returnParams.put("msg", "Shippingaddress Addition Failed!!!!!!");
+		
+
+		
+	}
+		return returnParams;	
+
+	}
 	
 	
 	@RequestMapping("/saveproduct")

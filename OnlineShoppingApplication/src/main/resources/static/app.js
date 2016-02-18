@@ -44,7 +44,7 @@ app.config(['$routeProvider',
          controller: 'editcustomerctrl'
        })     
                
-                .when('/editshipping/:id', {
+                .when('/editshipping', {
                  templateUrl: 'editshipping.html',
                  controller: 'editshippingctrl'
                })
@@ -267,6 +267,16 @@ app.controller('viewcustomerctrl', [ '$scope','$route','$routeParams', '$rootSco
 	                           			$scope.customer = angular.copy(response.data);
 	                           			 
 	                           		});
+	
+	
+	 $http({
+			method : 'GET',
+			url : '/shippingaddresses/one',
+			
+		}).then(function(response) {
+			$rootScope.shippingaddresses = angular.copy(response.data);
+			 
+		});
 }])
 
 
@@ -277,14 +287,7 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
                            			 
     $scope.title=' Edit Customer!!!';
                            	    
-    /*$scope.edit=
-	                {
-	                  "firstName": "hhh",
-	                  "lastName": "gdfgsdf",
-	                  "userName":"gfgh",
-	                  "emailId": "hjk@jkhjk"
-	                
-	                 }      */                   	    
+                  	    
     $http({
 		method : 'GET',
 		url : '/displaystate',     
@@ -347,7 +350,18 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
 			 
 		});
      */
-
+  			//$rootScope.shippingAddress={};
+  			
+  			 $http({
+  				method : 'GET',
+  				url : '/shippingaddresses/one',
+  				
+  			}).then(function(response) {
+  				$rootScope.shippingaddresses = angular.copy(response.data);
+  				 
+  			});
+  			 
+  
 	 $scope.addShipping = function(){
 		
 			$http({
@@ -359,10 +373,10 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
 					alert('shippingaddress Added Successfully!');
 					
 					
-					/*$scope.shippingAddresses.push($scope.shippingAddress);*/
-					$rootScope.shippingaddresses.push($rootScope.shippingAddress);	
+				
+				/*	$rootScope.shippingaddresses.push($rootScope.shippingAddress);	
 					
-				     $scope.shippingAddress=''; 	
+				     $scope.shippingAddress='';*/ 	
 												} 
 				
 				else {
@@ -422,6 +436,47 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
   app.controller('editshippingctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
 	     function($scope,$route,$routeParams,$rootScope, $http)
 	     {
+	  
+	  $http({
+			method : 'GET',
+			url : '/displaystate',     
+		
+		}).then(function(response) {
+			$rootScope.statevat = response.data;
+			
+	});
+	  
+	  $http({
+ 			
+		   method : 'GET',
+	                           			
+	                           			
+	       url : '/shippingaddresses/one',
+	                           			
+	        }).then(function(response) {
+	                           			$scope.edit1 = angular.copy(response.data);
+	                           			 
+	                           		});
+	                           	    
+	                           	    
+	                     		
+	    $scope.editShipping = function(){	
+				
+	  		 $http({
+	  				method: 'POST',
+	  				url : '/editshippingaddress',
+	  				data : $scope.edit1,
+	  			
+	  			}).then(function(response){
+	  				if(response.data.status){
+	  					alert('Address edit Successfully!');
+	  					$scope.edit1= {};
+	  					
+	  				} else {
+	  					alert('Address edit Failed!');
+	  				}
+	  			});
+	  			};     
 			  }]);		
  
   
@@ -556,7 +611,7 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
                                                              
  }])
 app.controller('cartctrl', ['$scope', function($scope) { 
-   $scope.images=[
+   /*$scope.images=[
   {
     "id": "1",
     "imageUrl": "1.jpg",
@@ -592,10 +647,10 @@ app.controller('cartctrl', ['$scope', function($scope) {
        "pin":"4545456",
        "state":"telangana"
      },
-   ]
-    $scope.addShipping=function(){
+   ]*/
+  /*  $scope.addShipping=function(){
             $scope.shippingAddresses.push($scope.shippingAddress);
-             $scope.shippingAddress='';
-    }
+             $scope.shippingAddress='';*/
+    
  }])
 

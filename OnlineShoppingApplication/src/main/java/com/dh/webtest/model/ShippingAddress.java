@@ -16,6 +16,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name="shippingaddresses")
@@ -64,11 +65,12 @@ public class ShippingAddress {
 	public void setOrder(List<Order> order) {
 		this.order = order;
 	}
-
+	
+	//@JsonIgnore
 	public StateVat getStateVat() {
 		return stateVat;
 	}
-
+	//@JsonProperty(value="stateVat")
 	public void setStateVat(StateVat stateVat) {
 		this.stateVat = stateVat;
 	}
@@ -128,11 +130,11 @@ public class ShippingAddress {
 	public void setPhone(long phone) {
 		this.phone = phone;
 	}
-
+	//@JsonIgnore
 	public Customer getCustomer() {
 		return customer;
 	}
-
+	//@JsonProperty(value="customer")
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
