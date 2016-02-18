@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import com.dh.webtest.model.Authority;
 import com.dh.webtest.model.Brand;
 import com.dh.webtest.model.Cart;
@@ -184,7 +183,12 @@ public class ApplicationController {
 
 		return (List<Category>) categoryRepository.findAll();
 	}	
-
+	@RequestMapping("/shippingaddress/{shippingId}")
+	public ShippingAddress getShippingAddress(@PathVariable("shippingId") int shippingId) {
+		return  shippingAddressRepository2.findOne(shippingId);
+	}
+	
+	
 	@RequestMapping("/shippingaddresses")
 	public List<ShippingAddress> getShippingAddress() {
 		

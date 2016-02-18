@@ -44,7 +44,7 @@ app.config(['$routeProvider',
          controller: 'editcustomerctrl'
        })     
                
-                .when('/editshipping', {
+                .when('/editshipping/:id', {
                  templateUrl: 'editshipping.html',
                  controller: 'editshippingctrl'
                })
@@ -446,12 +446,24 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
 			
 	});
 	  
+	  
+	  /*$scope.title="Edit task!!"
+			 $http({
+					method : 'GET',
+					url : '/tasks/'+$routeParams.id,
+					
+				}).then(function(response) {
+					$rootScope.a = angular.copy(response.data);
+					 
+				});
+			*/
+			 
 	  $http({
  			
 		   method : 'GET',
 	                           			
 	                           			
-	       url : '/shippingaddresses/one',
+	       url : '/shippingaddress/'+$routeParams.id,
 	                           			
 	        }).then(function(response) {
 	                           			$scope.edit1 = angular.copy(response.data);
