@@ -16,13 +16,17 @@ app.config(['$routeProvider',
                controller: 'loginctrl'
        
       })
+       .when('/home', {
+         templateUrl: 'home.html',
+         controller: 'homectrl'
+       })
 
            .when('/gridview', {
          templateUrl: 'gridview.html',
          controller: 'gridctrl'
        })
       .when('/cart', {
-        templateUrl: 'cart.html',
+        templateUrl: 'cart2.html',
          controller: 'cartctrl'
        })
   
@@ -66,6 +70,7 @@ app.config(['$routeProvider',
                  
                  .otherwise({
                      redirectTo: '/home'
+                    	 
                    })
                    
          }]);
@@ -115,14 +120,14 @@ else
 	
 		else{
 			$rootScope.authenticated = false;
-			alert('authentication failed');
-			alert($rootScope.authenticated);
+			/*alert('authentication failed');
+			alert($rootScope.authenticated);*/
 		}
 	
 })
 
 $rootScope.logOut= function(){
-	alert('entered into logout')
+	alert('Logout Successfully')
 	$http({
 		method : 'POST',
 		url : 'logout',     
@@ -177,14 +182,14 @@ if($rootScope.response.role=='user')
 	$rootScope.user=true;
 	$rootScope.admin=false;
 
-alert($rootScope.user);
+//alert($rootScope.user);
 	}
 else
 	{
 	$rootScope.admin=true;
 	$rootScope.user=false;
 
-	alert($rootScope.admin);
+	//alert($rootScope.admin);
 	}
 			
 				$location.path('/');
@@ -280,7 +285,15 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
 	                  "emailId": "hjk@jkhjk"
 	                
 	                 }      */                   	    
-   
+    $http({
+		method : 'GET',
+		url : '/displaystate',     
+	
+	}).then(function(response) {
+		$rootScope.statevat = response.data;
+		
+});
+    
    $http({
                            			
 	   method : 'GET',
@@ -346,8 +359,8 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
 					alert('shippingaddress Added Successfully!');
 					
 					
-					$scope.shippingAddresses.push($scope.shippingAddress);
-						
+					/*$scope.shippingAddresses.push($scope.shippingAddress);*/
+					$rootScope.shippingaddresses.push($rootScope.shippingAddress);	
 					
 				     $scope.shippingAddress=''; 	
 												} 
@@ -373,7 +386,7 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
 	$scope.customers={};
 	
 	 $scope.savecustomer = function(){
-		 $scope.customers.role="ADMIN";	
+		 $scope.customers.role="USER";	
 			
 			$http({
 				method: 'POST',
@@ -542,7 +555,7 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
 	});
                                                              
  }])
-.controller('cartctrl', ['$scope', function($scope) { 
+app.controller('cartctrl', ['$scope', function($scope) { 
    $scope.images=[
   {
     "id": "1",

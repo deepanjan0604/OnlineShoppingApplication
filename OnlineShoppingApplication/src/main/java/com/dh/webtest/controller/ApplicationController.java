@@ -84,7 +84,11 @@ public class ApplicationController {
 
 	@RequestMapping("/log")
 	public HashMap<String, String> getLogin() {
+		
+
+		
 		HashMap<String, String> returnParams = new HashMap<String, String>();
+
 		System.out.println(SecurityContextHolder.getContext().getAuthentication().getName());
 //		System.out.println(SecurityContextHolder.getContext().getAuthentication().getCredentials());
 //		System.out.println(SecurityContextHolder.getContext().getAuthentication().getDetails());
@@ -184,6 +188,11 @@ public class ApplicationController {
 	}
 	
 	
+	@RequestMapping("/displaystate")
+	public List<StateVat> getStateVat() {
+		return (List<StateVat>) stateVatRepository.findAll();
+	}	
+	
 	@RequestMapping("/savecustomer")
 	public HashMap<String, Object> savecustomer(@RequestBody Customer customer) {
 		HashMap<String, Object> returnParams = new HashMap<String, Object>();
@@ -205,11 +214,31 @@ public class ApplicationController {
 	@RequestMapping("/addshippingaddress")
 	public HashMap<String, Object> addShippingaddress(@RequestBody ShippingAddress shippingaddress) {
 		HashMap<String, Object> returnParams = new HashMap<String, Object>();
-		/*String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+		
+		String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+		Customer customer=  customerRepository.findByuserName(userName);
+		System.out.println("Customer Object:"+customer);
+			int id=customer.getCustomerId();
+			System.out.println("-----------------------> Customer Id:"+id);
+		
+		shippingaddress.setCustomer(customer);
+		String state=shippingaddress.getState();
+		System.out.println("------------------->State is:"+state);
+		
+		
+		StateVat stateVat=(StateVat) stateVatRepository.findBystate(state);
+		/*if(state.equals(stateVat.getState()))
+		{*/
+		int stateId=stateVat.getStateId();
+		//StateVat stateVat1=new StateVat(stateVat.getStateId());
+		System.out.println("------------------------> State Id :"+stateId);
+		shippingaddress.setStateVat(stateVat);
+		
+		
+/*		String userName = SecurityContextHolder.getContext().getAuthentication().getName();
 	Customer customer=  customerRepository.findByuserName(userName);*/
+System.out.println(customer);
 		try {
-			
-			
 			shippingAddressRepository.save(shippingaddress);
 			returnParams.put("status", true);
 		} catch (Exception e) {

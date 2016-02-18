@@ -57,15 +57,15 @@
 <div class="row">
 <div>
 <form class="form-horizontal" id="form1" name="form1" action="validation1.html" novalidate>
-  
+  <br>
    <div class="form-group">
-    <label for="FirstName" class="col-sm-4 control-label">First Name</label>
+    <label for="firstname" class="col-sm-4 control-label">First Name</label>
    <div class="col-md-4">
-    <input type="text"  name="firstname"  ng-model="edit.firstName" class="form-control"   ng-required="true">
-<span style="color:red"ng-show="form1.firstname.$dirty && form1.firstname.$error.required">First name is Required
+    <input type="text" name="firstname" ng-model="edit.firstName" class="form-control" id="firstname" ng-required="true">
+ <span style="color:red" ng-show="form1.firstname.$dirty && form1.firstname.$error.required">First name is Required
   </span>
-  
-  </div> 
+  <!-- <span style="color:red" ng-show="form1.lastname.$dirty && form1.lastname.$error.lastname">Not a valid name!</span>   -->
+  </div>
   </div>
   <br>
 
@@ -178,11 +178,25 @@
 				form1.city.$error.required"> city is Required!
 				</span><br /> <br /> 
 				
-			State: <input name="state"
+				
+				
+			State:<select class="form-control" ng-model="shippingAddress.state">
+ <!--    <option><-----Select-----></option> -->
+       
+<option  ng-repeat="cat in statevat" value="{{cat.state}}">{{cat.state}}
+</option>
+        </select>	
+        <br><br>
+        
+        
+			<!-- State: <input name="state"
 				type="text" class="form-control" ng-model="shippingAddress.state" ng-required="true" /><br />
 			<span style="color:red" ng-show="form1.state.$dirty && 
 				form1.state.$error.required"> State is Required!
-				</span><br /> <br />
+				</span><br /> <br /> -->
+				
+				
+				
 				PinCode: <input type="text" name="pincode" ng-pattern="/^[0-9]{1,7}$/" class="form-control"
 				ng-model="shippingAddress.pin"/><br /> 
 				
