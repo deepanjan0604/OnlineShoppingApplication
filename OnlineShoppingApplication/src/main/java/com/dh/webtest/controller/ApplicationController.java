@@ -172,7 +172,13 @@ public class ApplicationController {
 	@RequestMapping("/products")
 	public List<Product> getProducts() {
 		return (List<Product>) productRepository.findAll();
-	}	
+	}
+	
+	@RequestMapping("/products/{productId}")
+	public Product  getProduct (@PathVariable("productId") int productId){
+	//String productName = SecurityContextHolder.getContext().getAuthentication().getName();
+	return  productRepository.findOne(productId);
+}
 	
 	@RequestMapping("/viewproducts")
 	public List<Product> getviewProducts() {
@@ -181,8 +187,6 @@ public class ApplicationController {
 	
 	@RequestMapping("/categories")
 	public List<Category> getCategories() {
-		System.out.println(SecurityContextHolder.getContext().getAuthentication().getName());
-
 		return (List<Category>) categoryRepository.findAll();
 	}	
 	@RequestMapping("/shippingaddress/{shippingId}")
@@ -266,6 +270,7 @@ public class ApplicationController {
 	public HashMap<String, Object> editShippingaddress(@RequestBody ShippingAddress shippingaddress) {
 		HashMap<String, Object> returnParams = new HashMap<String, Object>();
 		try{
+
 		String userName = SecurityContextHolder.getContext().getAuthentication().getName();
 		Customer customer=  customerRepository.findByuserName(userName);
 		System.out.println("Customer Object:"+customer);
@@ -280,6 +285,26 @@ public class ApplicationController {
 		System.out.println("------------------------> State Id :"+stateId);
 		shippingaddress.setStateVat(stateVat);
 		System.out.println(customer);
+
+	
+			/*String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+			Customer customer=  customerRepository.findByuserName(userName);*/
+		
+				/*int id=customer.getCustomerId();
+	*/
+			
+			shippingaddress.setCustomer(customer);
+			/*String state=shippingaddress.getState();
+			
+			StateVat stateVat=(StateVat) stateVatRepository.findBystate(state);
+			int stateId=stateVat.getStateId();*/
+		
+			shippingaddress.setStateVat(stateVat);
+			
+		
+			
+			
+
 			shippingAddressRepository2.save(shippingaddress);
 			returnParams.put("status", true);
 		} catch (Exception e) {
