@@ -54,8 +54,10 @@ public class ApplicationController {
 	
 	@Autowired
 	AuthorityRepository authorityRepository;
+	
 	@Autowired
 	BrandRepository brandRepository;
+	
 	@Autowired
 	CartItemRepository cartItemRepository ;
 	
@@ -264,7 +266,7 @@ public class ApplicationController {
 	public HashMap<String, Object> editShippingaddress(@RequestBody ShippingAddress shippingaddress) {
 		HashMap<String, Object> returnParams = new HashMap<String, Object>();
 		try{
-	/*	String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+		String userName = SecurityContextHolder.getContext().getAuthentication().getName();
 		Customer customer=  customerRepository.findByuserName(userName);
 		System.out.println("Customer Object:"+customer);
 			int id=customer.getCustomerId();
@@ -277,18 +279,12 @@ public class ApplicationController {
 		int stateId=stateVat.getStateId();
 		System.out.println("------------------------> State Id :"+stateId);
 		shippingaddress.setStateVat(stateVat);
-		
-	
-		System.out.println(customer);*/
-		
+		System.out.println(customer);
 			shippingAddressRepository2.save(shippingaddress);
 			returnParams.put("status", true);
 		} catch (Exception e) {
 			returnParams.put("status", false);
 			returnParams.put("msg", "Shippingaddress Addition Failed!!!!!!");
-		
-
-		
 	}
 		return returnParams;	
 
@@ -305,10 +301,7 @@ public class ApplicationController {
 			returnParams.put("status", true);
 		} catch (Exception e) {
 			returnParams.put("status", false);
-			returnParams.put("msg", "product Addition Failed!!!!!!");
-		
-
-		
+			returnParams.put("msg", "product Addition Failed!!!!!!");		
 	}
 		return returnParams;	
 
