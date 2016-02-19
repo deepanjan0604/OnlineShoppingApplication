@@ -6,7 +6,7 @@ import com.dh.webtest.model.Product;
 
 public interface ProductRepository extends JpaRepository<   Product, Integer>{
 
-	Product findByproductName(String productName);
+	//Product findByproductId(int productId);
 
 
 }

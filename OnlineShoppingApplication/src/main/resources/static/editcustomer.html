@@ -56,17 +56,22 @@
         <div class="col-sm-12 form-group">
           <div class="row">
             <div>
-              <form class="form-horizontal" id="form1" name="form1" action="validation1.html" novalidate>
+              <form class="form-horizontal" id="form1" name="form1"  novalidate>
                 <br>
                 <div class="form-group">
                   <label for="firstname" class="col-sm-4 control-label">First Name</label>
                   <div class="col-md-4">
-                    <input type="text" name="firstname" ng-model="edit.firstName" class="form-control" id="firstname" ng-required="true">
+                    <input type="text" name="firstname" ng-model="edit.firstName" class="form-control" ng-required="true">
                     <span style="color:red" ng-show="form1.firstname.$dirty && form1.firstname.$error.required">First name is Required
                     </span>
-                    <!-- <span style="color:red" ng-show="form1.lastname.$dirty && form1.lastname.$error.lastname">Not a valid name!</span>   -->
+                    <span style="color:red" ng-show="form1.lastname.$dirty && form1.lastname.$error.lastname">Not a valid name!</span>  
                   </div>
                 </div>
+             <!--   First Name: <input type="text" name="firstname" class="form-control"
+				ng-model="edit.firstName"  ng-required="true"/>
+	<span style="color:red" ng-show="form1.firstname.$dirty && form1.firstname.$error.required">firstname is Required
+  </span> -->
+  <br /> 
                 <br>
 
                 <div class="form-group">

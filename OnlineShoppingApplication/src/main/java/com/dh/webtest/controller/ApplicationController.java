@@ -172,10 +172,10 @@ public class ApplicationController {
 		return (List<Product>) productRepository.findAll();
 	}
 	
-	@RequestMapping("/products/one")
-	public Product  getProduct (){
-	String productName = SecurityContextHolder.getContext().getAuthentication().getName();
-	return  productRepository.findByproductName(productName);
+	@RequestMapping("/products/{productId}")
+	public Product  getProduct (@PathVariable("productId") int productId){
+	//String productName = SecurityContextHolder.getContext().getAuthentication().getName();
+	return  productRepository.findOne(productId);
 }
 	
 	@RequestMapping("/viewproducts")
@@ -185,8 +185,6 @@ public class ApplicationController {
 	
 	@RequestMapping("/categories")
 	public List<Category> getCategories() {
-		System.out.println(SecurityContextHolder.getContext().getAuthentication().getName());
-
 		return (List<Category>) categoryRepository.findAll();
 	}	
 	@RequestMapping("/shippingaddress/{shippingId}")
@@ -271,7 +269,23 @@ public class ApplicationController {
 		HashMap<String, Object> returnParams = new HashMap<String, Object>();
 		try{
 	
+			String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+			Customer customer=  customerRepository.findByuserName(userName);
 		
+				int id=customer.getCustomerId();
+	
+			
+			shippingaddress.setCustomer(customer);
+			String state=shippingaddress.getState();
+			
+			StateVat stateVat=(StateVat) stateVatRepository.findBystate(state);
+			int stateId=stateVat.getStateId();
+		
+			shippingaddress.setStateVat(stateVat);
+			
+		
+			
+			
 			shippingAddressRepository2.save(shippingaddress);
 			returnParams.put("status", true);
 		} catch (Exception e) {
