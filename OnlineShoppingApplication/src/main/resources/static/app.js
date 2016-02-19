@@ -501,7 +501,45 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
  app.controller('editproductctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
                            	     function($scope,$route,$routeParams,$rootScope, $http)
                            	     {
-                           			  }]);
+                           			  
+                           	    	$scope.title=' Edit Product!!!';
+                            	    
+                             	      $scope.product=
+                             	  	                {
+                             	  	                  "productName": "hhh",
+                             	  	                  
+                             	  	                
+                             	  	                 }         
+                             	    /*	 $http({
+                                  			
+                             	   	   method : 'GET',
+                             	                              			
+                             	                              			
+                             	          url : '/products/one',
+                             	                              			
+                             	           }).then(function(response) {
+                             	                              			$scope.product = angular.copy(response.data);
+                             	                              			 
+                             	                              		});
+                             	    	 
+                             	    	 $scope.editproduct = function(){	
+                             				
+                             	   		 $http({
+                             	   				method: 'POST',
+                             	   				url : '/savedetails',
+                             	   				data : $scope.product,
+                             	   			
+                             	   			}).then(function(response){
+                             	   				if(response.data.status){
+                             	   					alert('customer edit Successfully!');
+                             	   					$scope.edit= {};
+                             	   					
+                             	   				} else {
+                             	   					alert('customer edit Failed!');
+                             	   				}
+                             	   			});
+                             	   			};    */
+                             	      }]);
  
  
  app.controller('addproductctrl', [ '$scope','$route','$routeParams', '$rootScope','$http',
@@ -531,9 +569,9 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
 	 $scope.product={
 			 /*category:{
 				 
-			 }*/
+			 }
 	 
-	         /* brands:{
+	          brands:{
 	         }
 			 */
 	 
@@ -569,7 +607,7 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
                            	     function($scope,$route,$routeParams,$rootScope, $http)
                            	     {
 	
-	 
+	/* 
 	 $scope.images=[
 	                {
 	                  "id": "1",
@@ -582,7 +620,7 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
 	                  "imageUrl": "5.jpg",
 	                  "price":"34534",
 	                  "name": "Ara2",
-	                 },
+	                 }*//*,
 	                  {
 	                  "id": "3",
 	                  "imageUrl": "4.jpg",
@@ -604,10 +642,38 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
 	                  "imageUrl": "6.jpg",
 	                  "price":"335434",
 	                  "name": "Ara3",
-	                 }
+	                 }*/
 	                
-	              ]
-                           			  }]);
+	              /*]
+	               * 
+	               * $scope.title="List Of Products";
+	
+
+                          			  
+                          			  
+*/	 
+/*	 $http({
+			method : 'GET',
+			url : '/products',
+			
+		}).then(function(response) {
+			$rootScope.product = angular.copy(response.data);
+			 
+		});
+           */           
+                           	     
+		$http({
+			method : 'GET',
+			url : '/products',	
+		}).then(function(response) {
+			debugger;
+			$rootScope.products = angular.copy(response.data);		 
+		});
+	                          			  }]);
+ 
+
+
+/*}]);*/
  
  
  app.controller('listctrl', [ '$scope','$route','$routeParams', '$rootScope','$http',

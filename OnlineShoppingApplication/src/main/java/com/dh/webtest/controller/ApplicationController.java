@@ -170,7 +170,13 @@ public class ApplicationController {
 	@RequestMapping("/products")
 	public List<Product> getProducts() {
 		return (List<Product>) productRepository.findAll();
-	}	
+	}
+	
+	@RequestMapping("/products/one")
+	public Product  getProduct (){
+	String productName = SecurityContextHolder.getContext().getAuthentication().getName();
+	return  productRepository.findByproductName(productName);
+}
 	
 	@RequestMapping("/viewproducts")
 	public List<Product> getviewProducts() {
@@ -264,22 +270,7 @@ public class ApplicationController {
 	public HashMap<String, Object> editShippingaddress(@RequestBody ShippingAddress shippingaddress) {
 		HashMap<String, Object> returnParams = new HashMap<String, Object>();
 		try{
-	/*	String userName = SecurityContextHolder.getContext().getAuthentication().getName();
-		Customer customer=  customerRepository.findByuserName(userName);
-		System.out.println("Customer Object:"+customer);
-			int id=customer.getCustomerId();
-			System.out.println("-----------------------> Customer Id:"+id);
-		
-		shippingaddress.setCustomer(customer);
-		String state=shippingaddress.getState();
-		System.out.println("------------------->State is:"+state);
-		StateVat stateVat=(StateVat) stateVatRepository.findBystate(state);
-		int stateId=stateVat.getStateId();
-		System.out.println("------------------------> State Id :"+stateId);
-		shippingaddress.setStateVat(stateVat);
-		
 	
-		System.out.println(customer);*/
 		
 			shippingAddressRepository2.save(shippingaddress);
 			returnParams.put("status", true);
