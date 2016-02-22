@@ -98,34 +98,40 @@ font-family: 'Spinnaker', sans-serif;
 <table  class="table" class="col-md-12">
  <tr>
   <th class="col-md-6">Products</th>
-  <!--<th class="col-md-4" style="text-align: center">Your Cart</th>-->
+ 
   <th style="text-align:right" class="col-md-6">Price(in Rs.)</th>
  </tr>
  
  
-  <tr ng-repeat="image in images">
-    <td><div class="col-md-4"><img ng-src="{{image.imageUrl}}"></div>
+
+ 
+  <tr  ng-repeat="cart in cart" >
+    <td><div class="col-md-4">
+    <img ng-src="{{image.imageUrl}}">
+    
+    </div>
     <div class="col-md-offset-5">
     <a href="#"><b>{{image.name}}</b></a><br>
-    <p ng-hide="show"> Quantity: {{image.quantity}}<br>
+     <a  ng-hide="show" ng-repeat="cartitem in cart.cartitem" ><b> Product Name: </b> {{cartitem.product.productName}}</a><br>
+    <p  ng-hide="show" ng-repeat="cartitem in cart.cartitem"> <b>Quantity: </b>>{{cartitem.quantity}}<br>
+    
+    
      <a href="" ng-click="show=true"> Edit <small><span class="glyphicon glyphicon-pencil"></span></small></a></p>
 <br>
 <div ng-show="show">
-  <!--<select class="btn btn-default dropdown-toggle" ng-model="image.quantity">
-    <option>1</option>
-     <option>2</option>
-      <option>3</option>
-    </select><br>-->
-    <input type="number" ng-model="image.quantity" min="1" value="image.quantity" />
-    <button class="savebutton" ng-click="show=!show">Save</button>
-    <button class="btn btn-default" ng-click="show=!show">Cancel</button>
+  
+   
+     <button class="savebutton" ng-click="show=!show">Save</button>
+    <button class="btn btn-default" ng-click="show=!show">Cancel</button> 
 </div>
-<a href=""><span class="glyphicon glyphicon-trash"></span> Remove Item</a>
+<a href=""><span class="glyphicon glyphicon-trash"></span> Remove Item</a> 
 </div>
    </td>
-    <td style="text-align:right">Rs.{{image.price}}</td>
+    <td ng-repeat="cartitem in cart.cartitem" style="text-align:right">Rs.{{cartitem.product.productPrice}}</td>
     
   </tr>
+
+ 
   
 </table>
  
@@ -134,7 +140,7 @@ font-family: 'Spinnaker', sans-serif;
   <p>sdfsd</p>-->
   </div>
 
-<h2> Ship To </h2>
+<!-- <h2> Ship To </h2>
 <table class="table">
 <tr>
   <th ></th>
@@ -154,20 +160,20 @@ font-family: 'Spinnaker', sans-serif;
           <td>{{sa.city}}</td>
 					<td>{{sa.state}}</td>
 					<td>{{sa.pin}}</td>
-        <!--<td>{{shippingAddress.id}}</td>-->
+        <td>{{shippingAddress.id}}</td>
 				
 				
 			</tbody>
-		</table>
+		</table> -->
     
-    <button  ng-click="showForm=true" data-toggle="modal" data-target="#myModal" class="button" style="vertical-align:middle"><span>Ship to a different Address </span></button>
+   <!--  <button  ng-click="showForm=true" data-toggle="modal" data-target="#myModal" class="button" style="vertical-align:middle"><span>Ship to a different Address </span></button>
     <br><br>
     <form ng-show="showForm">
   
 		<div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
-      <!-- Modal content-->
+      Modal content
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -201,7 +207,7 @@ font-family: 'Spinnaker', sans-serif;
   
 </form>	
 </div>
-<br>
+<br> -->
 <div id="ordersummary" class="col-md-5 col-md-offset-3">
 <h2>Order Summary</h2>
 
@@ -216,7 +222,14 @@ Taxes(VAT) :
 
 </div>
   <span style="display:block; height:200px;"></span>
+<!-- <div ng-repeat="cart in cart">
 
+
+   
+       <p ng-repeat="cartitem in cart.cartitem"  >{{cartitem.quantity}}</p>
+   
+</div> -->
+</div>
 
 </body>
 </html>

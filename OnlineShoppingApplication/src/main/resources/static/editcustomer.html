@@ -67,10 +67,7 @@
                     <span style="color:red" ng-show="form1.lastname.$dirty && form1.lastname.$error.lastname">Not a valid name!</span>  
                   </div>
                 </div>
-             <!--   First Name: <input type="text" name="firstname" class="form-control"
-				ng-model="edit.firstName"  ng-required="true"/>
-	<span style="color:red" ng-show="form1.firstname.$dirty && form1.firstname.$error.required">firstname is Required
-  </span> -->
+             
   <br /> 
                 <br>
 
@@ -141,7 +138,7 @@
         </tbody>
       </table>
       
-      <button  ng-click="showForm=true" data-toggle="modal" data-target="#myModal1" class="button" style="vertical-align:middle"><span>Add new Shipping Address </span></button>
+      <button  data-toggle="modal" data-target="#myModal1" class="button" style="vertical-align:middle"><span>Add new Shipping Address </span></button>
       <br><br>
       
         
@@ -155,7 +152,7 @@
                 <h4 class="modal-title">Add a new Shipping Address</h4>
               </div>
               <div class="modal-body">
-              <form ng-show="showForm"   name="form1"  novalidate>
+              <form    name="form1"  novalidate>
                Address Line1: <input type="text" class="form-control" name="addressline1"
                ng-model="shippingAddress.address1" ng-required="true"/>
                <span style="color:red" ng-show="form1.addressline1.$dirty && 

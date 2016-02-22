@@ -117,7 +117,6 @@ else
 	alert($rootScope.admin);
 	}
 			
-				$location.path('/');
 				
 					}		
 		
@@ -330,7 +329,7 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
   			}).then(function(response){
   				if(response.data.status){
   					alert('customer edit Successfully!');
-  					$scope.edit= {};
+  					//$scope.edit= {};
   					
   				} else {
   					alert('customer edit Failed!');
@@ -706,8 +705,10 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
 	});
                                                              
  }])
-app.controller('cartctrl', ['$scope', function($scope) { 
-   $scope.images=[
+app.controller('cartctrl', [ '$scope','$route','$routeParams', '$rootScope','$http',
+                                                   	     function($scope,$route,$routeParams,$rootScope, $http)
+                                                	     {
+ /*  $scope.images=[
   {
     "id": "1",
     "imageUrl": "1.jpg",
@@ -722,7 +723,7 @@ app.controller('cartctrl', ['$scope', function($scope) {
     "name": "Ara2",
      "quantity":2
    }
-   ]
+   ]*/
    
    /*$scope.shippingAddresses=[
      {
@@ -747,8 +748,34 @@ app.controller('cartctrl', ['$scope', function($scope) {
   /*  $scope.addShipping=function(){
             $scope.shippingAddresses.push($scope.shippingAddress);
              $scope.shippingAddress='';*/
+	
+	
+	
+	
+	//$scope.cart={};
+	
+	 
+	  $http({
+			
+		   method : 'GET',
+	                           			
+	                           			
+	       url : '/cart',
+	                           			
+	        }).then(function(response) {
+	                           			$scope.cart = angular.copy(response.data);
+	                           			
+	                           		});
+	  
+	  
+	  
     
  }])
+ 
+ 
+ 
+ 
+ 
  app.controller('cartitemctrl', [ '$scope','$route','$routeParams', '$rootScope','$http',
                                	     function($scope,$route,$routeParams,$rootScope, $http){
 	 
