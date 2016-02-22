@@ -34,8 +34,8 @@ public class CartItem{
 	@JsonIgnore
 	Cart cart;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JsonIgnore
+	@OneToOne(fetch = FetchType.EAGER)
+	//@JsonIgnore
 	Product product;
 	
 	public int getCartitemId() {

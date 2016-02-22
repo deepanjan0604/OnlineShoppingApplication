@@ -25,6 +25,10 @@ app.config(['$routeProvider',
          templateUrl: 'gridview.html',
          controller: 'gridctrl'
        })
+       .when('/cart/:id', {
+        templateUrl: 'gridview.html',
+         controller: 'cartitemctrl'
+       })
       .when('/cart', {
         templateUrl: 'cart2.html',
          controller: 'cartctrl'
@@ -745,4 +749,16 @@ app.controller('cartctrl', ['$scope', function($scope) {
              $scope.shippingAddress='';*/
     
  }])
+ app.controller('cartitemctrl', [ '$scope','$route','$routeParams', '$rootScope','$http',
+                               	     function($scope,$route,$routeParams,$rootScope, $http){
+	 
+	 $http({
+			method : 'GET',
+			url : '/products'
+		}).then(function(response) {
+			$rootScope.products = response.data;
+	});
+	 
+ }])
+ 
 

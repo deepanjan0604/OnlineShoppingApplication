@@ -50,9 +50,9 @@ public class Product {
 	@ManyToOne(fetch = FetchType.EAGER)
 	
 	Category category;
-
-	@OneToMany(mappedBy = "product",  orphanRemoval = true)
-	List<CartItem> cartitem;
+@JsonIgnore
+	@OneToOne(mappedBy = "product",  orphanRemoval = true)
+	CartItem cartitem;
 
 	public int getProductId() {
 		return productId;
@@ -112,11 +112,11 @@ public class Product {
 		this.category = category;
 	}
 
-	public List<CartItem> getCartitem() {
+	public CartItem getCartitem() {
 		return cartitem;
 	}
 
-	public void setCartitem(List<CartItem> cartitem) {
+	public void setCartitem(CartItem cartitem) {
 		this.cartitem = cartitem;
 	}
 

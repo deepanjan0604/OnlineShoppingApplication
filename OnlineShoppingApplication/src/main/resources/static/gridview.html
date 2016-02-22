@@ -71,14 +71,14 @@ a{
 			</thead>
 			<tbody>
 
-				< <tr ng-repeat="product in products">
+				 <tr ng-repeat="product in products">
 				<td>thumbnail</td>
 					<td>{{product.productName}}</td>
 					
 					<td>{{product.productPrice}}</td>
 					<td>{{product.quantity}}</td>
 		<td>			
-   <a ng-show="user" href="#" class="button" role="button">Add to cart</a>
+   <a ng-show="user" href="#cart/{{product.productId}}" class="button" role="button">Add to cart</a>
        <a ng-show="admin"  style="float:right" href="#editproduct/{{product.productId}}" class="button" role="button">Edit</a>
           
     </td>

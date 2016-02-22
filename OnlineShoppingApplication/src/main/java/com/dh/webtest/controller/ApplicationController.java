@@ -351,7 +351,7 @@ public class ApplicationController {
 	}
 		return returnParams;
 	}
-}
+
 	
 	
 	/*@Autowired
@@ -376,7 +376,13 @@ public class ApplicationController {
 		
 	}*/
 	
-
+@RequestMapping("/addtocart")
+public void addtoCart(@RequestBody Cart cart) {
+	return;
+	
+	
+}
+}
 
 
 	
