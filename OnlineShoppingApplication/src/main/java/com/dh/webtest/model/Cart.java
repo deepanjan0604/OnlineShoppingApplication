@@ -17,6 +17,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mysql.jdbc.Blob;
 
 @Entity
@@ -39,14 +40,14 @@ public class Cart{
 	float totalCost;
 
 
-	@OneToMany(mappedBy = "cart",  orphanRemoval = true)
+	@OneToMany(mappedBy = "cart", cascade=CascadeType.ALL, orphanRemoval = true)
 	List<CartItem> cartitem;
 
 
 	@OneToOne(mappedBy = "cart", fetch = FetchType.EAGER, orphanRemoval = true)
 	Order order;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JsonIgnore
 	Customer customer;
 
@@ -93,7 +94,6 @@ public class Cart{
 	public List<CartItem> getCartitem() {
 		return cartitem;
 	}
-
 
 	public void setCartitem(List<CartItem> cartitem) {
 		this.cartitem = cartitem;

@@ -117,7 +117,7 @@ else
 	alert($rootScope.admin);
 	}
 			
-				$location.path('/');
+				/*$location.path('/');*/
 				
 					}		
 		
@@ -665,9 +665,37 @@ app.controller('editcustomerctrl',[ '$scope','$route','$routeParams', '$rootScop
 	              ]
 	               
 	             $scope.title="List Of Products";
+	 $scope.addtoCart = function(product){
+	/* $http({
+			method : 'GET',
+			url : '/products/'+$routeParams.id,
+		}).then(function(response) {
+			$rootScope.product = response.data;
+			 $scope.cartitem={ "quantity":1,
+			                   product:[],
+			 };
+			 //$scope.cartitem.product=[];
+			 $scope.cartitem.product.push($scope.product);
+	});*/
+		
+		 $scope.cartitem=[{ "quantity":1,
+                 "product":product
+		 }]
+		 $scope.cart={
+		              "cost": 2340,
+		             "cartitem" : $scope.cartitem
+		 };
+		 //$scope.cart.push($scope.cartitem);
 	
-
-                          			  
+		 $http({
+				method : 'POST',
+				url : '/addtocart',
+					data:$scope.cart,
+			}).then(function(response) {
+				alert('');
+				
+			});
+	 }                     			  
                           			  
  
 /*	 $http({
@@ -752,12 +780,8 @@ app.controller('cartctrl', ['$scope', function($scope) {
  app.controller('cartitemctrl', [ '$scope','$route','$routeParams', '$rootScope','$http',
                                	     function($scope,$route,$routeParams,$rootScope, $http){
 	 
-	 $http({
-			method : 'GET',
-			url : '/products'
-		}).then(function(response) {
-			$rootScope.products = response.data;
-	});
+	
+
 	 
  }])
  
