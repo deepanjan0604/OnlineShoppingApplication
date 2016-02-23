@@ -1,10 +1,10 @@
 <html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.5/angular.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.5/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.5/angular-animate.min.js"></script>
-	<!--<link href="animate.css" rel="stylesheet">-->
+	<link href="animate.css" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-<link href='https://fonts.googleapis.com/css?family=Raleway:500' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Raleway:500' rel='stylesheet' type='text/css'> -->
 </head>
 <style>
 img:hover{
@@ -78,7 +78,7 @@ a{
 					<td>{{product.productPrice}}</td>
 					<td>{{product.quantity}}</td>
 		<td>			
-   <a ng-show="user" href="#cart/{{product.productId}}" class="button" role="button">Add to cart</a>
+   <a ng-show="user" href="" ng-click="addtoCart(product)" class="button" role="button">Add to cart</a>
        <a ng-show="admin"  style="float:right" href="#editproduct/{{product.productId}}" class="button" role="button">Edit</a>
           
     </td>

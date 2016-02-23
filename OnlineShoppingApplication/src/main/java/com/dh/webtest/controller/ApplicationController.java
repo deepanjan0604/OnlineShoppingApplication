@@ -135,10 +135,16 @@ public class ApplicationController {
 
 	@RequestMapping("/cart")
 	public List<Cart> getCart() {
+
 		return (List<Cart>) cartRepository.findAll();
 		/*Customer customer = getCustomer();
 		List<Cart> cart = customer.getCart();
 		return (List<Cart>) cart;*/
+
+		//Customer customer = getCustomer();
+		
+		//return (List<Cart>) customer.getCart();
+
 	}	
 	
 	
@@ -389,12 +395,46 @@ public class ApplicationController {
 	}*/
 	
 @RequestMapping("/addtocart")
-public void addtoCart(@RequestBody Cart cart) {
-	return;
+public HashMap<String, Object> addtoCart(@RequestBody Cart cart) {
+	HashMap<String, Object> returnParams = new HashMap<String, Object>();
+try
+{
+	Customer customer= getCustomer();
+	Cart cartcheck = customer.getCart();
+	if(cartcheck != null)
+	{
+int cartid = customer.getCart().getCartId();
+ 	cart.setCartId(cartid);
+	}
+	if(cartcheck == null)
+	{
+	List<CartItem> cartitems = cart.getCartitem();
+	Iterator<CartItem> it = cartitems.iterator();
+	while(it.hasNext()){
+		CartItem cartitem= (CartItem)it.next();
+		Product product = cartitem.getProduct();
+		product.setCartitem(cartitem);
+		cartitem.setCart(cart);
+	}
+		/*else
+		{
+			Cart cart1 = customer.getCart();
+			cartitem.setCart(cart1);
+}*/
+	}
+	
+	cart.setCustomer(getCustomer());
+	cartRepository.save(cart);
+	returnParams.put("status", true);
+} catch (Exception e) {
+	e.printStackTrace();
+		returnParams.put("status", false);
+		returnParams.put("msg", "Cart Addition Failed!");
 	
 	
 }
+return returnParams;
 }
-
+}
 
 	
