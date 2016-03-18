@@ -1,0 +1,55 @@
+
+ 
+ <body ng-controller="editshippingctrl" >
+ <style>
+  .button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #504B4B;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 17px;
+    padding: 8px;
+    width: auto;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+
+
+  </style>
+ <form name=form1 novalidate>
+ Address Line1: <input type="text" class="form-control" name=addressline1
+				ng-model="edit1.address1" ng-required="true"/><br /> 
+	<span style="color:red" ng-show="form1.addressline1.$dirty &&  form1.addressline1.$error.required"> Address Line1  is Required!</span><br /> 
+               
+		Address Line2: <input
+				type="text"  name=addressline2 class="form-control" ng-model="edit1.address2" ng-required="true"/><br />
+			<span style="color:red" ng-show="form1.addressline2.$dirty &&  form1.addressline2.$error.required"> Address Line2  is Required!</span><br /> 	
+				Phone: <input type="text" class="form-control" name=phone
+				ng-model="edit1.phone" ng-required="true" /><br>
+				<span style="color:red" ng-show="form1.phone.$dirty &&  form1.phone.$error.required"> Phone is Required!</span><br /> 
+               
+		City: <input type="text" class="form-control" name="city"
+				ng-model="edit1.city" ng-required="true" /><br /> 
+				
+		<span style="color:red" ng-show="form1.city.$dirty &&  form1.city.$error.required"> City  is Required!</span><br /> 
+				
+				 State:<select class="form-control" ng-model="edit1.state">
+          </option>
+           <option  ng-repeat="cat in statevat" value="{{cat.state}}">{{cat.state}}
+           </option>
+         </select> <br>
+         
+			PinCode: <input type="text"  class="form-control" name=pin
+				ng-model="edit1.pin" ng-required="true" /><br /> 
+		<span style="color:red" ng-show="form1.pin.$dirty &&  form1.pin.$error.required"> Pin  is Required!</span><br /> 
+        
+        
+          <button class="button" data-dismiss="modal"  ng-click="editShipping()" >Save Details</button>	
+          	 <button type="cancel" class="button" onclick="javascript:window.location='#viewcustomer'">Cancel</button>
+
+       
+ </form>
+	  </body>

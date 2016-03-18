@@ -1,0 +1,136 @@
+<html>
+
+
+<head>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+ <script scrc="autocomplete.js"></script>
+<style>
+   .button {
+    display: inline-block;
+    border-radius: 9px;
+    background-color: #504B4B;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 12px;
+    padding: 7px;
+    width: 80px;
+    margin: 8px;
+    transition-duration: 0.2s;
+  }
+.btn {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #504B4B;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 10px;
+    padding: 4px 20px px;
+    width: auto;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: -18px;
+  }
+  
+  
+  .autocomplete{
+  width: 97%;
+  border-radius: 4px;
+  position: absolute;
+}
+
+.autocomplete input{
+  font-size: 1.2em;
+  
+  border-radius: 4px;
+  width: 200px;
+  padding:0.1em;
+}
+
+.autocomplete ul{
+  position: relative;
+  border-radius: 4px;
+  left: 0;
+  width: 200px;
+  border-left: 1px solid #888;
+  border-right: 1px solid #888;
+  border-bottom: 1px solid #888;
+  z-index: 1;
+}
+
+
+
+.autocomplete li.active{
+  width: 50px;
+  background-color: #4bf;
+}
+
+
+.row {
+    margin-right: 0px;
+    margin-left: 10px;
+    margin-top: 40px;
+}
+</style>
+
+</head>
+<body>
+
+  <div ng-controller="categoryctrl">
+  
+    
+    
+
+    <div class="rightalign">
+      
+      <!-- Search:
+  <input ng-model="searchKeyword"><span class="glyphicon glyphicon-search"></span> -->
+
+       
+
+    <div class="row">
+    
+      <div class="col-sm-3 col-md-3" ng-repeat="product in products | filter: searchKeyword">
+        <!-- <a href="#view/{{image.id}}"> -->
+          <div style="height:180px; width:180px" class="thumbnail">
+            <img ng-src="{{product.image}}" alt="{{image.name}}"></div>
+          <div class="caption">
+            <h5>{{product.productName}}</h5> </div>
+     <!--    </a> -->
+        <h5>Rs.{{product.productPrice}}</h5>
+        
+        <a style="float:right" href="#login" ng-hide="authenticatedadd"  class="btn"  role="button">Add to cart</a>
+    <a  style="float:right" href="" ng-click="addtoCart(product)" ng-show="user" class="btn" role="button">Add to cart</a>
+        <a   style="float:right" href="#editproduct/{{product.productId}}" ng-show="admin" class="btn" role="button">Edit</a> 
+        </h4>
+
+
+
+      </div>
+    </div>
+
+
+    <div class="right">
+      <!-- <ul class="pagination">
+
+        <li><a href="" ng-click="prevPage()">&laquo;</a></li> 
+        <li ng-repeat="n in page track by $index">
+          <a ng-click="toPageId($index)">{{$index+1}}</a>
+        </li>
+         <li><a href="" ng-click="nextPage()">&raquo;</a></li>  
+
+      </ul> -->
+           <uib-pagination total-items="bigTotalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="false" 
+	 num-pages="numPages" ng-change="setPage(currentPage)"></uib-pagination>
+    </div>
+  </div>
+<script type="text/javascript">
+$(".chb").change(function() {
+    $(".chb").prop('checked', false);
+    $(this).prop('checked', true);
+});
+</script>
+</body>
+
+</html>

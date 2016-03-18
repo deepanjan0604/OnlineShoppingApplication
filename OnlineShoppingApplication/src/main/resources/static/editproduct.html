@@ -1,0 +1,90 @@
+<style>
+.button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #504B4B;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 17px;
+    padding: 8px 20px 8px 20px;
+    width: auto;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+   .savebutton {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #504B4B;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 16px;
+    padding: 7px;
+    width: 80px;
+    margin: 5px;
+    transition-duration: 0.2s;
+  }
+  
+  .savebutton:hover {
+    background-color: #737373;
+  }
+  
+  
+    .button:hover {
+    background-color: #595959;
+  }
+</style>
+
+<body >
+ <div ng-controller="editproductctrl">
+<h3>Edit Product</h3>
+  <br>
+<form  class="col-md-8"  name="form1"   novalidate >
+    Product Name: <input type="text" name="product" class="form-control"
+				ng-model="product.productName"  ng-required="true"/>
+	<span style="color:red" ng-show="form1.product.$dirty && form1.product.$error.required">Product name is Required
+  </span>
+  <br /> 
+				
+		Quantity: <input
+				type="number" name="quantity" class="form-control" ng-model="product.quantity" ng-required="true"/><br />
+		<span style="color:red" ng-show="form1.quantity.$dirty && 
+		form1.quantity.$error.required">Quantity is Required
+  </span>
+		Price: <input type="number" name="price" class="form-control"
+				ng-model="product.productPrice"  ng-required="true"/><br />
+				<span style="color:red" ng-show="form1.price.$dirty && 
+		form1.price.$error.required">price is Required
+  </span> 
+				
+			Category: <select class="form-control" ng-model="product.category.categoryName">
+       
+<option  ng-repeat="cat in categories" value="{{cat.categoryName}}">{{cat.categoryName}}
+</option>
+        </select>
+        
+        <br>
+			
+		 Brand: <select class="form-control" ng-model="product.brand.brandName">
+ <option  ng-repeat="brand in brands" value="{{brand.brandName}}">{{brand.brandName}}
+     </option>
+        </select> 
+         <br>
+     
+          <button class="button" style="margin-left:200px;" ng-click="editproduct()">Save Changes
+          </button>	
+       	 <button type="cancel" class="savebutton" onclick="javascript:window.location='#cart'">Cancel</button>
+
+  
+</form>
+  
+  <br>
+
+
+</div>
+</div>
+</div>
+</body>

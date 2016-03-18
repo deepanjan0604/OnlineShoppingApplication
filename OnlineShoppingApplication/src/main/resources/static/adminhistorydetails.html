@@ -1,0 +1,77 @@
+<html>
+  <style>
+    body{
+font-family: 'Spinnaker', sans-serif;
+
+    }
+   th, tr, td{
+     padding:12px;
+   } 
+   a{
+     color: #595959;
+     text-decoration: none;
+   }
+   a:hover{
+    color: black;
+     text-decoration: none;
+   }
+.table{
+margin-top:80px;
+}
+
+    </style>
+    
+<body ng-controller="orderhistorydetailsctrl">
+  <div class="row">
+<div >
+  <h3 style="float:left"> History Details</h3>
+
+</div>
+		
+<table  class="table" class="col-md-12">
+
+ <tr>
+  <th class="col-md-6">Products</th>
+ <th style="text-align:right" class="col-md-6">Price</th>
+       </tr>
+    
+<tr ng-repeat="orderdetails in orders">
+    <td><div class="col-md-4"><img ng-src="{{orderdetails.imageUrl}}"></div>
+
+    <div class="col-md-offset-5">
+
+  
+   <a href="#"  ><b> Product Name: </b> {{orderdetails.productName}}</a><br>
+    
+    
+    <p ng-hide="show" > <b>Quantity: </b>{{orderdetails.quantity}}<br></p>
+    
+     <td style="text-align:right"> Price Rs.{{orderdetails.price}}</td>
+
+  </tr>
+  
+  
+
+  
+  
+</table>
+ <div align="justify"></td>
+  </div>
+ </div>
+  </div>
+
+
+</div>
+<div class="panel panel-default" align="justify">
+  
+    <b> Customer Name: </b> {{customerorders.firstName}} {{customerorders.lastName}} <br> 
+  Cost : {{orderscost.cost}} <br>
+ Tax : {{orderscost.tax}} <br>
+ Total Cost:{{orderscost.totalCost}} <br>
+   </div>
+  <span style="display:block; height:200px;"></span>
+
+
+
+
+</html>

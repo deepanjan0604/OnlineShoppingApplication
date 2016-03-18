@@ -1,0 +1,259 @@
+<html>
+ 
+  <style>
+   body {
+    font-family: 'Spinnaker', sans-serif;
+  }
+  .panel-title a {
+    display: block;
+    padding: 10px 15px;
+    margin: -10px -15px;
+    text-decoration: none;
+    background-color: #5F0101;
+    color:white;
+}
+
+.card a{
+    text-decoration: none;
+    display: block;
+     background-color: rgba(230, 230, 230, 0.36);
+      font-size: 16px;
+      margin: 30px;
+      height: 200px;
+     border: 1px solid #e6e6e6;
+     color:black;
+}
+.card :hover{
+     border: 3px ridge gold;
+}
+.card .active{
+         border: 3px ridge green;
+/*content:  "\2713 "*/
+}
+.card .active:before{
+     font-family: FontAwesome;
+font-size: 20px;
+color:green;
+  content:  "\f058"
+}
+  #ordersummary {
+/*     background-color: #e6e6e6;
+ */    font-size: 16px;
+   
+  }
+ 
+   .button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #504B4B;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 17px;
+    padding: 8px;
+    width: 280px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+  .button:hover {
+    background-color: #595959;
+  }
+  #ordersummary  a {
+     color: white;
+     text-decoration: none;
+  }
+
+
+      </style>
+  <body ng-controller="checkoutctrl">
+
+<div ng-hide="hide">
+  <uib-accordion close-others="oneAtATime">
+    
+    <uib-accordion-group is-open="status[0]">
+      
+        <uib-accordion-heading > <h4 class="panel-title"><a ng-show="selected" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne">
+         {{cart.shippingaddress.address1}},{{cart.shippingaddress.address2}}<br>
+       {{cart.shippingaddress.phone}}<br>
+        {{cart.shippingaddress.city}}<br>
+        {{cart.shippingaddress.state}}<br>
+        {{cart.shippingaddress.pin}}<br>
+        </a>
+       <a ng-hide="selected" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne">
+Select an Addresss for Delivery       </a>
+           </h4> 
+        </uib-accordion-heading>
+                   
+ <span ng-repeat="sa in shippingAddresses"  ng-click="calculateVat(sa,$index)" class="card"    >          
+<a href="" class="col-md-3" id="ab" ng-class="{'active': $index==selectedIndex}">
+    {{sa.address1}}<br>
+    {{sa.address2}}<br>
+    {{sa.city}}<br>
+        {{sa.state}}<br>
+        {{sa.pin}}<br>
+    <hr>
+    {{sa.phone}}
+
+</a>
+</span>
+<br>
+<div style="display:block;position:relative;margin-top:200px;">
+<br></br>
+<hr>
+<!--  <input ng-model="ship">
+<button ng-click="a()">test</button> -->
+<button style="margin-left:310px"  type="button" class="button" data-toggle="modal" data-target="#myModal" >Add a new Shipping Address</button></div>
+  </uib-accordion-group>
+    
+    <uib-accordion-group is-open="status[1]">
+      <uib-accordion-heading>
+      Review your Order
+        </uib-accordion-heading>
+       <table class="table" class="col-md-12">
+      <tr>
+        <th class="col-md-6">Products</th>
+        <!--<th class="col-md-4" style="text-align: center">Your Cart</th>-->
+        <th style="text-align:right" class="col-md-6">Price(in Rs.)</th>
+      </tr>
+
+
+
+      <tr ng-repeat="item in cartitems">
+        <td>
+          <div class="col-md-4"><img height="150" width="150" ng-src="{{item.product.image}}"></div>
+
+
+          <!--     <td><div class="col-md-0"><img ng-src="{{image.imageUrl}}"></div>
+ -->
+          <div class="col-md-offset-5">
+
+
+            <b> Product Name: </b> {{item.product.productName}}
+            <br>
+
+
+             <b>Quantity: </b>{{item.quantity}}
+              <br>
+            
+
+
+         <!--    <a ng-hide="show" href="" ng-click="show=true"> Edit Quantity <small><span class="glyphicon glyphicon-pencil"></span></small></a>
+
+
+            <br>
+            
+            <br>
+
+<form name="form">
+            <div ng-show="show">
+              <input type="number" name="qty" ng-model="item.quantity" min="1" max="100" ng-required="true"/>
+             <br> <span style="color:red " ng-show=" form.qty.$error.required">Quantity is Required</span>
+             <span style="color:red " ng-show="form.qty.$error.max">Quantity exceeded. Please limit the quantity to {{item.product.quantity}}.</span>
+             
+</form>
+              <div ng-show="show">
+
+                <input type="number" ng-model="image.quantity" min="1" value="image.quantity" />
+                <button class="savebutton" ng-click="show=!show;changeQuantity(item)">Update</button>
+           <button type="cancel" class="savebutton" onclick="javascript:window.location='#cart'">Cancel</button>
+                </div> 
+
+            </div>
+            <a href="" ng-click="removeItem(item)"><span class="glyphicon glyphicon-trash"></span> Remove Item</a>
+          </div>-->
+        </td>
+
+        <td style="text-align:right">Rs.{{item.initialprice}}</td>
+      </tr>
+
+
+
+
+
+
+
+    </table>
+     <div id="ordersummary">
+<h2 style="background-color: #e6e6e6;">Order Summary</h2>
+<b> Total cost :</b> <span style="margin-left:70px;">{{cart.totalcost}}</span>
+    <br> <b>Tax(CST@12.5%) :</b> <span style="margin-left:14px;">{{tax.cst}}</span>
+    <br> <b>Taxes(VAT) :</b> <span style="margin-left:58px;">{{tax.vat}}</span>
+    <hr>
+    <h3>Total : {{tax.finalprice}} </h3>
+    <br>
+ <a ng-click="placeOrder()" href="#orderconfirm" class="button" style="margin:auto; display:block;" >Place the Order</a> 	</a>
+    <br>
+     </div> 
+    </uib-accordion-group>
+<!-- <form > -->
+
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Add a new Shipping Address</h4>
+          </div>
+          <div class="modal-body">
+            <form name="form1" novalidate>
+              Address Line1:
+              <input type="text" class="form-control" name="addressline1" ng-model="shippingAddress.address1" ng-required="true" />
+              {{shippingAddress.address1}}
+              <span style="color:red" ng-show="form1.addressline1.$dirty && 
+               form1.addressline1.$error.required"> Address Line1  is Required!</span>
+              <br /> Address Line2:
+              <input type="text" name="addressline2" class="form-control" ng-model="shippingAddress.address2" ng-required="true" />
+              <br />
+              <span style="color:red" ng-show="form1.addressline2.$dirty && 
+               form1.addressline2.$error.required"> Address Line 2  is Required!</span>
+              <br /> Phone:
+              <input type="text" class="form-control" name="phone" ng-model="shippingAddress.phone"  ng-required="true" />
+              <br>
+
+              <span style="color:red " ng-show="form1.phone.$dirty && form1.phone.$error.required ">Phone number is Required
+             </span>
+            <!--   <span style="color:red" ng-show=" form1.phone.$error.pattern">Not a valid phone number! ONLY NUMBERS ALLOWED</span> --> City:
+              <input type="text" name="city" class="form-control" ng-model="shippingAddress.city" ng-required="true" />
+              <span style="color:red" ng-show="form1.city.$dirty && 
+             form1.city.$error.required"> city is Required!
+           </span>
+              <br />
+              <br /> State:
+
+
+
+              <select class="form-control" ng-model="shippingAddress.state">
+<!--              <option><-----Select-----></option> -->                
+ <option ng-repeat="cat in statevat" value="{{cat.state}}">{{cat.state}}
+                </option>
+              </select>
+              <br>
+              <br> PinCode:
+              <input type="text" name="pincode" class="form-control" ng-model="shippingAddress.pin" />
+              <br />
+
+              <span style="color:red " ng-show="form1.pincode.$dirty && form1.pincode.$error.required ">Phone number is Required
+    </span>
+<!--               <span style="color:red" ng-show=" form1.pincode.$error.pattern">Not a valid phone number! ONLY NUMBERS ALLOWED</span>
+ -->            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button class="button" data-dismiss="modal" ng-click="addShipping()">Add Shipping Address</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    
+  </form>
+   </div> 
+   
+   <div ng-show="hide" class="alert alert-success" role="alert">Your order has been placed Successfully.</div>
+
+  </body>
+</html>

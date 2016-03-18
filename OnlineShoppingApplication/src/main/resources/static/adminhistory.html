@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<style>
+.autocomplete{
+  width: 97%;
+  border-radius: 4px;
+  position: absolute;
+}
+
+.autocomplete input{
+  font-size: 1.2em;
+  
+  border-radius: 4px;
+  width: 200px;
+  padding:0.1em;
+}
+
+.autocomplete ul{
+  position: relative;
+  border-radius: 4px;
+  text-align:left;
+  width: 200px;
+  border-left: 1px solid #888;
+  border-right: 1px solid #888;
+  border-bottom: 1px solid #888;
+  list-style:none;
+ padding:0px;
+}
+
+
+
+.autocomplete li.active{
+  width: 199px;
+  background-color: #4bf;
+}
+
+ul.pagination li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+</style>
+</head>
+<body ng-controller="adminhistoryctrl">
+<h1>{{title}}</h1>
+
+ <form>
+     <autocomplete ng-model="yourchoice" data="names" ng-keyup="autofetch(yourchoice)"></autocomplete>  </form>      
+      <button style="margin-left:200px;padding-bottom:5px;background-color:black;color:white" ng-click="searching(yourchoice)" ><span  class="glyphicon glyphicon-search"></span></button>
+<br><br><br><br>
+<table class="table table-bordered">
+<tr>
+
+					
+					<th class="col-md-2">OrderId</th>
+					<th class="col-md-2">CustomerName</th>
+										<th class="col-md-2">User Name</th>
+					
+					<th class="col-md-2">Total Cost</th>
+					
+					<th class="col-md-2">OrderDetails</th>
+<!-- 					ng-repeat="orders in customer.order"
+ -->				</tr>
+		<tbody ng-repeat="order in customerorders">
+<tr >
+			 
+          <td >{{order.orderId}}</td>
+          <td>{{order.customer.firstName}} {{order.customer.lastName}}</td>
+                    <td>{{order.customer.userName}}</td>
+          
+                 <td >{{order.totalCost}}</td>
+       
+             
+				<td><a href="#orderhistorydetails/{{order.orderId}}" >Order Details</a> </td>
+				
+				</tr>
+				</tbody>
+			</thead>
+</table>
+
+<a href="#home"><span class="glyphicon glyphicon-chevron-left">Back</span></a>
+
+
+    <div align="right">
+   
+     <uib-pagination total-items="bigTotalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="false" 
+	 num-pages="numPages" ng-change="setPage(currentPage)" items-per-page="pageSize"></uib-pagination>
+  </div>
+  
+  
+  <!-- <form>
+     <autocomplete ng-model="yourchoice" data="names" ng-keyup="autofetch(yourchoice)"></autocomplete>  </form>      
+      <button  ng-click="searching(yourchoice)" ><span style="float:right;" class="glyphicon glyphicon-search"></span></button> -->
+</body>
+</html>

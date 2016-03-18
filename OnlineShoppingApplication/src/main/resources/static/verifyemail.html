@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+
+</head>
+<body ng-controller="verifyemailctrl">
+ <form class="col-md-8" action="#token"> 
+  <div class="container"></div>
+
+                  <h3> Enter Email address:</h3> <input type = "text" id = "login" class="form-control" ng-model="verify.email" placeholder = "Email address" name = "emailId"><br><br>
+
+                <input type = "submit"  class="btn btn-default" value = "Send OTP" ng-click="send()">
+
+            </form> 
+</body>
+</html>
+
+<!-- <a href="http://google.com" class="button">Go to Google</a>
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: initial;
+} -->
